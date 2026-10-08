@@ -1,0 +1,169 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Line chart: average AFL crowd per game each season, with the COVID-19 seasons annotated.",
+  "width": "container",
+  "height": 420,
+  "layer": [
+    {
+      "data": {
+        "url": "data/attendance_season.csv"
+      },
+      "layer": [
+        {
+          "mark": {
+            "type": "line",
+            "color": "#c8102e",
+            "strokeWidth": 2.5,
+            "interpolate": "monotone"
+          },
+          "encoding": {
+            "x": {
+              "field": "year",
+              "type": "ordinal",
+              "title": null,
+              "axis": {
+                "labelAngle": -45,
+                "domain": false,
+                "ticks": false
+              }
+            },
+            "y": {
+              "field": "avg_crowd",
+              "type": "quantitative",
+              "title": "Average crowd per game",
+              "scale": {
+                "domain": [
+                  0,
+                  50000
+                ]
+              },
+              "axis": {
+                "format": ",.0f",
+                "gridDash": [
+                  2,
+                  3
+                ],
+                "domain": false,
+                "tickCount": 5
+              }
+            }
+          }
+        },
+        {
+          "mark": {
+            "type": "point",
+            "filled": true,
+            "size": 60,
+            "color": "#c8102e",
+            "stroke": "#fffdf8",
+            "strokeWidth": 1.5,
+            "opacity": 1
+          },
+          "encoding": {
+            "x": {
+              "field": "year",
+              "type": "ordinal"
+            },
+            "y": {
+              "field": "avg_crowd",
+              "type": "quantitative"
+            },
+            "tooltip": [
+              {
+                "field": "year",
+                "title": "Season"
+              },
+              {
+                "field": "avg_crowd",
+                "title": "Average crowd",
+                "format": ","
+              },
+              {
+                "field": "total_crowd",
+                "title": "Total crowd",
+                "format": ","
+              },
+              {
+                "field": "no_crowd_games",
+                "title": "Games with no crowd"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "data": {
+        "url": "data/attendance_season.csv"
+      },
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 10,
+        "dy": 2,
+        "fontSize": 12,
+        "fontWeight": 600,
+        "color": "#1c1b19",
+        "lineHeight": 15
+      },
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "ordinal"
+        },
+        "y": {
+          "field": "avg_crowd",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "note"
+        }
+      },
+      "transform": [
+        {
+          "filter": "datum.year == 2020"
+        },
+        {
+          "calculate": "['2020: COVID-19 hub season,', '29 games with no crowd']",
+          "as": "note"
+        }
+      ]
+    },
+    {
+      "data": {
+        "url": "data/attendance_season.csv"
+      },
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "dx": 4,
+        "dy": 24,
+        "fontSize": 12,
+        "fontWeight": 600,
+        "color": "#1c1b19"
+      },
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "ordinal"
+        },
+        "y": {
+          "field": "avg_crowd",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "note"
+        }
+      },
+      "transform": [
+        {
+          "filter": "datum.year == 2026"
+        },
+        {
+          "calculate": "'2026: ' + format(datum.avg_crowd, ',')",
+          "as": "note"
+        }
+      ]
+    }
+  ]
+}

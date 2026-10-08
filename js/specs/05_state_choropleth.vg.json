@@ -1,0 +1,55 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Choropleth: AFL tickets sold per 100 residents in each state in 2026 (crowds from AFL Tables, population from ABS).",
+  "width": "container",
+  "height": 420,
+  "projection": {"type": "conicEqualArea", "parallels": [-18, -36], "rotate": [-132, 0]},
+  "layer": [
+    {
+      "data": {"url": "data/aus_states.topo.json", "format": {"type": "topojson", "feature": "states"}},
+      "transform": [
+        {
+          "lookup": "properties.state",
+          "from": {
+            "data": {"url": "data/state_footy.csv"},
+            "key": "state",
+            "fields": ["state_name", "crowd_per_100_residents", "crowd_2026", "population", "games_2026", "clubs", "premierships_2012_2026"]
+          }
+        }
+      ],
+      "mark": {"type": "geoshape", "stroke": "#fffdf8", "strokeWidth": 1.5},
+      "encoding": {
+        "color": {
+          "field": "crowd_per_100_residents",
+          "type": "quantitative",
+          "title": "Tickets per 100 residents",
+          "scale": {"scheme": "blues", "domain": [0, 70]},
+          "legend": {"orient": "bottom", "direction": "horizontal", "gradientLength": 180, "values": [0, 35, 70]}
+        },
+        "tooltip": [
+          {"field": "state_name", "title": "State"},
+          {"field": "crowd_per_100_residents", "title": "Tickets per 100 residents"},
+          {"field": "crowd_2026", "title": "Total 2026 crowd", "format": ","},
+          {"field": "population", "title": "Population (Mar 2026)", "format": ","},
+          {"field": "games_2026", "title": "Games hosted"},
+          {"field": "clubs", "title": "AFL clubs"},
+          {"field": "premierships_2012_2026", "title": "Flags 2012–2026"}
+        ]
+      }
+    },
+    {
+      "data": {"url": "data/state_footy.csv"},
+      "transform": [{"calculate": "[datum.state, datum.crowd_per_100_residents]", "as": "label"}],
+      "mark": {"type": "text", "fontSize": 13, "fontWeight": 600, "lineHeight": 15},
+      "encoding": {
+        "longitude": {"field": "label_lon", "type": "quantitative"},
+        "latitude": {"field": "label_lat", "type": "quantitative"},
+        "text": {"field": "label"},
+        "color": {
+          "condition": {"test": "datum.crowd_per_100_residents > 40", "value": "#ffffff"},
+          "value": "#1c1b19"
+        }
+      }
+    }
+  ]
+}

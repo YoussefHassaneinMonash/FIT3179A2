@@ -1,0 +1,38 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Scatterplot: kilometres travelled per season vs away win %, one dot per club per season.",
+  "data": {"url": "data/travel_season.csv"},
+  "width": "container",
+  "height": 360,
+  "transform": [
+    {"calculate": "datum.interstate_club == 1 ? 'Interstate club' : 'Victorian club'", "as": "club_type"}
+  ],
+  "mark": {"type": "circle", "size": 55, "opacity": 0.75, "stroke": "#fffdf8", "strokeWidth": 1},
+  "encoding": {
+    "x": {
+      "field": "km_travelled",
+      "type": "quantitative",
+      "title": "Kilometres travelled in the season",
+      "axis": {"format": ",.0f", "gridDash": [2, 3], "domain": false}
+    },
+    "y": {
+      "field": "away_win_pct",
+      "type": "quantitative",
+      "title": "Away games won (%)",
+      "axis": {"gridDash": [2, 3], "domain": false}
+    },
+    "color": {
+      "field": "club_type",
+      "type": "nominal",
+      "title": null,
+      "scale": {"domain": ["Victorian club", "Interstate club"], "range": ["#2a78d6", "#eb6834"]},
+      "legend": {"orient": "top", "direction": "horizontal"}
+    },
+    "tooltip": [
+      {"field": "team", "title": "Club"},
+      {"field": "year", "title": "Season"},
+      {"field": "km_travelled", "title": "Km travelled", "format": ","},
+      {"field": "away_win_pct", "title": "Away win %"}
+    ]
+  }
+}

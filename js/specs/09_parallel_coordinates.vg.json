@@ -1,0 +1,106 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Parallel coordinates: each club's per-game averages for six stats in a season, scaled 0-1 within that season. Top-four ladder finishers highlighted.",
+  "data": {
+    "url": "data/team_profiles.csv",
+    "format": {
+      "type": "csv",
+      "parse": {"year": "number", "rank": "number", "inside_50s": "number", "clearances": "number", "contested_possessions": "number", "tackles": "number", "marks_inside_50": "number", "goals": "number"}
+    }
+  },
+  "width": "container",
+  "height": 360,
+  "params": [
+    {
+      "name": "season",
+      "value": 2026,
+      "bind": {"input": "range", "min": 2012, "max": 2026, "step": 1, "name": "Season "}
+    },
+    {
+      "name": "hover",
+      "select": {"type": "point", "fields": ["team"], "on": "pointerover", "clear": "pointerout"},
+      "views": ["lines"]
+    }
+  ],
+  "transform": [
+    {"filter": "datum.year == season"},
+    {"calculate": "datum.rank <= 4 ? 'Top 4' : 'Rest of the league'", "as": "group"},
+    {
+      "fold": ["inside_50s", "clearances", "contested_possessions", "tackles", "marks_inside_50", "goals"],
+      "as": ["stat", "value"]
+    },
+    {
+      "joinaggregate": [
+        {"op": "min", "field": "value", "as": "min"},
+        {"op": "max", "field": "value", "as": "max"}
+      ],
+      "groupby": ["stat"]
+    },
+    {"calculate": "(datum.value - datum.min) / (datum.max - datum.min)", "as": "scaled"},
+    {
+      "calculate": "{'inside_50s': 'Inside 50s', 'clearances': 'Clearances', 'contested_possessions': 'Contested possessions', 'tackles': 'Tackles', 'marks_inside_50': 'Marks inside 50', 'goals': 'Goals'}[datum.stat]",
+      "as": "stat_label"
+    }
+  ],
+  "encoding": {
+    "x": {
+      "field": "stat_label",
+      "type": "nominal",
+      "title": null,
+      "sort": ["Inside 50s", "Clearances", "Contested possessions", "Tackles", "Marks inside 50", "Goals"],
+      "axis": {"orient": "top", "labelAngle": 0, "domain": false, "ticks": false, "grid": false, "labelFontWeight": 600, "labelColor": "#1c1b19", "labelPadding": 22}
+    }
+  },
+  "layer": [
+    {
+      "mark": {"type": "rule", "color": "#bdb8ab"},
+      "encoding": {"detail": {"aggregate": "count"}}
+    },
+    {
+      "name": "lines",
+      "mark": {"type": "line", "interpolate": "linear", "strokeWidth": 2},
+      "encoding": {
+        "y": {"field": "scaled", "type": "quantitative", "axis": null},
+        "detail": {"field": "team"},
+        "color": {
+          "field": "group",
+          "type": "nominal",
+          "title": null,
+          "scale": {"domain": ["Top 4", "Rest of the league"], "range": ["#c8102e", "#cfcabe"]},
+          "legend": {"orient": "bottom", "direction": "horizontal"}
+        },
+        "order": {"field": "rank", "sort": "descending"},
+        "opacity": {
+          "condition": {"param": "hover", "empty": true, "value": 0.9},
+          "value": 0.15
+        },
+        "strokeWidth": {
+          "condition": {"param": "hover", "empty": false, "value": 4},
+          "value": 2
+        },
+        "tooltip": [
+          {"field": "team", "title": "Club"},
+          {"field": "rank", "title": "Ladder position"},
+          {"field": "stat_label", "title": "Stat"},
+          {"field": "value", "title": "Average per game"}
+        ]
+      }
+    },
+    {
+      "transform": [{"aggregate": [{"op": "max", "field": "max", "as": "max"}], "groupby": ["stat_label"]}],
+      "mark": {"type": "text", "dy": -10, "fontSize": 11, "color": "#8a867c"},
+      "encoding": {
+        "y": {"datum": 1, "type": "quantitative"},
+        "text": {"field": "max", "format": ".1f"}
+      }
+    },
+    {
+      "transform": [{"aggregate": [{"op": "min", "field": "min", "as": "min"}], "groupby": ["stat_label"]}],
+      "mark": {"type": "text", "dy": 12, "fontSize": 11, "color": "#8a867c"},
+      "encoding": {
+        "y": {"datum": 0, "type": "quantitative"},
+        "text": {"field": "min", "format": ".1f"}
+      }
+    }
+  ]
+}

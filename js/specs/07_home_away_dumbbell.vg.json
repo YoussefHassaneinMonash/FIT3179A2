@@ -1,0 +1,63 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Dumbbell chart: each club's home win % vs away win %, 2012-2026, sorted by the size of the gap.",
+  "data": {"url": "data/home_away.csv"},
+  "width": "container",
+  "height": 460,
+  "transform": [
+    {"pivot": "side", "value": "win_pct", "groupby": ["team"]},
+    {"calculate": "datum.home - datum.away", "as": "gap"},
+    {"calculate": "'+' + format(datum.gap, '.0f')", "as": "gap_label"}
+  ],
+  "encoding": {
+    "y": {
+      "field": "team",
+      "type": "nominal",
+      "title": null,
+      "sort": {"field": "gap", "order": "descending"},
+      "axis": {"domain": false, "ticks": false, "labelPadding": 6, "grid": true, "gridDash": [2, 3], "labelExpr": "datum.label == 'Greater Western Sydney' ? 'GWS Giants' : datum.label"}
+    }
+  },
+  "layer": [
+    {
+      "mark": {"type": "rule", "color": "#bdb8ab", "strokeWidth": 2},
+      "encoding": {
+        "x": {
+          "field": "away",
+          "type": "quantitative",
+          "title": "Games won (%)",
+          "scale": {"domain": [20, 85]},
+          "axis": {"gridDash": [2, 3], "domain": false, "values": [20, 30, 40, 50, 60, 70, 80]}
+        },
+        "x2": {"field": "home"}
+      }
+    },
+    {
+      "transform": [{"fold": ["home", "away"], "as": ["side", "pct"]}],
+      "mark": {"type": "point", "filled": true, "size": 90, "opacity": 1, "stroke": "#fffdf8", "strokeWidth": 1.5},
+      "encoding": {
+        "x": {"field": "pct", "type": "quantitative"},
+        "color": {
+          "field": "side",
+          "type": "nominal",
+          "title": null,
+          "scale": {"domain": ["home", "away"], "range": ["#2a78d6", "#eb6834"]},
+          "legend": {"orient": "top", "direction": "horizontal", "labelExpr": "datum.label == 'home' ? 'Win % at home' : 'Win % away'"}
+        },
+        "tooltip": [
+          {"field": "team", "title": "Club"},
+          {"field": "home", "title": "Home win %"},
+          {"field": "away", "title": "Away win %"},
+          {"field": "gap", "title": "Gap (points)", "format": ".1f"}
+        ]
+      }
+    },
+    {
+      "mark": {"type": "text", "align": "left", "dx": 9, "fontSize": 11, "color": "#55524b"},
+      "encoding": {
+        "x": {"field": "home", "type": "quantitative"},
+        "text": {"field": "gap_label"}
+      }
+    }
+  ]
+}

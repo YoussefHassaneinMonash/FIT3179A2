@@ -1,0 +1,9 @@
+state,population,games_2026,crowd_2026,crowd_per_100_residents,clubs,premierships_2012_2026,state_name,label_lat,label_lon
+SA,1916836,32,1221348.0,63.7,2,0,South Australia,-29.5,135.3
+VIC,7154221,107,4824140.0,67.4,10,10,Victoria,-36.9,144.0
+WA,3096222,26,1237034.0,40.0,2,1,Western Australia,-25.5,121.5
+NSW,8670105,21,602636.0,7.0,2,1,New South Wales,-32.3,146.5
+TAS,580691,5,45572.0,7.8,0,0,Tasmania,-42.1,146.6
+NT,268899,3,29020.0,10.8,0,0,Northern Territory,-19.5,133.5
+ACT,489668,3,30267.0,6.2,0,0,Australian Capital Territory,-36.0,152.6
+QLD,5739461,21,539346.0,9.4,2,3,Queensland,-22.5,144.5

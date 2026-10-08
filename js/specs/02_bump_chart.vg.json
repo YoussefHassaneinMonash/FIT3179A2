@@ -1,0 +1,72 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Bump chart of final ladder position by season. All clubs in grey, the chosen club highlighted in its colours.",
+  "data": {"url": "data/ladder.csv"},
+  "width": "container",
+  "height": 380,
+  "params": [
+    {
+      "name": "club",
+      "value": "Geelong",
+      "bind": {
+        "input": "select",
+        "name": "Highlight a club ",
+        "options": [
+          "Adelaide", "Brisbane Lions", "Carlton", "Collingwood", "Essendon", "Fremantle",
+          "Geelong", "Gold Coast", "Greater Western Sydney", "Hawthorn", "Melbourne",
+          "North Melbourne", "Port Adelaide", "Richmond", "St Kilda", "Sydney",
+          "West Coast", "Western Bulldogs"
+        ]
+      }
+    }
+  ],
+  "transform": [
+    {"lookup": "team", "from": {"data": {"url": "data/teams.csv"}, "key": "team", "fields": ["colour"]}}
+  ],
+  "encoding": {
+    "x": {
+      "field": "year",
+      "type": "ordinal",
+      "title": null,
+      "axis": {"labelAngle": 0, "domain": false, "ticks": false, "grid": false}
+    },
+    "y": {
+      "field": "rank",
+      "type": "quantitative",
+      "title": "Ladder position",
+      "scale": {"domain": [1, 18], "reverse": true, "nice": false},
+      "axis": {"values": [1, 4, 8, 12, 18], "domain": false, "ticks": false, "gridDash": [2, 3]}
+    }
+  },
+  "layer": [
+    {
+      "mark": {"type": "line", "strokeWidth": 1.5, "color": "#cfcabe", "interpolate": "monotone"},
+      "encoding": {
+        "detail": {"field": "team"},
+        "tooltip": [{"field": "team", "title": "Club"}]
+      }
+    },
+    {
+      "transform": [{"filter": "datum.team === club"}],
+      "mark": {"type": "line", "strokeWidth": 3.5, "interpolate": "monotone"},
+      "encoding": {"color": {"field": "colour", "type": "nominal", "scale": null}}
+    },
+    {
+      "transform": [{"filter": "datum.team === club"}],
+      "mark": {"type": "point", "filled": true, "size": 70, "stroke": "#fffdf8", "strokeWidth": 1.5, "opacity": 1},
+      "encoding": {
+        "color": {"field": "colour", "type": "nominal", "scale": null},
+        "tooltip": [
+          {"field": "team", "title": "Club"},
+          {"field": "year", "title": "Season"},
+          {"field": "rank", "title": "Ladder position"},
+          {"field": "wins", "title": "Wins"}
+        ]
+      }
+    },
+    {
+      "transform": [{"filter": "datum.team === club && datum.premier == 1"}],
+      "mark": {"type": "text", "text": "★ Premier", "dy": -14, "fontSize": 12, "fontWeight": 600, "color": "#1c1b19"}
+    }
+  ]
+}

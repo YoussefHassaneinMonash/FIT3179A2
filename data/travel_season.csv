@@ -1,0 +1,271 @@
+year,team,km_travelled,away_win_pct,state,interstate_club
+2012,Adelaide,23378,63.6,SA,1
+2012,Brisbane Lions,35744,36.4,QLD,1
+2012,Carlton,17718,54.5,VIC,0
+2012,Collingwood,13772,72.7,VIC,0
+2012,Essendon,12240,54.5,VIC,0
+2012,Fremantle,65224,54.5,WA,1
+2012,Geelong,20526,45.5,VIC,0
+2012,Gold Coast,34546,9.1,QLD,1
+2012,Greater Western Sydney,22502,0.0,NSW,1
+2012,Hawthorn,11748,72.7,VIC,0
+2012,Melbourne,22454,18.2,VIC,0
+2012,North Melbourne,21034,63.6,VIC,0
+2012,Port Adelaide,23814,22.7,SA,1
+2012,Richmond,17062,45.5,VIC,0
+2012,St Kilda,14986,45.5,VIC,0
+2012,Sydney,24718,72.7,NSW,1
+2012,West Coast,61010,45.5,WA,1
+2012,Western Bulldogs,18326,27.3,VIC,0
+2013,Adelaide,24024,45.5,SA,1
+2013,Brisbane Lions,34882,27.3,QLD,1
+2013,Carlton,15098,54.5,VIC,0
+2013,Collingwood,13638,54.5,VIC,0
+2013,Essendon,15102,72.7,VIC,0
+2013,Fremantle,67440,59.1,WA,1
+2013,Geelong,15318,63.6,VIC,0
+2013,Gold Coast,30230,18.2,QLD,1
+2013,Greater Western Sydney,22072,0.0,NSW,1
+2013,Hawthorn,13082,90.9,VIC,0
+2013,Melbourne,20074,0.0,VIC,0
+2013,North Melbourne,20062,36.4,VIC,0
+2013,Port Adelaide,26694,45.5,SA,1
+2013,Richmond,19732,72.7,VIC,0
+2013,St Kilda,19862,9.1,VIC,0
+2013,Sydney,33234,72.7,NSW,1
+2013,West Coast,55006,54.5,WA,1
+2013,Western Bulldogs,20336,27.3,VIC,0
+2014,Adelaide,19906,45.5,SA,1
+2014,Brisbane Lions,35456,36.4,QLD,1
+2014,Carlton,12398,18.2,VIC,0
+2014,Collingwood,12282,54.5,VIC,0
+2014,Essendon,12394,50.0,VIC,0
+2014,Fremantle,62600,54.5,WA,1
+2014,Geelong,16838,54.5,VIC,0
+2014,Gold Coast,37352,27.3,QLD,1
+2014,Greater Western Sydney,26786,27.3,NSW,1
+2014,Hawthorn,15710,54.5,VIC,0
+2014,Melbourne,19602,36.4,VIC,0
+2014,North Melbourne,21270,54.5,VIC,0
+2014,Port Adelaide,29444,45.5,SA,1
+2014,Richmond,16348,54.5,VIC,0
+2014,St Kilda,18662,9.1,VIC,0
+2014,Sydney,22822,81.8,NSW,1
+2014,West Coast,57294,45.5,WA,1
+2014,Western Bulldogs,16038,36.4,VIC,0
+2015,Adelaide,24406,54.5,SA,1
+2015,Brisbane Lions,31916,9.1,QLD,1
+2015,Carlton,21666,9.1,VIC,0
+2015,Collingwood,13636,54.5,VIC,0
+2015,Essendon,16452,27.3,VIC,0
+2015,Fremantle,54366,72.7,WA,1
+2015,Geelong,10388,55.0,VIC,0
+2015,Gold Coast,30722,9.1,QLD,1
+2015,Greater Western Sydney,26742,27.3,NSW,1
+2015,Hawthorn,25352,72.7,VIC,0
+2015,Melbourne,17934,27.3,VIC,0
+2015,North Melbourne,24202,54.5,VIC,0
+2015,Port Adelaide,22184,54.5,SA,1
+2015,Richmond,13458,81.8,VIC,0
+2015,St Kilda,21270,45.5,VIC,0
+2015,Sydney,32354,72.7,NSW,1
+2015,West Coast,61660,68.2,WA,1
+2015,Western Bulldogs,16610,45.5,VIC,0
+2016,Adelaide,23174,63.6,SA,1
+2016,Brisbane Lions,33116,9.1,QLD,1
+2016,Carlton,14636,18.2,VIC,0
+2016,Collingwood,12362,27.3,VIC,0
+2016,Essendon,17664,0.0,VIC,0
+2016,Fremantle,58382,9.1,WA,1
+2016,Geelong,13238,63.6,VIC,0
+2016,Gold Coast,35652,9.1,QLD,1
+2016,Greater Western Sydney,22666,63.6,NSW,1
+2016,Hawthorn,15890,63.6,VIC,0
+2016,Melbourne,22304,27.3,VIC,0
+2016,North Melbourne,18526,45.5,VIC,0
+2016,Port Adelaide,22800,54.5,SA,1
+2016,Richmond,15776,18.2,VIC,0
+2016,St Kilda,11652,45.5,VIC,0
+2016,Sydney,24034,72.7,NSW,1
+2016,West Coast,56106,54.5,WA,1
+2016,Western Bulldogs,21254,63.6,VIC,0
+2017,Adelaide,26052,68.2,SA,1
+2017,Brisbane Lions,31792,18.2,QLD,1
+2017,Carlton,19106,18.2,VIC,0
+2017,Collingwood,12298,45.5,VIC,0
+2017,Essendon,16502,36.4,VIC,0
+2017,Fremantle,56088,27.3,WA,1
+2017,Geelong,21886,59.1,VIC,0
+2017,Gold Coast,45796,18.2,QLD,1
+2017,Greater Western Sydney,26634,50.0,NSW,1
+2017,Hawthorn,15726,36.4,VIC,0
+2017,Melbourne,19002,54.5,VIC,0
+2017,North Melbourne,16676,27.3,VIC,0
+2017,Port Adelaide,33166,54.5,SA,1
+2017,Richmond,15074,54.5,VIC,0
+2017,St Kilda,15834,36.4,VIC,0
+2017,Sydney,21908,63.6,NSW,1
+2017,West Coast,67056,36.4,WA,1
+2017,Western Bulldogs,22300,36.4,VIC,0
+2018,Adelaide,20906,36.4,SA,1
+2018,Brisbane Lions,31904,27.3,QLD,1
+2018,Carlton,14986,9.1,VIC,0
+2018,Collingwood,19068,72.7,VIC,0
+2018,Essendon,19078,45.5,VIC,0
+2018,Fremantle,49422,18.2,WA,1
+2018,Geelong,13420,45.5,VIC,0
+2018,Gold Coast,55220,27.3,QLD,1
+2018,Greater Western Sydney,24824,50.0,NSW,1
+2018,Hawthorn,14578,63.6,VIC,0
+2018,Melbourne,29246,72.7,VIC,0
+2018,North Melbourne,19302,45.5,VIC,0
+2018,Port Adelaide,34422,45.5,SA,1
+2018,Richmond,12178,63.6,VIC,0
+2018,St Kilda,17306,18.2,VIC,0
+2018,Sydney,19620,81.8,NSW,1
+2018,West Coast,62070,72.7,WA,1
+2018,Western Bulldogs,14840,27.3,VIC,0
+2019,Adelaide,24510,45.5,SA,1
+2019,Brisbane Lions,31848,54.5,QLD,1
+2019,Carlton,13334,27.3,VIC,0
+2019,Collingwood,12352,81.8,VIC,0
+2019,Essendon,23192,45.5,VIC,0
+2019,Fremantle,55030,18.2,WA,1
+2019,Geelong,16420,63.6,VIC,0
+2019,Gold Coast,32272,9.1,QLD,1
+2019,Greater Western Sydney,27566,54.5,NSW,1
+2019,Hawthorn,15404,36.4,VIC,0
+2019,Melbourne,23726,27.3,VIC,0
+2019,North Melbourne,22542,36.4,VIC,0
+2019,Port Adelaide,35496,45.5,SA,1
+2019,Richmond,14930,63.6,VIC,0
+2019,St Kilda,30700,27.3,VIC,0
+2019,Sydney,21198,27.3,NSW,1
+2019,West Coast,59998,63.6,WA,1
+2019,Western Bulldogs,18306,45.5,VIC,0
+2020,Adelaide,22350,25.0,SA,1
+2020,Brisbane Lions,8988,62.5,QLD,1
+2020,Carlton,44492,55.6,VIC,0
+2020,Collingwood,47872,44.4,VIC,0
+2020,Essendon,36034,50.0,VIC,0
+2020,Fremantle,69804,42.9,WA,1
+2020,Geelong,50238,75.0,VIC,0
+2020,Gold Coast,14954,14.3,QLD,1
+2020,Greater Western Sydney,31772,33.3,NSW,1
+2020,Hawthorn,31366,20.0,VIC,0
+2020,Melbourne,40250,62.5,VIC,0
+2020,North Melbourne,32460,11.1,VIC,0
+2020,Port Adelaide,31940,75.0,SA,1
+2020,Richmond,41422,61.1,VIC,0
+2020,St Kilda,36394,44.4,VIC,0
+2020,Sydney,35602,22.2,NSW,1
+2020,West Coast,72248,37.5,WA,1
+2020,Western Bulldogs,35678,55.6,VIC,0
+2021,Adelaide,22858,18.2,SA,1
+2021,Brisbane Lions,33514,54.5,QLD,1
+2021,Carlton,8300,45.5,VIC,0
+2021,Collingwood,12374,45.5,VIC,0
+2021,Essendon,25202,54.5,VIC,0
+2021,Fremantle,62090,27.3,WA,1
+2021,Geelong,26316,63.6,VIC,0
+2021,Gold Coast,47140,27.3,QLD,1
+2021,Greater Western Sydney,37492,68.2,NSW,1
+2021,Hawthorn,13606,36.4,VIC,0
+2021,Melbourne,25374,90.9,VIC,0
+2021,North Melbourne,24562,27.3,VIC,0
+2021,Port Adelaide,21122,81.8,SA,1
+2021,Richmond,24500,27.3,VIC,0
+2021,St Kilda,20942,45.5,VIC,0
+2021,Sydney,27850,54.5,NSW,1
+2021,West Coast,57028,27.3,WA,1
+2021,Western Bulldogs,27618,72.7,VIC,0
+2022,Adelaide,19704,27.3,SA,1
+2022,Brisbane Lions,36536,54.5,QLD,1
+2022,Carlton,19076,36.4,VIC,0
+2022,Collingwood,15050,72.7,VIC,0
+2022,Essendon,12384,18.2,VIC,0
+2022,Fremantle,61068,77.3,WA,1
+2022,Geelong,14518,72.7,VIC,0
+2022,Gold Coast,41628,27.3,QLD,1
+2022,Greater Western Sydney,23040,18.2,NSW,1
+2022,Hawthorn,19220,18.2,VIC,0
+2022,Melbourne,22868,72.7,VIC,0
+2022,North Melbourne,22158,0.0,VIC,0
+2022,Port Adelaide,23190,27.3,SA,1
+2022,Richmond,14940,36.4,VIC,0
+2022,St Kilda,22076,54.5,VIC,0
+2022,Sydney,28744,63.6,NSW,1
+2022,West Coast,56602,9.1,WA,1
+2022,Western Bulldogs,19206,45.5,VIC,0
+2023,Adelaide,23378,27.3,SA,1
+2023,Brisbane Lions,38040,45.5,QLD,1
+2023,Carlton,20506,70.8,VIC,0
+2023,Collingwood,14830,72.7,VIC,0
+2023,Essendon,17828,36.4,VIC,0
+2023,Fremantle,61392,45.5,WA,1
+2023,Geelong,16152,22.7,VIC,0
+2023,Gold Coast,45968,16.7,QLD,1
+2023,Greater Western Sydney,33494,63.6,NSW,1
+2023,Hawthorn,17130,16.7,VIC,0
+2023,Melbourne,20040,58.3,VIC,0
+2023,North Melbourne,21926,8.3,VIC,0
+2023,Port Adelaide,21234,63.6,SA,1
+2023,Richmond,18998,36.4,VIC,0
+2023,St Kilda,16348,58.3,VIC,0
+2023,Sydney,24208,58.3,NSW,1
+2023,West Coast,59658,8.3,WA,1
+2023,Western Bulldogs,16842,58.3,VIC,0
+2024,Adelaide,21802,27.3,SA,1
+2024,Brisbane Lions,46734,59.1,QLD,1
+2024,Carlton,16442,58.3,VIC,0
+2024,Collingwood,15034,45.5,VIC,0
+2024,Essendon,14964,41.7,VIC,0
+2024,Fremantle,58726,45.5,WA,1
+2024,Geelong,22090,58.3,VIC,0
+2024,Gold Coast,48326,18.2,QLD,1
+2024,Greater Western Sydney,24616,50.0,NSW,1
+2024,Hawthorn,17986,50.0,VIC,0
+2024,Melbourne,24152,41.7,VIC,0
+2024,North Melbourne,21696,8.3,VIC,0
+2024,Port Adelaide,22216,63.6,SA,1
+2024,Richmond,20394,9.1,VIC,0
+2024,St Kilda,14062,33.3,VIC,0
+2024,Sydney,24980,66.7,NSW,1
+2024,West Coast,58610,9.1,WA,1
+2024,Western Bulldogs,12756,63.6,VIC,0
+2025,Adelaide,22664,63.6,SA,1
+2025,Brisbane Lions,43622,79.2,QLD,1
+2025,Carlton,16286,36.4,VIC,0
+2025,Collingwood,16238,63.6,VIC,0
+2025,Essendon,19220,16.7,VIC,0
+2025,Fremantle,56022,66.7,WA,1
+2025,Geelong,15152,66.7,VIC,0
+2025,Gold Coast,53468,50.0,QLD,1
+2025,Greater Western Sydney,24468,66.7,NSW,1
+2025,Hawthorn,24816,41.7,VIC,0
+2025,Melbourne,18746,18.2,VIC,0
+2025,North Melbourne,20384,18.2,VIC,0
+2025,Port Adelaide,20072,18.2,SA,1
+2025,Richmond,13502,9.1,VIC,0
+2025,St Kilda,20122,36.4,VIC,0
+2025,Sydney,27808,58.3,NSW,1
+2025,West Coast,54026,0.0,WA,1
+2025,Western Bulldogs,18496,63.6,VIC,0
+2026,Adelaide,25816,54.5,SA,1
+2026,Brisbane Lions,40536,66.7,QLD,1
+2026,Carlton,13702,45.8,VIC,0
+2026,Collingwood,14940,59.1,VIC,0
+2026,Essendon,15078,0.0,VIC,0
+2026,Fremantle,65578,66.7,WA,1
+2026,Geelong,22598,36.4,VIC,0
+2026,Gold Coast,46612,25.0,QLD,1
+2026,Greater Western Sydney,27336,18.2,NSW,1
+2026,Hawthorn,28016,59.1,VIC,0
+2026,Melbourne,18172,58.3,VIC,0
+2026,North Melbourne,23540,27.3,VIC,0
+2026,Port Adelaide,22886,27.3,SA,1
+2026,Richmond,16278,8.3,VIC,0
+2026,St Kilda,17344,50.0,VIC,0
+2026,Sydney,27988,63.6,NSW,1
+2026,West Coast,54932,8.3,WA,1
+2026,Western Bulldogs,17678,58.3,VIC,0

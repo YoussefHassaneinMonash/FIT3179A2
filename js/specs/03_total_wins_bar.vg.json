@@ -1,0 +1,54 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Total home-and-away wins per club 2012-2026, with premierships labelled.",
+  "data": {"url": "data/ladder.csv"},
+  "width": "container",
+  "height": 430,
+  "transform": [
+    {
+      "aggregate": [
+        {"op": "sum", "field": "wins", "as": "total_wins"},
+        {"op": "sum", "field": "premier", "as": "flags"},
+        {"op": "sum", "field": "made_finals", "as": "finals_seasons"}
+      ],
+      "groupby": ["team"]
+    },
+    {"calculate": "datum.flags > 0 ? (datum.flags == 1 ? '★ 1 flag' : '★ ' + datum.flags + ' flags') : ''", "as": "flag_label"}
+  ],
+  "encoding": {
+    "y": {
+      "field": "team",
+      "type": "nominal",
+      "title": null,
+      "sort": "-x",
+      "axis": {"domain": false, "ticks": false, "labelPadding": 6, "labelExpr": "datum.label == 'Greater Western Sydney' ? 'GWS Giants' : datum.label"}
+    },
+    "x": {
+      "field": "total_wins",
+      "type": "quantitative",
+      "title": "Wins (home-and-away season)",
+      "axis": {"gridDash": [2, 3], "domain": false, "tickCount": 5}
+    }
+  },
+  "layer": [
+    {
+      "mark": {"type": "bar", "color": "#2a78d6", "cornerRadiusEnd": 3, "height": {"band": 0.7}},
+      "encoding": {
+        "color": {
+          "condition": {"test": "datum.flags > 0", "value": "#1c5cab"},
+          "value": "#9ec5f4"
+        },
+        "tooltip": [
+          {"field": "team", "title": "Club"},
+          {"field": "total_wins", "title": "Wins"},
+          {"field": "finals_seasons", "title": "Seasons in finals"},
+          {"field": "flags", "title": "Premierships"}
+        ]
+      }
+    },
+    {
+      "mark": {"type": "text", "align": "left", "dx": 6, "fontSize": 12, "color": "#55524b"},
+      "encoding": {"text": {"field": "flag_label"}}
+    }
+  ]
+}

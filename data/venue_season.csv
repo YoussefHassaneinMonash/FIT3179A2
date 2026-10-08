@@ -1,0 +1,246 @@
+year,venue,games,total_crowd,avg_crowd,venue_full,city,state,lat,lon
+2012,Bellerive Oval,2,25240.0,12620.0,Bellerive Oval (Blundstone Arena),Hobart,TAS,-42.87722222,147.37361111
+2012,Blacktown,1,6875.0,6875.0,Blacktown International Sportspark,Sydney,NSW,-33.77138889,150.85361111
+2012,Carrara,11,150100.0,13645.0,Carrara Stadium (People First Stadium),Gold Coast,QLD,-28.00638889,153.36722222
+2012,Cazaly's Stadium,1,10961.0,10961.0,Cazaly's Stadium,Cairns,QLD,-16.93583333,145.74916667
+2012,Docklands,47,1484946.0,31595.0,Docklands Stadium (Marvel Stadium),Melbourne,VIC,-37.81638889,144.9475
+2012,Football Park,24,700730.0,29197.0,Football Park (AAMI Stadium),Adelaide,SA,-34.88,138.49555556
+2012,Gabba,11,223781.0,20344.0,The Gabba,Brisbane,QLD,-27.48583333,153.03805556
+2012,Kardinia Park,7,127410.0,18201.0,Kardinia Park (GMHBA Stadium),Geelong,VIC,-38.15805556,144.35472222
+2012,M.C.G.,52,2703297.0,51986.0,Melbourne Cricket Ground,Melbourne,VIC,-37.82,144.98333333
+2012,Manuka Oval,3,25292.0,8431.0,Manuka Oval,Canberra,ACT,-35.31805556,149.13472222
+2012,Marrara Oval,2,15438.0,7719.0,Marrara Oval (TIO Stadium),Darwin,NT,-12.39916667,130.88722222
+2012,S.C.G.,9,206403.0,22934.0,Sydney Cricket Ground,Sydney,NSW,-33.89166667,151.22472222
+2012,Stadium Australia,4,163751.0,40938.0,Stadium Australia,Sydney,NSW,-33.84722222,151.06305556
+2012,Subiaco,23,823147.0,35789.0,Subiaco Oval,Perth,WA,-31.94444444,115.83
+2012,Sydney Showground,6,48703.0,8117.0,Sydney Showground Stadium (ENGIE Stadium),Sydney,NSW,-33.84305556,151.06777778
+2012,York Park,4,62750.0,15688.0,York Park (UTAS Stadium),Launceston,TAS,-41.42583333,147.13888889
+2013,Bellerive Oval,2,23488.0,11744.0,Bellerive Oval (Blundstone Arena),Hobart,TAS,-42.87722222,147.37361111
+2013,Carrara,11,152980.0,13907.0,Carrara Stadium (People First Stadium),Gold Coast,QLD,-28.00638889,153.36722222
+2013,Cazaly's Stadium,1,11197.0,11197.0,Cazaly's Stadium,Cairns,QLD,-16.93583333,145.74916667
+2013,Docklands,48,1466099.0,30544.0,Docklands Stadium (Marvel Stadium),Melbourne,VIC,-37.81638889,144.9475
+2013,Football Park,22,665808.0,30264.0,Football Park (AAMI Stadium),Adelaide,SA,-34.88,138.49555556
+2013,Gabba,11,231909.0,21083.0,The Gabba,Brisbane,QLD,-27.48583333,153.03805556
+2013,Kardinia Park,8,220003.0,27500.0,Kardinia Park (GMHBA Stadium),Geelong,VIC,-38.15805556,144.35472222
+2013,M.C.G.,51,2791240.0,54730.0,Melbourne Cricket Ground,Melbourne,VIC,-37.82,144.98333333
+2013,Manuka Oval,3,25056.0,8352.0,Manuka Oval,Canberra,ACT,-35.31805556,149.13472222
+2013,Marrara Oval,2,15465.0,7732.0,Marrara Oval (TIO Stadium),Darwin,NT,-12.39916667,130.88722222
+2013,S.C.G.,9,230659.0,25629.0,Sydney Cricket Ground,Sydney,NSW,-33.89166667,151.22472222
+2013,Stadium Australia,4,142277.0,35569.0,Stadium Australia,Sydney,NSW,-33.84722222,151.06305556
+2013,Subiaco,23,816734.0,35510.0,Subiaco Oval,Perth,WA,-31.94444444,115.83
+2013,Sydney Showground,7,57969.0,8281.0,Sydney Showground Stadium (ENGIE Stadium),Sydney,NSW,-33.84305556,151.06777778
+2013,Wellington,1,22546.0,22546.0,Wellington Regional Stadium,Wellington,NZ,-41.27305556,174.78583333
+2013,York Park,4,52950.0,13238.0,York Park (UTAS Stadium),Launceston,TAS,-41.42583333,147.13888889
+2014,Adelaide Oval,23,1066400.0,46365.0,Adelaide Oval,Adelaide,SA,-34.91555556,138.59611111
+2014,Bellerive Oval,2,21343.0,10672.0,Bellerive Oval (Blundstone Arena),Hobart,TAS,-42.87722222,147.37361111
+2014,Carrara,11,177017.0,16092.0,Carrara Stadium (People First Stadium),Gold Coast,QLD,-28.00638889,153.36722222
+2014,Cazaly's Stadium,1,9746.0,9746.0,Cazaly's Stadium,Cairns,QLD,-16.93583333,145.74916667
+2014,Docklands,48,1355560.0,28241.0,Docklands Stadium (Marvel Stadium),Melbourne,VIC,-37.81638889,144.9475
+2014,Gabba,11,217178.0,19743.0,The Gabba,Brisbane,QLD,-27.48583333,153.03805556
+2014,Kardinia Park,7,177785.0,25398.0,Kardinia Park (GMHBA Stadium),Geelong,VIC,-38.15805556,144.35472222
+2014,M.C.G.,50,2505360.0,50107.0,Melbourne Cricket Ground,Melbourne,VIC,-37.82,144.98333333
+2014,Manuka Oval,3,24623.0,8208.0,Manuka Oval,Canberra,ACT,-35.31805556,149.13472222
+2014,Marrara Oval,1,9290.0,9290.0,Marrara Oval (TIO Stadium),Darwin,NT,-12.39916667,130.88722222
+2014,S.C.G.,8,260461.0,32558.0,Sydney Cricket Ground,Sydney,NSW,-33.89166667,151.22472222
+2014,Stadium Australia,5,182107.0,36421.0,Stadium Australia,Sydney,NSW,-33.84722222,151.06305556
+2014,Subiaco,23,813752.0,35381.0,Subiaco Oval,Perth,WA,-31.94444444,115.83
+2014,Sydney Showground,8,76868.0,9608.0,Sydney Showground Stadium (ENGIE Stadium),Sydney,NSW,-33.84305556,151.06777778
+2014,Traeger Park,1,5655.0,5655.0,Traeger Park,Alice Springs,NT,-23.709,133.8751
+2014,Wellington,1,13409.0,13409.0,Wellington Regional Stadium,Wellington,NZ,-41.27305556,174.78583333
+2014,York Park,4,55299.0,13825.0,York Park (UTAS Stadium),Launceston,TAS,-41.42583333,147.13888889
+2015,Adelaide Oval,21,940946.0,44807.0,Adelaide Oval,Adelaide,SA,-34.91555556,138.59611111
+2015,Bellerive Oval,3,43901.0,14634.0,Bellerive Oval (Blundstone Arena),Hobart,TAS,-42.87722222,147.37361111
+2015,Carrara,11,135966.0,12361.0,Carrara Stadium (People First Stadium),Gold Coast,QLD,-28.00638889,153.36722222
+2015,Cazaly's Stadium,1,9449.0,9449.0,Cazaly's Stadium,Cairns,QLD,-16.93583333,145.74916667
+2015,Docklands,46,1301848.0,28301.0,Docklands Stadium (Marvel Stadium),Melbourne,VIC,-37.81638889,144.9475
+2015,Gabba,11,206911.0,18810.0,The Gabba,Brisbane,QLD,-27.48583333,153.03805556
+2015,Kardinia Park,8,196987.0,24623.0,Kardinia Park (GMHBA Stadium),Geelong,VIC,-38.15805556,144.35472222
+2015,M.C.G.,49,2495376.0,50926.0,Melbourne Cricket Ground,Melbourne,VIC,-37.82,144.98333333
+2015,Manuka Oval,3,30395.0,10132.0,Manuka Oval,Canberra,ACT,-35.31805556,149.13472222
+2015,Marrara Oval,1,11873.0,11873.0,Marrara Oval (TIO Stadium),Darwin,NT,-12.39916667,130.88722222
+2015,S.C.G.,8,258029.0,32254.0,Sydney Cricket Ground,Sydney,NSW,-33.89166667,151.22472222
+2015,Stadium Australia,4,119868.0,29967.0,Stadium Australia,Sydney,NSW,-33.84722222,151.06305556
+2015,Subiaco,26,961489.0,36980.0,Subiaco Oval,Perth,WA,-31.94444444,115.83
+2015,Sydney Showground,8,88256.0,11032.0,Sydney Showground Stadium (ENGIE Stadium),Sydney,NSW,-33.84305556,151.06777778
+2015,Traeger Park,1,4866.0,4866.0,Traeger Park,Alice Springs,NT,-23.709,133.8751
+2015,Wellington,1,12125.0,12125.0,Wellington Regional Stadium,Wellington,NZ,-41.27305556,174.78583333
+2015,York Park,4,55402.0,13850.0,York Park (UTAS Stadium),Launceston,TAS,-41.42583333,147.13888889
+2016,Adelaide Oval,23,996279.0,43316.0,Adelaide Oval,Adelaide,SA,-34.91555556,138.59611111
+2016,Bellerive Oval,3,46946.0,15649.0,Bellerive Oval (Blundstone Arena),Hobart,TAS,-42.87722222,147.37361111
+2016,Carrara,11,127168.0,11561.0,Carrara Stadium (People First Stadium),Gold Coast,QLD,-28.00638889,153.36722222
+2016,Cazaly's Stadium,1,8509.0,8509.0,Cazaly's Stadium,Cairns,QLD,-16.93583333,145.74916667
+2016,Docklands,46,1389905.0,30215.0,Docklands Stadium (Marvel Stadium),Melbourne,VIC,-37.81638889,144.9475
+2016,Gabba,11,187816.0,17074.0,The Gabba,Brisbane,QLD,-27.48583333,153.03805556
+2016,Kardinia Park,8,187973.0,23497.0,Kardinia Park (GMHBA Stadium),Geelong,VIC,-38.15805556,144.35472222
+2016,M.C.G.,50,2435904.0,48718.0,Melbourne Cricket Ground,Melbourne,VIC,-37.82,144.98333333
+2016,Manuka Oval,3,38658.0,12886.0,Manuka Oval,Canberra,ACT,-35.31805556,149.13472222
+2016,Marrara Oval,1,8163.0,8163.0,Marrara Oval (TIO Stadium),Darwin,NT,-12.39916667,130.88722222
+2016,S.C.G.,12,405815.0,33818.0,Sydney Cricket Ground,Sydney,NSW,-33.89166667,151.22472222
+2016,Stadium Australia,1,60222.0,60222.0,Stadium Australia,Sydney,NSW,-33.84722222,151.06305556
+2016,Subiaco,23,790100.0,34352.0,Subiaco Oval,Perth,WA,-31.94444444,115.83
+2016,Sydney Showground,9,118796.0,13200.0,Sydney Showground Stadium (ENGIE Stadium),Sydney,NSW,-33.84305556,151.06777778
+2016,Traeger Park,1,5146.0,5146.0,Traeger Park,Alice Springs,NT,-23.709,133.8751
+2016,York Park,4,57297.0,14324.0,York Park (UTAS Stadium),Launceston,TAS,-41.42583333,147.13888889
+2017,Adelaide Oval,25,1080439.0,43218.0,Adelaide Oval,Adelaide,SA,-34.91555556,138.59611111
+2017,Bellerive Oval,3,32761.0,10920.0,Bellerive Oval (Blundstone Arena),Hobart,TAS,-42.87722222,147.37361111
+2017,Carrara,10,140174.0,14017.0,Carrara Stadium (People First Stadium),Gold Coast,QLD,-28.00638889,153.36722222
+2017,Cazaly's Stadium,1,9364.0,9364.0,Cazaly's Stadium,Cairns,QLD,-16.93583333,145.74916667
+2017,Docklands,46,1514914.0,32933.0,Docklands Stadium (Marvel Stadium),Melbourne,VIC,-37.81638889,144.9475
+2017,Eureka Stadium,1,10087.0,10087.0,Eureka Stadium (Mars Stadium),Ballarat,VIC,-37.53944444,143.84805556
+2017,Gabba,11,181007.0,16455.0,The Gabba,Brisbane,QLD,-27.48583333,153.03805556
+2017,Jiangwan Stadium,1,10118.0,10118.0,Jiangwan Stadium,Shanghai,CHN,31.3068,121.5154
+2017,Kardinia Park,7,208756.0,29822.0,Kardinia Park (GMHBA Stadium),Geelong,VIC,-38.15805556,144.35472222
+2017,M.C.G.,50,2696099.0,53922.0,Melbourne Cricket Ground,Melbourne,VIC,-37.82,144.98333333
+2017,Manuka Oval,3,37507.0,12502.0,Manuka Oval,Canberra,ACT,-35.31805556,149.13472222
+2017,Marrara Oval,1,12104.0,12104.0,Marrara Oval (TIO Stadium),Darwin,NT,-12.39916667,130.88722222
+2017,S.C.G.,12,413699.0,34475.0,Sydney Cricket Ground,Sydney,NSW,-33.89166667,151.22472222
+2017,Subiaco,22,760378.0,34563.0,Subiaco Oval,Perth,WA,-31.94444444,115.83
+2017,Sydney Showground,9,122510.0,13612.0,Sydney Showground Stadium (ENGIE Stadium),Sydney,NSW,-33.84305556,151.06777778
+2017,Traeger Park,1,5072.0,5072.0,Traeger Park,Alice Springs,NT,-23.709,133.8751
+2017,York Park,4,52789.0,13197.0,York Park (UTAS Stadium),Launceston,TAS,-41.42583333,147.13888889
+2018,Adelaide Oval,22,920087.0,41822.0,Adelaide Oval,Adelaide,SA,-34.91555556,138.59611111
+2018,Bellerive Oval,3,32636.0,10879.0,Bellerive Oval (Blundstone Arena),Hobart,TAS,-42.87722222,147.37361111
+2018,Carrara,7,95154.0,13593.0,Carrara Stadium (People First Stadium),Gold Coast,QLD,-28.00638889,153.36722222
+2018,Cazaly's Stadium,1,3722.0,3722.0,Cazaly's Stadium,Cairns,QLD,-16.93583333,145.74916667
+2018,Docklands,45,1291670.0,28704.0,Docklands Stadium (Marvel Stadium),Melbourne,VIC,-37.81638889,144.9475
+2018,Eureka Stadium,2,13283.0,6642.0,Eureka Stadium (Mars Stadium),Ballarat,VIC,-37.53944444,143.84805556
+2018,Gabba,12,208522.0,17377.0,The Gabba,Brisbane,QLD,-27.48583333,153.03805556
+2018,Jiangwan Stadium,1,10689.0,10689.0,Jiangwan Stadium,Shanghai,CHN,31.3068,121.5154
+2018,Kardinia Park,9,256670.0,28519.0,Kardinia Park (GMHBA Stadium),Geelong,VIC,-38.15805556,144.35472222
+2018,M.C.G.,51,2953201.0,57906.0,Melbourne Cricket Ground,Melbourne,VIC,-37.82,144.98333333
+2018,Manuka Oval,3,35059.0,11686.0,Manuka Oval,Canberra,ACT,-35.31805556,149.13472222
+2018,Marrara Oval,1,8689.0,8689.0,Marrara Oval (TIO Stadium),Darwin,NT,-12.39916667,130.88722222
+2018,Perth Stadium,25,1197733.0,47909.0,Perth Stadium (Optus Stadium),Perth,WA,-31.95111111,115.88916667
+2018,S.C.G.,12,413898.0,34492.0,Sydney Cricket Ground,Sydney,NSW,-33.89166667,151.22472222
+2018,Sydney Showground,8,95988.0,11998.0,Sydney Showground Stadium (ENGIE Stadium),Sydney,NSW,-33.84305556,151.06777778
+2018,Traeger Park,1,6989.0,6989.0,Traeger Park,Alice Springs,NT,-23.709,133.8751
+2018,York Park,4,50312.0,12578.0,York Park (UTAS Stadium),Launceston,TAS,-41.42583333,147.13888889
+2019,Adelaide Oval,22,863105.0,39232.0,Adelaide Oval,Adelaide,SA,-34.91555556,138.59611111
+2019,Bellerive Oval,4,39529.0,9882.0,Bellerive Oval (Blundstone Arena),Hobart,TAS,-42.87722222,147.37361111
+2019,Carrara,10,118344.0,11834.0,Carrara Stadium (People First Stadium),Gold Coast,QLD,-28.00638889,153.36722222
+2019,Docklands,43,1370604.0,31875.0,Docklands Stadium (Marvel Stadium),Melbourne,VIC,-37.81638889,144.9475
+2019,Eureka Stadium,2,18599.0,9300.0,Eureka Stadium (Mars Stadium),Ballarat,VIC,-37.53944444,143.84805556
+2019,Gabba,13,339658.0,26128.0,The Gabba,Brisbane,QLD,-27.48583333,153.03805556
+2019,Jiangwan Stadium,1,9412.0,9412.0,Jiangwan Stadium,Shanghai,CHN,31.3068,121.5154
+2019,Kardinia Park,9,250296.0,27811.0,Kardinia Park (GMHBA Stadium),Geelong,VIC,-38.15805556,144.35472222
+2019,M.C.G.,50,2833737.0,56675.0,Melbourne Cricket Ground,Melbourne,VIC,-37.82,144.98333333
+2019,Manuka Oval,3,35651.0,11884.0,Manuka Oval,Canberra,ACT,-35.31805556,149.13472222
+2019,Marrara Oval,1,10634.0,10634.0,Marrara Oval (TIO Stadium),Darwin,NT,-12.39916667,130.88722222
+2019,Perth Stadium,23,1097709.0,47726.0,Perth Stadium (Optus Stadium),Perth,WA,-31.95111111,115.88916667
+2019,Riverway Stadium,1,7243.0,7243.0,Riverway Stadium,Townsville,QLD,-19.31722222,146.73166667
+2019,S.C.G.,11,341765.0,31070.0,Sydney Cricket Ground,Sydney,NSW,-33.89166667,151.22472222
+2019,Sydney Showground,9,118509.0,13168.0,Sydney Showground Stadium (ENGIE Stadium),Sydney,NSW,-33.84305556,151.06777778
+2019,Traeger Park,1,7164.0,7164.0,Traeger Park,Alice Springs,NT,-23.709,133.8751
+2019,York Park,4,55688.0,13922.0,York Park (UTAS Stadium),Launceston,TAS,-41.42583333,147.13888889
+2020,Adelaide Oval,22,239459.0,11403.0,Adelaide Oval,Adelaide,SA,-34.91555556,138.59611111
+2020,Carrara,44,116901.0,2783.0,Carrara Stadium (People First Stadium),Gold Coast,QLD,-28.00638889,153.36722222
+2020,Cazaly's Stadium,4,13292.0,3323.0,Cazaly's Stadium,Cairns,QLD,-16.93583333,145.74916667
+2020,Docklands,11,0.0,,Docklands Stadium (Marvel Stadium),Melbourne,VIC,-37.81638889,144.9475
+2020,Gabba,35,268166.0,7887.0,The Gabba,Brisbane,QLD,-27.48583333,153.03805556
+2020,Kardinia Park,3,0.0,,Kardinia Park (GMHBA Stadium),Geelong,VIC,-38.15805556,144.35472222
+2020,M.C.G.,9,0.0,,Melbourne Cricket Ground,Melbourne,VIC,-37.82,144.98333333
+2020,Marrara Oval,2,10573.0,5286.0,Marrara Oval (TIO Stadium),Darwin,NT,-12.39916667,130.88722222
+2020,Perth Stadium,17,352261.0,22016.0,Perth Stadium (Optus Stadium),Perth,WA,-31.95111111,115.88916667
+2020,S.C.G.,5,12517.0,2503.0,Sydney Cricket Ground,Sydney,NSW,-33.89166667,151.22472222
+2020,Sydney Showground,9,17951.0,2244.0,Sydney Showground Stadium (ENGIE Stadium),Sydney,NSW,-33.84305556,151.06777778
+2020,Traeger Park,1,1917.0,1917.0,Traeger Park,Alice Springs,NT,-23.709,133.8751
+2021,Adelaide Oval,23,610413.0,26540.0,Adelaide Oval,Adelaide,SA,-34.91555556,138.59611111
+2021,Bellerive Oval,6,32365.0,5394.0,Bellerive Oval (Blundstone Arena),Hobart,TAS,-42.87722222,147.37361111
+2021,Carrara,13,91604.0,7046.0,Carrara Stadium (People First Stadium),Gold Coast,QLD,-28.00638889,153.36722222
+2021,Cazaly's Stadium,1,5969.0,5969.0,Cazaly's Stadium,Cairns,QLD,-16.93583333,145.74916667
+2021,Docklands,45,637386.0,22764.0,Docklands Stadium (Marvel Stadium),Melbourne,VIC,-37.81638889,144.9475
+2021,Eureka Stadium,3,10339.0,5170.0,Eureka Stadium (Mars Stadium),Ballarat,VIC,-37.53944444,143.84805556
+2021,Gabba,11,248203.0,22564.0,The Gabba,Brisbane,QLD,-27.48583333,153.03805556
+2021,Kardinia Park,11,116371.0,16624.0,Kardinia Park (GMHBA Stadium),Geelong,VIC,-38.15805556,144.35472222
+2021,M.C.G.,42,1070631.0,35688.0,Melbourne Cricket Ground,Melbourne,VIC,-37.82,144.98333333
+2021,Manuka Oval,2,19627.0,9814.0,Manuka Oval,Canberra,ACT,-35.31805556,149.13472222
+2021,Perth Stadium,25,884079.0,40185.0,Perth Stadium (Optus Stadium),Perth,WA,-31.95111111,115.88916667
+2021,S.C.G.,11,243734.0,22158.0,Sydney Cricket Ground,Sydney,NSW,-33.89166667,151.22472222
+2021,Sydney Showground,6,37629.0,6272.0,Sydney Showground Stadium (ENGIE Stadium),Sydney,NSW,-33.84305556,151.06777778
+2021,York Park,8,73671.0,9209.0,York Park (UTAS Stadium),Launceston,TAS,-41.42583333,147.13888889
+2022,Adelaide Oval,22,672346.0,30561.0,Adelaide Oval,Adelaide,SA,-34.91555556,138.59611111
+2022,Bellerive Oval,4,28562.0,7140.0,Bellerive Oval (Blundstone Arena),Hobart,TAS,-42.87722222,147.37361111
+2022,Carrara,9,111237.0,12360.0,Carrara Stadium (People First Stadium),Gold Coast,QLD,-28.00638889,153.36722222
+2022,Cazaly's Stadium,1,6645.0,6645.0,Cazaly's Stadium,Cairns,QLD,-16.93583333,145.74916667
+2022,Docklands,43,1174459.0,27313.0,Docklands Stadium (Marvel Stadium),Melbourne,VIC,-37.81638889,144.9475
+2022,Eureka Stadium,2,16452.0,8226.0,Eureka Stadium (Mars Stadium),Ballarat,VIC,-37.53944444,143.84805556
+2022,Gabba,12,319013.0,26584.0,The Gabba,Brisbane,QLD,-27.48583333,153.03805556
+2022,Kardinia Park,9,181792.0,20199.0,Kardinia Park (GMHBA Stadium),Geelong,VIC,-38.15805556,144.35472222
+2022,M.C.G.,52,2795502.0,53760.0,Melbourne Cricket Ground,Melbourne,VIC,-37.82,144.98333333
+2022,Manuka Oval,4,39216.0,9804.0,Manuka Oval,Canberra,ACT,-35.31805556,149.13472222
+2022,Marrara Oval,2,13039.0,6520.0,Marrara Oval (TIO Stadium),Darwin,NT,-12.39916667,130.88722222
+2022,Perth Stadium,23,908134.0,39484.0,Perth Stadium (Optus Stadium),Perth,WA,-31.95111111,115.88916667
+2022,S.C.G.,12,369272.0,30773.0,Sydney Cricket Ground,Sydney,NSW,-33.89166667,151.22472222
+2022,Stadium Australia,1,25572.0,25572.0,Stadium Australia,Sydney,NSW,-33.84722222,151.06305556
+2022,Sydney Showground,6,36617.0,6103.0,Sydney Showground Stadium (ENGIE Stadium),Sydney,NSW,-33.84305556,151.06777778
+2022,Traeger Park,1,6312.0,6312.0,Traeger Park,Alice Springs,NT,-23.709,133.8751
+2022,York Park,4,48241.0,12060.0,York Park (UTAS Stadium),Launceston,TAS,-41.42583333,147.13888889
+2023,Adelaide Oval,29,1123903.0,38755.0,Adelaide Oval,Adelaide,SA,-34.91555556,138.59611111
+2023,Bellerive Oval,4,23747.0,5937.0,Bellerive Oval (Blundstone Arena),Hobart,TAS,-42.87722222,147.37361111
+2023,Carrara,9,130972.0,14552.0,Carrara Stadium (People First Stadium),Gold Coast,QLD,-28.00638889,153.36722222
+2023,Docklands,43,1419573.0,33013.0,Docklands Stadium (Marvel Stadium),Melbourne,VIC,-37.81638889,144.9475
+2023,Eureka Stadium,2,19194.0,9597.0,Eureka Stadium (Mars Stadium),Ballarat,VIC,-37.53944444,143.84805556
+2023,Gabba,13,394164.0,30320.0,The Gabba,Brisbane,QLD,-27.48583333,153.03805556
+2023,Kardinia Park,9,193197.0,21466.0,Kardinia Park (GMHBA Stadium),Geelong,VIC,-38.15805556,144.35472222
+2023,M.C.G.,53,3319002.0,62623.0,Melbourne Cricket Ground,Melbourne,VIC,-37.82,144.98333333
+2023,Manuka Oval,3,30526.0,10175.0,Manuka Oval,Canberra,ACT,-35.31805556,149.13472222
+2023,Marrara Oval,2,20088.0,10044.0,Marrara Oval (TIO Stadium),Darwin,NT,-12.39916667,130.88722222
+2023,Norwood Oval,2,18386.0,9193.0,Norwood Oval,Adelaide,SA,-34.91972222,138.63055556
+2023,Perth Stadium,22,949822.0,43174.0,Perth Stadium (Optus Stadium),Perth,WA,-31.95111111,115.88916667
+2023,S.C.G.,11,361063.0,32824.0,Sydney Cricket Ground,Sydney,NSW,-33.89166667,151.22472222
+2023,Summit Sports Park,1,7329.0,7329.0,Summit Sport and Recreation Park,Mount Barker,SA,-35.07805556,138.89333333
+2023,Sydney Showground,8,82344.0,10293.0,Sydney Showground Stadium (ENGIE Stadium),Sydney,NSW,-33.84305556,151.06777778
+2023,Traeger Park,1,3413.0,3413.0,Traeger Park,Alice Springs,NT,-23.709,133.8751
+2023,York Park,4,42741.0,10685.0,York Park (UTAS Stadium),Launceston,TAS,-41.42583333,147.13888889
+2024,Adelaide Oval,29,1185181.0,40868.0,Adelaide Oval,Adelaide,SA,-34.91555556,138.59611111
+2024,Bellerive Oval,4,26734.0,6684.0,Bellerive Oval (Blundstone Arena),Hobart,TAS,-42.87722222,147.37361111
+2024,Carrara,9,152275.0,16919.0,Carrara Stadium (People First Stadium),Gold Coast,QLD,-28.00638889,153.36722222
+2024,Docklands,43,1409190.0,32772.0,Docklands Stadium (Marvel Stadium),Melbourne,VIC,-37.81638889,144.9475
+2024,Eureka Stadium,2,19976.0,9988.0,Eureka Stadium (Mars Stadium),Ballarat,VIC,-37.53944444,143.84805556
+2024,Gabba,12,375159.0,31263.0,The Gabba,Brisbane,QLD,-27.48583333,153.03805556
+2024,Kardinia Park,9,285002.0,31667.0,Kardinia Park (GMHBA Stadium),Geelong,VIC,-38.15805556,144.35472222
+2024,M.C.G.,50,3036535.0,60731.0,Melbourne Cricket Ground,Melbourne,VIC,-37.82,144.98333333
+2024,Manuka Oval,3,38796.0,12932.0,Manuka Oval,Canberra,ACT,-35.31805556,149.13472222
+2024,Marrara Oval,2,19148.0,9574.0,Marrara Oval (TIO Stadium),Darwin,NT,-12.39916667,130.88722222
+2024,Norwood Oval,2,18462.0,9231.0,Norwood Oval,Adelaide,SA,-34.91972222,138.63055556
+2024,Perth Stadium,22,1024374.0,46562.0,Perth Stadium (Optus Stadium),Perth,WA,-31.95111111,115.88916667
+2024,S.C.G.,13,507468.0,39036.0,Sydney Cricket Ground,Sydney,NSW,-33.89166667,151.22472222
+2024,Summit Sports Park,2,18562.0,9281.0,Summit Sport and Recreation Park,Mount Barker,SA,-35.07805556,138.89333333
+2024,Sydney Showground,9,114582.0,12731.0,Sydney Showground Stadium (ENGIE Stadium),Sydney,NSW,-33.84305556,151.06777778
+2024,Traeger Park,1,6109.0,6109.0,Traeger Park,Alice Springs,NT,-23.709,133.8751
+2024,York Park,4,49218.0,12304.0,York Park (UTAS Stadium),Launceston,TAS,-41.42583333,147.13888889
+2025,Adelaide Oval,29,1223306.0,42183.0,Adelaide Oval,Adelaide,SA,-34.91555556,138.59611111
+2025,Barossa Park,2,19345.0,9672.0,Barossa Park (Lyndoch Recreation Park),Lyndoch,SA,-34.59793939,138.88583503
+2025,Bellerive Oval,2,18571.0,9286.0,Bellerive Oval (Blundstone Arena),Hobart,TAS,-42.87722222,147.37361111
+2025,Carrara,9,150339.0,16704.0,Carrara Stadium (People First Stadium),Gold Coast,QLD,-28.00638889,153.36722222
+2025,Docklands,43,1340134.0,31166.0,Docklands Stadium (Marvel Stadium),Melbourne,VIC,-37.81638889,144.9475
+2025,Eureka Stadium,1,4814.0,4814.0,Eureka Stadium (Mars Stadium),Ballarat,VIC,-37.53944444,143.84805556
+2025,Gabba,12,373211.0,31101.0,The Gabba,Brisbane,QLD,-27.48583333,153.03805556
+2025,Hands Oval,1,12715.0,12715.0,Hands Oval,Bunbury,WA,-33.34611111,115.64277778
+2025,Kardinia Park,10,301084.0,30108.0,Kardinia Park (GMHBA Stadium),Geelong,VIC,-38.15805556,144.35472222
+2025,M.C.G.,51,3120416.0,61185.0,Melbourne Cricket Ground,Melbourne,VIC,-37.82,144.98333333
+2025,Manuka Oval,3,32992.0,10997.0,Manuka Oval,Canberra,ACT,-35.31805556,149.13472222
+2025,Marrara Oval,2,22130.0,11065.0,Marrara Oval (TIO Stadium),Darwin,NT,-12.39916667,130.88722222
+2025,Norwood Oval,2,18477.0,9238.0,Norwood Oval,Adelaide,SA,-34.91972222,138.63055556
+2025,Perth Stadium,24,1060590.0,44191.0,Perth Stadium (Optus Stadium),Perth,WA,-31.95111111,115.88916667
+2025,S.C.G.,11,377046.0,34277.0,Sydney Cricket Ground,Sydney,NSW,-33.89166667,151.22472222
+2025,Sydney Showground,9,119927.0,13325.0,Sydney Showground Stadium (ENGIE Stadium),Sydney,NSW,-33.84305556,151.06777778
+2025,Traeger Park,1,6721.0,6721.0,Traeger Park,Alice Springs,NT,-23.709,133.8751
+2025,York Park,4,55209.0,13802.0,York Park (UTAS Stadium),Launceston,TAS,-41.42583333,147.13888889
+2026,Adelaide Oval,28,1181565.0,42199.0,Adelaide Oval,Adelaide,SA,-34.91555556,138.59611111
+2026,Barossa Park,2,21121.0,10560.0,Barossa Park (Lyndoch Recreation Park),Lyndoch,SA,-34.59793939,138.88583503
+2026,Bellerive Oval,1,10200.0,10200.0,Bellerive Oval (Blundstone Arena),Hobart,TAS,-42.87722222,147.37361111
+2026,Carrara,9,157303.0,17478.0,Carrara Stadium (People First Stadium),Gold Coast,QLD,-28.00638889,153.36722222
+2026,Docklands,46,1441777.0,31343.0,Docklands Stadium (Marvel Stadium),Melbourne,VIC,-37.81638889,144.9475
+2026,Gabba,12,382043.0,31837.0,The Gabba,Brisbane,QLD,-27.48583333,153.03805556
+2026,Hands Oval,1,13331.0,13331.0,Hands Oval,Bunbury,WA,-33.34611111,115.64277778
+2026,Kardinia Park,10,294015.0,29402.0,Kardinia Park (GMHBA Stadium),Geelong,VIC,-38.15805556,144.35472222
+2026,M.C.G.,51,3088348.0,60556.0,Melbourne Cricket Ground,Melbourne,VIC,-37.82,144.98333333
+2026,Manuka Oval,3,30267.0,10089.0,Manuka Oval,Canberra,ACT,-35.31805556,149.13472222
+2026,Marrara Oval,2,22646.0,11323.0,Marrara Oval (TIO Stadium),Darwin,NT,-12.39916667,130.88722222
+2026,Norwood Oval,2,18662.0,9331.0,Norwood Oval,Adelaide,SA,-34.91972222,138.63055556
+2026,Perth Stadium,25,1223703.0,48948.0,Perth Stadium (Optus Stadium),Perth,WA,-31.95111111,115.88916667
+2026,S.C.G.,13,505044.0,38850.0,Sydney Cricket Ground,Sydney,NSW,-33.89166667,151.22472222
+2026,Sydney Showground,8,97592.0,12199.0,Sydney Showground Stadium (ENGIE Stadium),Sydney,NSW,-33.84305556,151.06777778
+2026,Traeger Park,1,6374.0,6374.0,Traeger Park,Alice Springs,NT,-23.709,133.8751
+2026,York Park,4,35372.0,8843.0,York Park (UTAS Stadium),Launceston,TAS,-41.42583333,147.13888889

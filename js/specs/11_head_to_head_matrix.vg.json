@@ -1,0 +1,55 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Head-to-head matrix: each row club's win % against each opponent, 2012-2026, on a diverging scale centred on 50%.",
+  "data": {
+    "url": "data/head_to_head.csv",
+    "format": {"type": "csv", "parse": {"wins": "number", "games": "number", "win_pct": "number", "team_order": "number", "opp_order": "number"}}
+  },
+  "width": "container",
+  "height": 520,
+  "transform": [
+    {"lookup": "opp", "from": {"data": {"url": "data/teams.csv"}, "key": "team", "fields": ["abbr"]}, "as": ["opp_abbr"]},
+    {"calculate": "format(datum.wins, '.0f') + ' of ' + datum.games", "as": "record"}
+  ],
+  "encoding": {
+    "x": {
+      "field": "opp_abbr",
+      "type": "nominal",
+      "title": "Opponent",
+      "sort": {"field": "opp_order", "op": "max", "order": "ascending"},
+      "axis": {"orient": "top", "labelAngle": 0, "domain": false, "ticks": false}
+    },
+    "y": {
+      "field": "team",
+      "type": "nominal",
+      "title": null,
+      "sort": {"field": "team_order", "op": "max", "order": "ascending"},
+      "axis": {"domain": false, "ticks": false, "labelPadding": 6, "labelExpr": "datum.label == 'Greater Western Sydney' ? 'GWS Giants' : datum.label"}
+    }
+  },
+  "layer": [
+    {
+      "mark": {"type": "rect", "stroke": "#fffdf8", "strokeWidth": 1.5, "cornerRadius": 2},
+      "encoding": {
+        "color": {
+          "field": "win_pct",
+          "type": "quantitative",
+          "title": "Row club's win %",
+          "scale": {"scheme": "redblue", "domain": [0, 100], "domainMid": 50},
+          "legend": {"orient": "bottom", "direction": "horizontal", "gradientLength": 260, "values": [0, 25, 50, 75, 100]}
+        },
+        "tooltip": [
+          {"field": "team", "title": "Club"},
+          {"field": "opp", "title": "Opponent"},
+          {"field": "record", "title": "Games won"},
+          {"field": "win_pct", "title": "Win %"}
+        ]
+      }
+    },
+    {
+      "transform": [{"filter": "datum.win_pct >= 80 || datum.win_pct <= 20"}],
+      "mark": {"type": "text", "fontSize": 10, "fontWeight": 600, "color": "#ffffff"},
+      "encoding": {"text": {"field": "win_pct", "format": ".0f"}}
+    }
+  ]
+}

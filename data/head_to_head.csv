@@ -1,0 +1,307 @@
+team,opp,games,wins,win_pct,team_order,opp_order
+Adelaide,Brisbane Lions,19,9.5,50.0,7,9
+Adelaide,Carlton,17,12.0,70.6,7,16
+Adelaide,Collingwood,21,6.5,31.0,7,4
+Adelaide,Essendon,17,8.0,47.1,7,15
+Adelaide,Fremantle,20,8.0,40.0,7,5
+Adelaide,Geelong,22,7.0,31.8,7,1
+Adelaide,Gold Coast,20,15.0,75.0,7,18
+Adelaide,Greater Western Sydney,20,13.0,65.0,7,11
+Adelaide,Hawthorn,22,5.0,22.7,7,3
+Adelaide,Melbourne,18,9.0,50.0,7,12
+Adelaide,North Melbourne,22,16.0,72.7,7,17
+Adelaide,Port Adelaide,29,17.0,58.6,7,6
+Adelaide,Richmond,18,10.0,55.6,7,10
+Adelaide,St Kilda,17,15.0,88.2,7,14
+Adelaide,Sydney,18,6.0,33.3,7,2
+Adelaide,West Coast,23,13.0,56.5,7,13
+Adelaide,Western Bulldogs,19,11.0,57.9,7,8
+Brisbane Lions,Adelaide,19,9.5,50.0,9,7
+Brisbane Lions,Carlton,21,14.0,66.7,9,16
+Brisbane Lions,Collingwood,23,11.0,47.8,9,4
+Brisbane Lions,Essendon,18,11.0,61.1,9,15
+Brisbane Lions,Fremantle,19,9.0,47.4,9,5
+Brisbane Lions,Geelong,26,9.0,34.6,9,1
+Brisbane Lions,Gold Coast,30,23.0,76.7,9,18
+Brisbane Lions,Greater Western Sydney,20,9.0,45.0,9,11
+Brisbane Lions,Hawthorn,19,8.0,42.1,9,3
+Brisbane Lions,Melbourne,22,11.0,50.0,9,12
+Brisbane Lions,North Melbourne,20,10.5,52.5,9,17
+Brisbane Lions,Port Adelaide,19,11.0,57.9,9,6
+Brisbane Lions,Richmond,21,7.0,33.3,9,10
+Brisbane Lions,St Kilda,18,12.0,66.7,9,14
+Brisbane Lions,Sydney,19,8.0,42.1,9,2
+Brisbane Lions,West Coast,17,9.0,52.9,9,13
+Brisbane Lions,Western Bulldogs,22,11.0,50.0,9,8
+Carlton,Adelaide,17,5.0,29.4,16,7
+Carlton,Brisbane Lions,21,7.0,33.3,16,9
+Carlton,Collingwood,27,6.0,22.2,16,4
+Carlton,Essendon,21,11.5,54.8,16,15
+Carlton,Fremantle,19,10.0,52.6,16,5
+Carlton,Geelong,18,6.0,33.3,16,1
+Carlton,Gold Coast,20,12.0,60.0,16,18
+Carlton,Greater Western Sydney,20,8.0,40.0,16,11
+Carlton,Hawthorn,17,4.0,23.5,16,3
+Carlton,Melbourne,19,9.0,47.4,16,12
+Carlton,North Melbourne,17,8.0,47.1,16,17
+Carlton,Port Adelaide,20,9.0,45.0,16,6
+Carlton,Richmond,24,9.5,39.6,16,10
+Carlton,St Kilda,22,9.0,40.9,16,14
+Carlton,Sydney,20,5.0,25.0,16,2
+Carlton,West Coast,17,9.0,52.9,16,13
+Carlton,Western Bulldogs,18,6.5,36.1,16,8
+Collingwood,Adelaide,21,14.5,69.0,4,7
+Collingwood,Brisbane Lions,23,12.0,52.2,4,9
+Collingwood,Carlton,27,21.0,77.8,4,16
+Collingwood,Essendon,26,16.5,63.5,4,15
+Collingwood,Fremantle,18,9.5,52.8,4,5
+Collingwood,Geelong,23,10.0,43.5,4,1
+Collingwood,Gold Coast,16,11.0,68.8,4,18
+Collingwood,Greater Western Sydney,18,10.0,55.6,4,11
+Collingwood,Hawthorn,23,6.0,26.1,4,3
+Collingwood,Melbourne,23,16.0,69.6,4,12
+Collingwood,North Melbourne,16,12.0,75.0,4,17
+Collingwood,Port Adelaide,19,10.0,52.6,4,6
+Collingwood,Richmond,20,11.5,57.5,4,10
+Collingwood,St Kilda,15,11.0,73.3,4,14
+Collingwood,Sydney,19,8.0,42.1,4,2
+Collingwood,West Coast,25,14.0,56.0,4,13
+Collingwood,Western Bulldogs,18,8.0,44.4,4,8
+Essendon,Adelaide,17,9.0,52.9,15,7
+Essendon,Brisbane Lions,18,7.0,38.9,15,9
+Essendon,Carlton,21,9.5,45.2,15,16
+Essendon,Collingwood,26,9.5,36.5,15,4
+Essendon,Fremantle,18,9.0,50.0,15,5
+Essendon,Geelong,18,2.0,11.1,15,1
+Essendon,Gold Coast,18,10.5,58.3,15,18
+Essendon,Greater Western Sydney,20,9.0,45.0,15,11
+Essendon,Hawthorn,19,8.0,42.1,15,3
+Essendon,Melbourne,16,7.0,43.8,15,12
+Essendon,North Melbourne,22,14.0,63.6,15,17
+Essendon,Port Adelaide,20,8.0,40.0,15,6
+Essendon,Richmond,23,6.0,26.1,15,10
+Essendon,St Kilda,18,7.0,38.9,15,14
+Essendon,Sydney,22,5.0,22.7,15,2
+Essendon,West Coast,19,11.0,57.9,15,13
+Essendon,Western Bulldogs,18,6.0,33.3,15,8
+Fremantle,Adelaide,20,12.0,60.0,5,7
+Fremantle,Brisbane Lions,19,10.0,52.6,5,9
+Fremantle,Carlton,19,9.0,47.4,5,16
+Fremantle,Collingwood,18,8.5,47.2,5,4
+Fremantle,Essendon,18,9.0,50.0,5,15
+Fremantle,Geelong,22,11.0,50.0,5,1
+Fremantle,Gold Coast,17,11.0,64.7,5,18
+Fremantle,Greater Western Sydney,17,9.0,52.9,5,11
+Fremantle,Hawthorn,21,9.0,42.9,5,3
+Fremantle,Melbourne,21,14.0,66.7,5,12
+Fremantle,North Melbourne,17,12.0,70.6,5,17
+Fremantle,Port Adelaide,23,12.0,52.2,5,6
+Fremantle,Richmond,20,11.5,57.5,5,10
+Fremantle,St Kilda,19,10.0,52.6,5,14
+Fremantle,Sydney,23,10.5,45.7,5,2
+Fremantle,West Coast,29,16.0,55.2,5,13
+Fremantle,Western Bulldogs,22,15.0,68.2,5,8
+Geelong,Adelaide,22,15.0,68.2,1,7
+Geelong,Brisbane Lions,26,17.0,65.4,1,9
+Geelong,Carlton,18,12.0,66.7,1,16
+Geelong,Collingwood,23,13.0,56.5,1,4
+Geelong,Essendon,18,16.0,88.9,1,15
+Geelong,Fremantle,22,11.0,50.0,1,5
+Geelong,Gold Coast,17,12.0,70.6,1,18
+Geelong,Greater Western Sydney,19,9.5,50.0,1,11
+Geelong,Hawthorn,27,17.0,63.0,1,3
+Geelong,Melbourne,19,13.0,68.4,1,12
+Geelong,North Melbourne,24,19.0,79.2,1,17
+Geelong,Port Adelaide,23,16.0,69.6,1,6
+Geelong,Richmond,21,14.0,66.7,1,10
+Geelong,St Kilda,19,13.5,71.1,1,14
+Geelong,Sydney,24,13.5,56.2,1,2
+Geelong,West Coast,17,12.0,70.6,1,13
+Geelong,Western Bulldogs,21,17.0,81.0,1,8
+Gold Coast,Adelaide,20,5.0,25.0,18,7
+Gold Coast,Brisbane Lions,30,7.0,23.3,18,9
+Gold Coast,Carlton,20,8.0,40.0,18,16
+Gold Coast,Collingwood,16,5.0,31.2,18,4
+Gold Coast,Essendon,18,7.5,41.7,18,15
+Gold Coast,Fremantle,17,6.0,35.3,18,5
+Gold Coast,Geelong,17,5.0,29.4,18,1
+Gold Coast,Greater Western Sydney,23,7.0,30.4,18,11
+Gold Coast,Hawthorn,19,7.0,36.8,18,3
+Gold Coast,Melbourne,20,5.0,25.0,18,12
+Gold Coast,North Melbourne,22,12.0,54.5,18,17
+Gold Coast,Port Adelaide,17,2.0,11.8,18,6
+Gold Coast,Richmond,17,9.0,52.9,18,10
+Gold Coast,St Kilda,21,8.0,38.1,18,14
+Gold Coast,Sydney,18,5.0,27.8,18,2
+Gold Coast,West Coast,19,8.5,44.7,18,13
+Gold Coast,Western Bulldogs,17,5.0,29.4,18,8
+Greater Western Sydney,Adelaide,20,7.0,35.0,11,7
+Greater Western Sydney,Brisbane Lions,20,11.0,55.0,11,9
+Greater Western Sydney,Carlton,20,12.0,60.0,11,16
+Greater Western Sydney,Collingwood,18,8.0,44.4,11,4
+Greater Western Sydney,Essendon,20,11.0,55.0,11,15
+Greater Western Sydney,Fremantle,17,8.0,47.1,11,5
+Greater Western Sydney,Geelong,19,9.5,50.0,11,1
+Greater Western Sydney,Gold Coast,23,16.0,69.6,11,18
+Greater Western Sydney,Hawthorn,20,9.5,47.5,11,3
+Greater Western Sydney,Melbourne,20,11.0,55.0,11,12
+Greater Western Sydney,North Melbourne,16,8.5,53.1,11,17
+Greater Western Sydney,Port Adelaide,18,9.0,50.0,11,6
+Greater Western Sydney,Richmond,21,9.0,42.9,11,10
+Greater Western Sydney,St Kilda,20,9.5,47.5,11,14
+Greater Western Sydney,Sydney,33,11.0,33.3,11,2
+Greater Western Sydney,West Coast,20,9.0,45.0,11,13
+Greater Western Sydney,Western Bulldogs,23,7.0,30.4,11,8
+Hawthorn,Adelaide,22,17.0,77.3,3,7
+Hawthorn,Brisbane Lions,19,11.0,57.9,3,9
+Hawthorn,Carlton,17,13.0,76.5,3,16
+Hawthorn,Collingwood,23,17.0,73.9,3,4
+Hawthorn,Essendon,19,11.0,57.9,3,15
+Hawthorn,Fremantle,21,12.0,57.1,3,5
+Hawthorn,Geelong,27,10.0,37.0,3,1
+Hawthorn,Gold Coast,19,12.0,63.2,3,18
+Hawthorn,Greater Western Sydney,20,10.5,52.5,3,11
+Hawthorn,Melbourne,21,9.5,45.2,3,12
+Hawthorn,North Melbourne,21,17.0,81.0,3,17
+Hawthorn,Port Adelaide,20,10.0,50.0,3,6
+Hawthorn,Richmond,20,8.5,42.5,3,10
+Hawthorn,St Kilda,18,11.0,61.1,3,14
+Hawthorn,Sydney,25,14.0,56.0,3,2
+Hawthorn,West Coast,21,14.0,66.7,3,13
+Hawthorn,Western Bulldogs,20,13.0,65.0,3,8
+Melbourne,Adelaide,18,9.0,50.0,12,7
+Melbourne,Brisbane Lions,22,11.0,50.0,12,9
+Melbourne,Carlton,19,10.0,52.6,12,16
+Melbourne,Collingwood,23,7.0,30.4,12,4
+Melbourne,Essendon,16,9.0,56.2,12,15
+Melbourne,Fremantle,21,7.0,33.3,12,5
+Melbourne,Geelong,19,6.0,31.6,12,1
+Melbourne,Gold Coast,20,15.0,75.0,12,18
+Melbourne,Greater Western Sydney,20,9.0,45.0,12,11
+Melbourne,Hawthorn,21,11.5,54.8,12,3
+Melbourne,North Melbourne,19,9.0,47.4,12,17
+Melbourne,Port Adelaide,19,7.0,36.8,12,6
+Melbourne,Richmond,19,11.0,57.9,12,10
+Melbourne,St Kilda,22,9.0,40.9,12,14
+Melbourne,Sydney,18,5.0,27.8,12,2
+Melbourne,West Coast,20,9.0,45.0,12,13
+Melbourne,Western Bulldogs,24,10.0,41.7,12,8
+North Melbourne,Adelaide,22,6.0,27.3,17,7
+North Melbourne,Brisbane Lions,20,9.5,47.5,17,9
+North Melbourne,Carlton,17,9.0,52.9,17,16
+North Melbourne,Collingwood,16,4.0,25.0,17,4
+North Melbourne,Essendon,22,8.0,36.4,17,15
+North Melbourne,Fremantle,17,5.0,29.4,17,5
+North Melbourne,Geelong,24,5.0,20.8,17,1
+North Melbourne,Gold Coast,22,10.0,45.5,17,18
+North Melbourne,Greater Western Sydney,16,7.5,46.9,17,11
+North Melbourne,Hawthorn,21,4.0,19.0,17,3
+North Melbourne,Melbourne,19,10.0,52.6,17,12
+North Melbourne,Port Adelaide,17,4.0,23.5,17,6
+North Melbourne,Richmond,19,13.0,68.4,17,10
+North Melbourne,St Kilda,19,10.0,52.6,17,14
+North Melbourne,Sydney,22,3.0,13.6,17,2
+North Melbourne,West Coast,21,9.0,42.9,17,13
+North Melbourne,Western Bulldogs,23,8.0,34.8,17,8
+Port Adelaide,Adelaide,29,12.0,41.4,6,7
+Port Adelaide,Brisbane Lions,19,8.0,42.1,6,9
+Port Adelaide,Carlton,20,11.0,55.0,6,16
+Port Adelaide,Collingwood,19,9.0,47.4,6,4
+Port Adelaide,Essendon,20,12.0,60.0,6,15
+Port Adelaide,Fremantle,23,11.0,47.8,6,5
+Port Adelaide,Geelong,23,7.0,30.4,6,1
+Port Adelaide,Gold Coast,17,15.0,88.2,6,18
+Port Adelaide,Greater Western Sydney,18,9.0,50.0,6,11
+Port Adelaide,Hawthorn,20,10.0,50.0,6,3
+Port Adelaide,Melbourne,19,12.0,63.2,6,12
+Port Adelaide,North Melbourne,17,13.0,76.5,6,17
+Port Adelaide,Richmond,23,12.5,54.3,6,10
+Port Adelaide,St Kilda,18,14.0,77.8,6,14
+Port Adelaide,Sydney,20,10.0,50.0,6,2
+Port Adelaide,West Coast,19,10.0,52.6,6,13
+Port Adelaide,Western Bulldogs,20,11.0,55.0,6,8
+Richmond,Adelaide,18,8.0,44.4,10,7
+Richmond,Brisbane Lions,21,14.0,66.7,10,9
+Richmond,Carlton,24,14.5,60.4,10,16
+Richmond,Collingwood,20,8.5,42.5,10,4
+Richmond,Essendon,23,17.0,73.9,10,15
+Richmond,Fremantle,20,8.5,42.5,10,5
+Richmond,Geelong,21,7.0,33.3,10,1
+Richmond,Gold Coast,17,8.0,47.1,10,18
+Richmond,Greater Western Sydney,21,12.0,57.1,10,11
+Richmond,Hawthorn,20,11.5,57.5,10,3
+Richmond,Melbourne,19,8.0,42.1,10,12
+Richmond,North Melbourne,19,6.0,31.6,10,17
+Richmond,Port Adelaide,23,10.5,45.7,10,6
+Richmond,St Kilda,25,13.0,52.0,10,14
+Richmond,Sydney,18,9.0,50.0,10,2
+Richmond,West Coast,19,13.0,68.4,10,13
+Richmond,Western Bulldogs,17,7.0,41.2,10,8
+St Kilda,Adelaide,17,2.0,11.8,14,7
+St Kilda,Brisbane Lions,18,6.0,33.3,14,9
+St Kilda,Carlton,22,13.0,59.1,14,16
+St Kilda,Collingwood,15,4.0,26.7,14,4
+St Kilda,Essendon,18,11.0,61.1,14,15
+St Kilda,Fremantle,19,9.0,47.4,14,5
+St Kilda,Geelong,19,5.5,28.9,14,1
+St Kilda,Gold Coast,21,13.0,61.9,14,18
+St Kilda,Greater Western Sydney,20,10.5,52.5,14,11
+St Kilda,Hawthorn,18,7.0,38.9,14,3
+St Kilda,Melbourne,22,13.0,59.1,14,12
+St Kilda,North Melbourne,19,9.0,47.4,14,17
+St Kilda,Port Adelaide,18,4.0,22.2,14,6
+St Kilda,Richmond,25,12.0,48.0,14,10
+St Kilda,Sydney,21,5.0,23.8,14,2
+St Kilda,West Coast,20,7.0,35.0,14,13
+St Kilda,Western Bulldogs,20,8.0,40.0,14,8
+Sydney,Adelaide,18,12.0,66.7,2,7
+Sydney,Brisbane Lions,19,11.0,57.9,2,9
+Sydney,Carlton,20,15.0,75.0,2,16
+Sydney,Collingwood,19,11.0,57.9,2,4
+Sydney,Essendon,22,17.0,77.3,2,15
+Sydney,Fremantle,23,12.5,54.3,2,5
+Sydney,Geelong,24,10.5,43.8,2,1
+Sydney,Gold Coast,18,13.0,72.2,2,18
+Sydney,Greater Western Sydney,33,22.0,66.7,2,11
+Sydney,Hawthorn,25,11.0,44.0,2,3
+Sydney,Melbourne,18,13.0,72.2,2,12
+Sydney,North Melbourne,22,19.0,86.4,2,17
+Sydney,Port Adelaide,20,10.0,50.0,2,6
+Sydney,Richmond,18,9.0,50.0,2,10
+Sydney,St Kilda,21,16.0,76.2,2,14
+Sydney,West Coast,16,13.0,81.2,2,13
+Sydney,Western Bulldogs,21,12.0,57.1,2,8
+West Coast,Adelaide,23,10.0,43.5,13,7
+West Coast,Brisbane Lions,17,8.0,47.1,13,9
+West Coast,Carlton,17,8.0,47.1,13,16
+West Coast,Collingwood,25,11.0,44.0,13,4
+West Coast,Essendon,19,8.0,42.1,13,15
+West Coast,Fremantle,29,13.0,44.8,13,5
+West Coast,Geelong,17,5.0,29.4,13,1
+West Coast,Gold Coast,19,10.5,55.3,13,18
+West Coast,Greater Western Sydney,20,11.0,55.0,13,11
+West Coast,Hawthorn,21,7.0,33.3,13,3
+West Coast,Melbourne,20,11.0,55.0,13,12
+West Coast,North Melbourne,21,12.0,57.1,13,17
+West Coast,Port Adelaide,19,9.0,47.4,13,6
+West Coast,Richmond,19,6.0,31.6,13,10
+West Coast,St Kilda,20,13.0,65.0,13,14
+West Coast,Sydney,16,3.0,18.8,13,2
+West Coast,Western Bulldogs,21,10.0,47.6,13,8
+Western Bulldogs,Adelaide,19,8.0,42.1,8,7
+Western Bulldogs,Brisbane Lions,22,11.0,50.0,8,9
+Western Bulldogs,Carlton,18,11.5,63.9,8,16
+Western Bulldogs,Collingwood,18,10.0,55.6,8,4
+Western Bulldogs,Essendon,18,12.0,66.7,8,15
+Western Bulldogs,Fremantle,22,7.0,31.8,8,5
+Western Bulldogs,Geelong,21,4.0,19.0,8,1
+Western Bulldogs,Gold Coast,17,12.0,70.6,8,18
+Western Bulldogs,Greater Western Sydney,23,16.0,69.6,8,11
+Western Bulldogs,Hawthorn,20,7.0,35.0,8,3
+Western Bulldogs,Melbourne,24,14.0,58.3,8,12
+Western Bulldogs,North Melbourne,23,15.0,65.2,8,17
+Western Bulldogs,Port Adelaide,20,9.0,45.0,8,6
+Western Bulldogs,Richmond,17,10.0,58.8,8,10
+Western Bulldogs,St Kilda,20,12.0,60.0,8,14
+Western Bulldogs,Sydney,21,9.0,42.9,8,2
+Western Bulldogs,West Coast,21,11.0,52.4,8,13

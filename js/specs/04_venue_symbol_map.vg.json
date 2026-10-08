@@ -1,0 +1,72 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Proportional symbol map: AFL grounds sized by average crowd, for a chosen season.",
+  "width": "container",
+  "height": 520,
+  "params": [
+    {
+      "name": "season",
+      "value": 2026,
+      "bind": {"input": "range", "min": 2012, "max": 2026, "step": 1, "name": "Season "}
+    }
+  ],
+  "projection": {"type": "conicEqualArea", "parallels": [-18, -36], "rotate": [-132, 0]},
+  "layer": [
+    {
+      "data": {"url": "data/aus_states.topo.json", "format": {"type": "topojson", "feature": "states"}},
+      "mark": {"type": "geoshape", "fill": "#ebe7dd", "stroke": "#fffdf8", "strokeWidth": 1.5}
+    },
+    {
+      "data": {"url": "data/venue_season.csv"},
+      "transform": [
+        {"filter": "datum.year == season && datum.state != 'NZ' && datum.state != 'CHN'"},
+        {"calculate": "isValid(datum.avg_crowd) ? datum.avg_crowd : 0", "as": "crowd_for_size"}
+      ],
+      "mark": {"type": "circle", "color": "#c8102e", "opacity": 0.7, "stroke": "#fffdf8", "strokeWidth": 1.2},
+      "encoding": {
+        "longitude": {"field": "lon", "type": "quantitative"},
+        "latitude": {"field": "lat", "type": "quantitative"},
+        "size": {
+          "field": "crowd_for_size",
+          "type": "quantitative",
+          "title": "Average crowd",
+          "scale": {"domain": [0, 80000], "range": [15, 2600]},
+          "legend": {"values": [10000, 40000, 70000], "format": ",.0f", "orient": "bottom-left", "symbolFillColor": "#c8102e", "symbolOpacity": 0.7, "symbolStrokeWidth": 0}
+        },
+        "order": {"field": "crowd_for_size", "sort": "descending"},
+        "tooltip": [
+          {"field": "venue_full", "title": "Ground"},
+          {"field": "city", "title": "City"},
+          {"field": "year", "title": "Season"},
+          {"field": "games", "title": "Games"},
+          {"field": "avg_crowd", "title": "Average crowd", "format": ","},
+          {"field": "total_crowd", "title": "Total crowd", "format": ","}
+        ]
+      }
+    },
+    {
+      "data": {"url": "data/venue_season.csv", "format": {"type": "csv", "parse": {"total_crowd": "number", "year": "number"}}},
+      "transform": [
+        {"filter": "datum.year == season && datum.state != 'NZ' && datum.state != 'CHN'"},
+        {"window": [{"op": "row_number", "as": "state_rank"}], "groupby": ["state"], "sort": [{"field": "total_crowd", "order": "descending"}]},
+        {"filter": "datum.state_rank == 1 && datum.total_crowd > 0"}
+      ],
+      "mark": {"type": "text", "align": "left", "dx": 10, "dy": -8, "fontSize": 12, "fontWeight": 600, "color": "#1c1b19"},
+      "encoding": {
+        "longitude": {"field": "lon", "type": "quantitative"},
+        "latitude": {"field": "lat", "type": "quantitative"},
+        "text": {"field": "venue"}
+      }
+    },
+    {
+      "data": {"values": [{"lon": 113.5, "lat": -40.5, "note": "2020: COVID-19 hub season. Most games were in Queensland, many with no crowd."}]},
+      "transform": [{"filter": "season == 2020"}],
+      "mark": {"type": "text", "align": "left", "fontSize": 13, "fontStyle": "italic", "color": "#c8102e"},
+      "encoding": {
+        "longitude": {"field": "lon", "type": "quantitative"},
+        "latitude": {"field": "lat", "type": "quantitative"},
+        "text": {"field": "note"}
+      }
+    }
+  ]
+}

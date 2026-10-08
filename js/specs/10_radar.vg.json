@@ -1,0 +1,156 @@
+{
+  "$schema": "https://vega.github.io/schema/vega/v5.json",
+  "description": "Radar chart (Vega): the 2026 premier's per-game averages as an index of the league average (100 = average).",
+  "width": 300,
+  "height": 300,
+  "padding": {"top": 40, "bottom": 52, "left": 110, "right": 110},
+  "autosize": {"type": "none"},
+
+  "signals": [
+    {"name": "radius", "update": "width / 2"},
+    {"name": "focusTeam", "value": "Brisbane Lions"},
+    {"name": "focusYear", "value": 2026}
+  ],
+
+  "data": [
+    {
+      "name": "profiles",
+      "url": "data/team_profiles.csv",
+      "format": {"type": "csv", "parse": "auto"},
+      "transform": [
+        {"type": "filter", "expr": "datum.year == focusYear"},
+        {
+          "type": "fold",
+          "fields": ["inside_50s", "clearances", "contested_possessions", "tackles", "marks_inside_50", "goals"],
+          "as": ["stat", "value"]
+        },
+        {"type": "joinaggregate", "groupby": ["stat"], "ops": ["mean"], "fields": ["value"], "as": ["league_avg"]},
+        {"type": "filter", "expr": "datum.team == focusTeam"},
+        {"type": "formula", "as": "index", "expr": "100 * datum.value / datum.league_avg"},
+        {
+          "type": "formula",
+          "as": "label",
+          "expr": "{'inside_50s': 'Inside 50s', 'clearances': 'Clearances', 'contested_possessions': 'Contested poss.', 'tackles': 'Tackles', 'marks_inside_50': 'Marks inside 50', 'goals': 'Goals'}[datum.stat]"
+        }
+      ]
+    },
+    {
+      "name": "rings",
+      "values": [{"r": 80}, {"r": 100}, {"r": 120}]
+    }
+  ],
+
+  "scales": [
+    {
+      "name": "angular",
+      "type": "point",
+      "range": {"signal": "[-PI, PI]"},
+      "padding": 0.5,
+      "domain": {"data": "profiles", "field": "stat"}
+    },
+    {
+      "name": "radial",
+      "type": "linear",
+      "range": {"signal": "[0, radius]"},
+      "zero": false,
+      "nice": false,
+      "domain": [60, 130]
+    }
+  ],
+
+  "encode": {
+    "enter": {
+      "x": {"signal": "radius"},
+      "y": {"signal": "radius"}
+    }
+  },
+
+  "marks": [
+    {
+      "type": "group",
+      "name": "ringGroup",
+      "from": {"facet": {"data": "rings", "name": "ring", "groupby": "r"}},
+      "marks": [
+        {
+          "type": "line",
+          "from": {"data": "profiles"},
+          "encode": {
+            "enter": {
+              "interpolate": {"value": "linear-closed"},
+              "x": {"signal": "scale('radial', parent.r) * cos(scale('angular', datum.stat))"},
+              "y": {"signal": "scale('radial', parent.r) * sin(scale('angular', datum.stat))"},
+              "stroke": {"signal": "parent.r == 100 ? '#1c1b19' : '#ddd8cc'"},
+              "strokeWidth": {"signal": "parent.r == 100 ? 1.5 : 1"},
+              "strokeDash": {"signal": "parent.r == 100 ? [5, 4] : [1, 0]"}
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "rule",
+      "from": {"data": "profiles"},
+      "encode": {
+        "enter": {
+          "x": {"value": 0},
+          "y": {"value": 0},
+          "x2": {"signal": "radius * cos(scale('angular', datum.stat))"},
+          "y2": {"signal": "radius * sin(scale('angular', datum.stat))"},
+          "stroke": {"value": "#ddd8cc"},
+          "strokeWidth": {"value": 1}
+        }
+      }
+    },
+    {
+      "type": "line",
+      "from": {"data": "profiles"},
+      "encode": {
+        "enter": {
+          "interpolate": {"value": "linear-closed"},
+          "x": {"signal": "scale('radial', datum.index) * cos(scale('angular', datum.stat))"},
+          "y": {"signal": "scale('radial', datum.index) * sin(scale('angular', datum.stat))"},
+          "stroke": {"value": "#A30046"},
+          "strokeWidth": {"value": 2.5},
+          "fill": {"value": "#A30046"},
+          "fillOpacity": {"value": 0.15}
+        }
+      }
+    },
+    {
+      "type": "symbol",
+      "from": {"data": "profiles"},
+      "encode": {
+        "enter": {
+          "x": {"signal": "scale('radial', datum.index) * cos(scale('angular', datum.stat))"},
+          "y": {"signal": "scale('radial', datum.index) * sin(scale('angular', datum.stat))"},
+          "size": {"value": 70},
+          "fill": {"value": "#A30046"},
+          "stroke": {"value": "#fffdf8"},
+          "strokeWidth": {"value": 1.5},
+          "tooltip": {
+            "signal": "{'Stat': datum.label, 'Brisbane per game': format(datum.value, '.1f'), 'League average': format(datum.league_avg, '.1f'), 'Index (100 = average)': format(datum.index, '.0f')}"
+          }
+        }
+      }
+    },
+    {
+      "type": "text",
+      "from": {"data": "profiles"},
+      "encode": {
+        "enter": {
+          "x": {"signal": "(radius + 14) * cos(scale('angular', datum.stat))"},
+          "y": {"signal": "(radius + 14) * sin(scale('angular', datum.stat))"},
+          "text": {"signal": "[datum.label, format(datum.index, '.0f')]"},
+          "align": {"signal": "abs(cos(scale('angular', datum.stat))) < 0.2 ? 'center' : (cos(scale('angular', datum.stat)) > 0 ? 'left' : 'right')"},
+          "baseline": {"signal": "sin(scale('angular', datum.stat)) > 0.5 ? 'top' : (sin(scale('angular', datum.stat)) < -0.5 ? 'bottom' : 'middle')"},
+          "font": {"value": "Source Sans 3, sans-serif"},
+          "fontSize": {"value": 13},
+          "fontWeight": {"value": 600},
+          "fill": {"value": "#1c1b19"},
+          "lineHeight": {"value": 15}
+        }
+      }
+    }
+
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Slope chart: each club's ladder position in 2025 and 2026. Clubs that moved four or more places are coloured.",
+  "data": {"url": "data/ladder.csv"},
+  "width": "container",
+  "height": 420,
+  "transform": [
+    {"filter": "datum.year >= 2025"},
+    {"pivot": "year", "value": "rank", "groupby": ["team"], "op": "max"},
+    {"calculate": "datum['2025'] - datum['2026']", "as": "change"},
+    {"calculate": "datum.change >= 4 ? 'Rose 4+ places' : (datum.change <= -4 ? 'Fell 4+ places' : 'Moved less than 4')", "as": "movement"},
+    {"fold": ["2025", "2026"], "as": ["year", "rank"]},
+    {"calculate": "toNumber(datum.rank)", "as": "rank"},
+    {"calculate": "(datum.year == '2025' ? replace(datum.team, 'Greater Western Sydney', 'GWS Giants') + '  ' + datum.rank : datum.rank + '  ' + replace(datum.team, 'Greater Western Sydney', 'GWS Giants'))", "as": "label"}
+  ],
+  "encoding": {
+    "x": {
+      "field": "year",
+      "type": "ordinal",
+      "title": null,
+      "scale": {"padding": 0.9},
+      "axis": {"orient": "top", "labelAngle": 0, "domain": false, "ticks": false, "labelFontSize": 14, "labelFontWeight": 600}
+    },
+    "y": {
+      "field": "rank",
+      "type": "quantitative",
+      "scale": {"domain": [0, 18], "reverse": true, "nice": false},
+      "axis": null
+    },
+    "color": {
+      "field": "movement",
+      "type": "nominal",
+      "title": null,
+      "scale": {"domain": ["Rose 4+ places", "Fell 4+ places", "Moved less than 4"], "range": ["#2a78d6", "#c8102e", "#cfcabe"]},
+      "legend": {"orient": "bottom", "direction": "horizontal"}
+    }
+  },
+  "layer": [
+    {
+      "mark": {"type": "line", "strokeWidth": 2.5},
+      "encoding": {
+        "detail": {"field": "team"},
+        "order": {"field": "year"}
+      }
+    },
+    {
+      "mark": {"type": "point", "filled": true, "size": 50, "opacity": 1},
+      "encoding": {
+        "tooltip": [
+          {"field": "team", "title": "Club"},
+          {"field": "year", "title": "Season"},
+          {"field": "rank", "title": "Ladder position"},
+          {"field": "change", "title": "Places gained"}
+        ]
+      }
+    },
+    {
+      "transform": [{"filter": "datum.year == '2025'"}],
+      "mark": {"type": "text", "align": "right", "dx": -8, "fontSize": 11},
+      "encoding": {
+        "text": {"field": "label"},
+        "color": {"value": "#55524b"}
+      }
+    },
+    {
+      "transform": [{"filter": "datum.year == '2026'"}],
+      "mark": {"type": "text", "align": "left", "dx": 8, "fontSize": 11},
+      "encoding": {
+        "text": {"field": "label"},
+        "color": {"value": "#55524b"}
+      }
+    }
+  ]
+}

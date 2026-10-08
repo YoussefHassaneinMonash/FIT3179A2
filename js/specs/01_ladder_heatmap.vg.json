@@ -1,0 +1,57 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Heatmap of every club's final ladder position for each season 2012-2026. Stars mark premiers.",
+  "data": {"url": "data/ladder.csv"},
+  "width": "container",
+  "height": 450,
+  "transform": [
+    {"joinaggregate": [{"op": "mean", "field": "rank", "as": "avg_rank"}], "groupby": ["team"]}
+  ],
+  "encoding": {
+    "x": {
+      "field": "year",
+      "type": "ordinal",
+      "title": null,
+      "axis": {"orient": "top", "labelAngle": 0, "domain": false, "ticks": false}
+    },
+    "y": {
+      "field": "team",
+      "type": "nominal",
+      "title": null,
+      "sort": {"field": "avg_rank", "op": "max", "order": "ascending"},
+      "axis": {"domain": false, "ticks": false, "labelPadding": 8, "labelExpr": "datum.label == 'Greater Western Sydney' ? 'GWS Giants' : datum.label"}
+    }
+  },
+  "layer": [
+    {
+      "mark": {"type": "rect", "stroke": "#fffdf8", "strokeWidth": 2, "cornerRadius": 2},
+      "encoding": {
+        "color": {
+          "field": "rank",
+          "type": "quantitative",
+          "title": "Ladder position (1 = top)",
+          "scale": {"scheme": "blues", "reverse": true, "domain": [1, 18]},
+          "legend": {"orient": "bottom", "direction": "horizontal", "gradientLength": 220, "values": [1, 6, 12, 18]}
+        },
+        "tooltip": [
+          {"field": "team", "title": "Club"},
+          {"field": "year", "title": "Season"},
+          {"field": "rank", "title": "Ladder position"},
+          {"field": "wins", "title": "Wins"},
+          {"field": "losses", "title": "Losses"},
+          {"field": "percentage", "title": "Percentage"}
+        ]
+      }
+    },
+    {
+      "transform": [{"filter": "datum.premier == 1"}],
+      "mark": {"type": "text", "text": "★", "fontSize": 15, "color": "#f5c518", "baseline": "middle"},
+      "encoding": {
+        "tooltip": [
+          {"field": "team", "title": "Premier"},
+          {"field": "year", "title": "Season"}
+        ]
+      }
+    }
+  ]
+}

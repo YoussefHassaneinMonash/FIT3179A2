@@ -1,0 +1,271 @@
+year,team,rank,wins,losses,draws,played,percentage,premier,made_finals,abbr
+2012,Hawthorn,1,17,5,0,22,154.6,0,1,HAW
+2012,Adelaide,2,17,5,0,22,132.5,0,1,ADE
+2012,Sydney,3,16,6,0,22,140.6,1,1,SYD
+2012,Collingwood,4,16,6,0,22,116.5,0,1,COL
+2012,West Coast,5,15,7,0,22,124.2,0,1,WCE
+2012,Geelong,6,15,7,0,22,117.1,0,1,GEE
+2012,Fremantle,7,14,8,0,22,115.7,0,1,FRE
+2012,North Melbourne,8,14,8,0,22,112.5,0,1,NOR
+2012,St Kilda,9,12,10,0,22,123.3,0,0,STK
+2012,Carlton,10,11,11,0,22,108.0,0,0,CAR
+2012,Essendon,11,11,11,0,22,100.0,0,0,ESS
+2012,Richmond,12,10,11,1,22,111.6,0,0,RIC
+2012,Brisbane Lions,13,10,12,0,22,91.0,0,0,BRI
+2012,Port Adelaide,14,5,16,1,22,78.9,0,0,POR
+2012,Western Bulldogs,15,5,17,0,22,67.0,0,0,WBD
+2012,Melbourne,16,4,18,0,22,67.5,0,0,MEL
+2012,Gold Coast,17,3,19,0,22,60.8,0,0,GCS
+2012,Greater Western Sydney,18,2,20,0,22,46.2,0,0,GWS
+2013,Hawthorn,1,19,3,0,22,135.7,1,1,HAW
+2013,Geelong,2,18,4,0,22,135.6,0,1,GEE
+2013,Fremantle,3,16,5,1,22,134.1,0,1,FRE
+2013,Sydney,4,15,6,1,22,132.5,0,1,SYD
+2013,Richmond,5,15,7,0,22,122.8,0,1,RIC
+2013,Collingwood,6,14,8,0,22,115.0,0,1,COL
+2013,Essendon,7,14,8,0,22,107.2,0,0,ESS
+2013,Port Adelaide,8,12,10,0,22,102.4,0,1,POR
+2013,Carlton,9,11,11,0,22,106.7,0,1,CAR
+2013,North Melbourne,10,10,12,0,22,119.5,0,0,NOR
+2013,Adelaide,11,10,12,0,22,108.1,0,0,ADE
+2013,Brisbane Lions,12,10,12,0,22,89.6,0,0,BRI
+2013,West Coast,13,9,13,0,22,95.3,0,0,WCE
+2013,Gold Coast,14,8,14,0,22,91.7,0,0,GCS
+2013,Western Bulldogs,15,8,14,0,22,85.1,0,0,WBD
+2013,St Kilda,16,5,17,0,22,82.6,0,0,STK
+2013,Melbourne,17,2,20,0,22,54.1,0,0,MEL
+2013,Greater Western Sydney,18,1,21,0,22,51.0,0,0,GWS
+2014,Sydney,1,17,5,0,22,142.9,0,1,SYD
+2014,Hawthorn,2,17,5,0,22,140.8,1,1,HAW
+2014,Geelong,3,17,5,0,22,113.8,0,1,GEE
+2014,Fremantle,4,16,6,0,22,130.4,0,1,FRE
+2014,Port Adelaide,5,14,8,0,22,129.9,0,1,POR
+2014,North Melbourne,6,14,8,0,22,117.0,0,1,NOR
+2014,Essendon,7,12,9,1,22,106.3,0,1,ESS
+2014,Richmond,8,12,10,0,22,105.8,0,1,RIC
+2014,West Coast,9,11,11,0,22,116.9,0,0,WCE
+2014,Adelaide,10,11,11,0,22,114.1,0,0,ADE
+2014,Collingwood,11,11,11,0,22,94.1,0,0,COL
+2014,Gold Coast,12,10,12,0,22,93.7,0,0,GCS
+2014,Carlton,13,7,14,1,22,89.7,0,0,CAR
+2014,Western Bulldogs,14,7,15,0,22,81.9,0,0,WBD
+2014,Brisbane Lions,15,7,15,0,22,69.3,0,0,BRI
+2014,Greater Western Sydney,16,6,16,0,22,76.7,0,0,GWS
+2014,Melbourne,17,4,18,0,22,68.4,0,0,MEL
+2014,St Kilda,18,4,18,0,22,60.8,0,0,STK
+2015,Fremantle,1,17,5,0,22,118.7,0,1,FRE
+2015,West Coast,2,16,5,1,22,148.2,0,1,WCE
+2015,Hawthorn,3,16,6,0,22,158.4,1,1,HAW
+2015,Sydney,4,16,6,0,22,127.1,0,1,SYD
+2015,Richmond,5,15,7,0,22,123.1,0,1,RIC
+2015,Western Bulldogs,6,14,8,0,22,115.1,0,1,WBD
+2015,Adelaide,7,13,8,0,21,115.7,0,1,ADE
+2015,North Melbourne,8,13,9,0,22,106.5,0,1,NOR
+2015,Port Adelaide,9,12,10,0,22,106.8,0,0,POR
+2015,Geelong,10,11,9,1,21,101.1,0,0,GEE
+2015,Greater Western Sydney,11,11,11,0,22,99.0,0,0,GWS
+2015,Collingwood,12,10,12,0,22,106.2,0,0,COL
+2015,Melbourne,13,7,15,0,22,77.0,0,0,MEL
+2015,St Kilda,14,6,15,1,22,78.4,0,0,STK
+2015,Essendon,15,6,16,0,22,74.0,0,0,ESS
+2015,Gold Coast,16,4,17,1,22,72.9,0,0,GCS
+2015,Brisbane Lions,17,4,18,0,22,67.5,0,0,BRI
+2015,Carlton,18,4,18,0,22,64.8,0,0,CAR
+2016,Sydney,1,17,5,0,22,151.2,0,1,SYD
+2016,Geelong,2,17,5,0,22,143.8,0,1,GEE
+2016,Hawthorn,3,17,5,0,22,118.6,0,1,HAW
+2016,Greater Western Sydney,4,16,6,0,22,143.1,0,1,GWS
+2016,Adelaide,5,16,6,0,22,138.3,0,1,ADE
+2016,West Coast,6,16,6,0,22,130.0,0,1,WCE
+2016,Western Bulldogs,7,15,7,0,22,115.4,1,1,WBD
+2016,North Melbourne,8,12,10,0,22,105.2,0,1,NOR
+2016,St Kilda,9,12,10,0,22,95.7,0,0,STK
+2016,Port Adelaide,10,10,12,0,22,106.0,0,0,POR
+2016,Melbourne,11,10,12,0,22,97.6,0,0,MEL
+2016,Collingwood,12,9,13,0,22,95.6,0,0,COL
+2016,Richmond,13,8,14,0,22,79.5,0,0,RIC
+2016,Carlton,14,7,15,0,22,79.3,0,0,CAR
+2016,Gold Coast,15,6,16,0,22,78.2,0,0,GCS
+2016,Fremantle,16,4,18,0,22,74.3,0,0,FRE
+2016,Brisbane Lions,17,3,19,0,22,61.6,0,0,BRI
+2016,Essendon,18,3,19,0,22,61.0,0,0,ESS
+2017,Adelaide,1,15,6,1,22,136.0,0,1,ADE
+2017,Geelong,2,15,6,1,22,117.4,0,1,GEE
+2017,Richmond,3,15,7,0,22,118.3,1,1,RIC
+2017,Greater Western Sydney,4,14,6,2,22,114.8,0,1,GWS
+2017,Port Adelaide,5,14,8,0,22,129.7,0,1,POR
+2017,Sydney,6,14,8,0,22,126.8,0,1,SYD
+2017,Essendon,7,12,10,0,22,106.5,0,1,ESS
+2017,West Coast,8,12,10,0,22,105.7,0,1,WCE
+2017,Melbourne,9,12,10,0,22,105.2,0,0,MEL
+2017,Western Bulldogs,10,11,11,0,22,97.1,0,0,WBD
+2017,St Kilda,11,11,11,0,22,96.9,0,0,STK
+2017,Hawthorn,12,10,11,1,22,90.7,0,0,HAW
+2017,Collingwood,13,9,12,1,22,99.0,0,0,COL
+2017,Fremantle,14,8,14,0,22,74.4,0,0,FRE
+2017,North Melbourne,15,6,16,0,22,87.6,0,0,NOR
+2017,Carlton,16,6,16,0,22,78.2,0,0,CAR
+2017,Gold Coast,17,6,16,0,22,76.0,0,0,GCS
+2017,Brisbane Lions,18,5,17,0,22,74.3,0,0,BRI
+2018,Richmond,1,18,4,0,22,136.1,0,1,RIC
+2018,West Coast,2,16,6,0,22,121.4,1,1,WCE
+2018,Collingwood,3,15,7,0,22,120.4,0,1,COL
+2018,Hawthorn,4,15,7,0,22,120.1,0,1,HAW
+2018,Melbourne,5,14,8,0,22,131.4,0,1,MEL
+2018,Sydney,6,14,8,0,22,109.5,0,1,SYD
+2018,Greater Western Sydney,7,13,8,1,22,114.3,0,1,GWS
+2018,Geelong,8,13,9,0,22,131.6,0,1,GEE
+2018,North Melbourne,9,12,10,0,22,108.9,0,0,NOR
+2018,Port Adelaide,10,12,10,0,22,107.6,0,0,POR
+2018,Essendon,11,12,10,0,22,105.1,0,0,ESS
+2018,Adelaide,12,12,10,0,22,104.1,0,0,ADE
+2018,Western Bulldogs,13,8,14,0,22,77.3,0,0,WBD
+2018,Fremantle,14,8,14,0,22,76.2,0,0,FRE
+2018,Brisbane Lions,15,5,17,0,22,89.1,0,0,BRI
+2018,St Kilda,16,4,17,1,22,75.6,0,0,STK
+2018,Gold Coast,17,4,18,0,22,59.9,0,0,GCS
+2018,Carlton,18,2,20,0,22,59.3,0,0,CAR
+2019,Geelong,1,16,6,0,22,135.7,0,1,GEE
+2019,Brisbane Lions,2,16,6,0,22,118.3,0,1,BRI
+2019,Richmond,3,16,6,0,22,113.7,1,1,RIC
+2019,Collingwood,4,15,7,0,22,117.7,0,1,COL
+2019,West Coast,5,15,7,0,22,112.5,0,1,WCE
+2019,Greater Western Sydney,6,13,9,0,22,115.4,0,1,GWS
+2019,Western Bulldogs,7,12,10,0,22,107.2,0,1,WBD
+2019,Essendon,8,12,10,0,22,95.4,0,1,ESS
+2019,Hawthorn,9,11,11,0,22,108.7,0,0,HAW
+2019,Port Adelaide,10,11,11,0,22,105.4,0,0,POR
+2019,Adelaide,11,10,12,0,22,100.9,0,0,ADE
+2019,North Melbourne,12,10,12,0,22,99.5,0,0,NOR
+2019,Fremantle,13,9,13,0,22,91.9,0,0,FRE
+2019,St Kilda,14,9,13,0,22,83.9,0,0,STK
+2019,Sydney,15,8,14,0,22,97.7,0,0,SYD
+2019,Carlton,16,7,15,0,22,84.5,0,0,CAR
+2019,Melbourne,17,5,17,0,22,78.6,0,0,MEL
+2019,Gold Coast,18,3,19,0,22,60.5,0,0,GCS
+2020,Port Adelaide,1,14,3,0,17,136.4,0,1,POR
+2020,Brisbane Lions,2,14,3,0,17,124.9,0,1,BRI
+2020,Richmond,3,12,4,1,17,129.9,1,1,RIC
+2020,Geelong,4,12,5,0,17,136.8,0,1,GEE
+2020,West Coast,5,12,5,0,17,117.0,0,1,WCE
+2020,St Kilda,6,10,7,0,17,116.2,0,1,STK
+2020,Western Bulldogs,7,10,7,0,17,106.7,0,1,WBD
+2020,Collingwood,8,9,7,1,17,109.5,0,1,COL
+2020,Melbourne,9,9,8,0,17,107.8,0,0,MEL
+2020,Greater Western Sydney,10,8,9,0,17,95.6,0,0,GWS
+2020,Carlton,11,7,10,0,17,94.3,0,0,CAR
+2020,Fremantle,12,7,10,0,17,93.7,0,0,FRE
+2020,Essendon,13,6,10,1,17,79.2,0,0,ESS
+2020,Gold Coast,14,5,11,1,17,90.6,0,0,GCS
+2020,Hawthorn,15,5,12,0,17,84.1,0,0,HAW
+2020,Sydney,16,5,12,0,17,82.6,0,0,SYD
+2020,North Melbourne,17,3,14,0,17,71.2,0,0,NOR
+2020,Adelaide,18,3,14,0,17,64.4,0,0,ADE
+2021,Melbourne,1,17,4,1,22,130.8,1,1,MEL
+2021,Port Adelaide,2,17,5,0,22,126.3,0,1,POR
+2021,Geelong,3,16,6,0,22,126.7,0,1,GEE
+2021,Brisbane Lions,4,15,7,0,22,133.3,0,1,BRI
+2021,Western Bulldogs,5,15,7,0,22,132.8,0,1,WBD
+2021,Sydney,6,15,7,0,22,119.9,0,1,SYD
+2021,Greater Western Sydney,7,11,10,1,22,99.7,0,1,GWS
+2021,Essendon,8,11,11,0,22,109.1,0,1,ESS
+2021,West Coast,9,10,12,0,22,93.2,0,0,WCE
+2021,St Kilda,10,10,12,0,22,91.5,0,0,STK
+2021,Fremantle,11,10,12,0,22,86.5,0,0,FRE
+2021,Richmond,12,9,12,1,22,97.9,0,0,RIC
+2021,Carlton,13,8,14,0,22,88.5,0,0,CAR
+2021,Hawthorn,14,7,13,2,22,85.2,0,0,HAW
+2021,Adelaide,15,7,15,0,22,82.0,0,0,ADE
+2021,Gold Coast,16,7,15,0,22,76.8,0,0,GCS
+2021,Collingwood,17,6,16,0,22,85.6,0,0,COL
+2021,North Melbourne,18,4,17,1,22,70.3,0,0,NOR
+2022,Geelong,1,18,4,0,22,144.2,1,1,GEE
+2022,Melbourne,2,16,6,0,22,130.5,0,1,MEL
+2022,Sydney,3,16,6,0,22,127.9,0,1,SYD
+2022,Collingwood,4,16,6,0,22,104.3,0,1,COL
+2022,Fremantle,5,15,6,1,22,117.0,0,1,FRE
+2022,Brisbane Lions,6,15,7,0,22,119.3,0,1,BRI
+2022,Richmond,7,13,8,1,22,121.6,0,1,RIC
+2022,Western Bulldogs,8,12,10,0,22,108.9,0,1,WBD
+2022,Carlton,9,12,10,0,22,108.3,0,0,CAR
+2022,St Kilda,10,11,11,0,22,99.3,0,0,STK
+2022,Port Adelaide,11,10,12,0,22,110.3,0,0,POR
+2022,Gold Coast,12,10,12,0,22,102.8,0,0,GCS
+2022,Hawthorn,13,8,14,0,22,89.8,0,0,HAW
+2022,Adelaide,14,8,14,0,22,86.7,0,0,ADE
+2022,Essendon,15,7,15,0,22,83.2,0,0,ESS
+2022,Greater Western Sydney,16,6,16,0,22,84.6,0,0,GWS
+2022,West Coast,17,2,20,0,22,59.8,0,0,WCE
+2022,North Melbourne,18,2,20,0,22,55.8,0,0,NOR
+2023,Collingwood,1,18,5,0,23,127.0,1,1,COL
+2023,Brisbane Lions,2,17,6,0,23,123.1,0,1,BRI
+2023,Port Adelaide,3,17,6,0,23,112.7,0,1,POR
+2023,Melbourne,4,16,7,0,23,125.2,0,1,MEL
+2023,Carlton,5,13,9,1,23,113.3,0,1,CAR
+2023,St Kilda,6,13,10,0,23,107.8,0,1,STK
+2023,Greater Western Sydney,7,13,10,0,23,107.1,0,1,GWS
+2023,Sydney,8,12,10,1,23,110.0,0,1,SYD
+2023,Western Bulldogs,9,12,11,0,23,108.7,0,0,WBD
+2023,Adelaide,10,11,12,0,23,116.8,0,0,ADE
+2023,Essendon,11,11,12,0,23,89.7,0,0,ESS
+2023,Geelong,12,10,12,1,23,112.6,0,0,GEE
+2023,Richmond,13,10,12,1,23,93.6,0,0,RIC
+2023,Fremantle,14,10,13,0,23,96.7,0,0,FRE
+2023,Gold Coast,15,9,14,0,23,91.7,0,0,GCS
+2023,Hawthorn,16,7,16,0,23,80.2,0,0,HAW
+2023,North Melbourne,17,3,20,0,23,71.5,0,0,NOR
+2023,West Coast,18,3,20,0,23,53.0,0,0,WCE
+2024,Sydney,1,17,6,0,23,126.7,0,1,SYD
+2024,Port Adelaide,2,16,7,0,23,114.8,0,1,POR
+2024,Geelong,3,15,8,0,23,112.2,0,1,GEE
+2024,Greater Western Sydney,4,15,8,0,23,109.1,0,1,GWS
+2024,Brisbane Lions,5,14,8,1,23,121.9,1,1,BRI
+2024,Western Bulldogs,6,14,9,0,23,125.1,0,1,WBD
+2024,Hawthorn,7,14,9,0,23,118.5,0,1,HAW
+2024,Carlton,8,13,10,0,23,110.2,0,1,CAR
+2024,Collingwood,9,12,9,2,23,102.5,0,0,COL
+2024,Fremantle,10,12,10,1,23,111.9,0,0,FRE
+2024,Essendon,11,11,11,1,23,93.5,0,0,ESS
+2024,St Kilda,12,11,12,0,23,99.4,0,0,STK
+2024,Gold Coast,13,11,12,0,23,99.1,0,0,GCS
+2024,Melbourne,14,11,12,0,23,98.5,0,0,MEL
+2024,Adelaide,15,8,14,1,23,99.1,0,0,ADE
+2024,West Coast,16,5,18,0,23,68.1,0,0,WCE
+2024,North Melbourne,17,3,20,0,23,63.5,0,0,NOR
+2024,Richmond,18,2,21,0,23,63.7,0,0,RIC
+2025,Adelaide,1,18,5,0,23,139.3,0,1,ADE
+2025,Geelong,2,17,6,0,23,141.5,0,1,GEE
+2025,Brisbane Lions,3,16,6,1,23,114.2,1,1,BRI
+2025,Collingwood,4,16,7,0,23,122.4,0,1,COL
+2025,Greater Western Sydney,5,16,7,0,23,115.3,0,1,GWS
+2025,Fremantle,6,16,7,0,23,109.0,0,1,FRE
+2025,Gold Coast,7,15,8,0,23,124.9,0,1,GCS
+2025,Hawthorn,8,15,8,0,23,120.9,0,1,HAW
+2025,Western Bulldogs,9,14,9,0,23,137.0,0,0,WBD
+2025,Sydney,10,12,11,0,23,97.0,0,0,SYD
+2025,Carlton,11,9,14,0,23,96.7,0,0,CAR
+2025,St Kilda,12,9,14,0,23,88.5,0,0,STK
+2025,Port Adelaide,13,9,14,0,23,79.8,0,0,POR
+2025,Melbourne,14,7,16,0,23,93.3,0,0,MEL
+2025,Essendon,15,6,17,0,23,69.5,0,0,ESS
+2025,North Melbourne,16,5,17,1,23,76.3,0,0,NOR
+2025,Richmond,17,5,18,0,23,66.0,0,0,RIC
+2025,West Coast,18,1,22,0,23,60.1,0,0,WCE
+2026,Fremantle,1,19,4,0,23,137.2,0,1,FRE
+2026,Sydney,2,18,5,0,23,136.1,0,1,SYD
+2026,Brisbane Lions,3,16,7,0,23,121.7,1,1,BRI
+2026,Hawthorn,4,15,6,2,23,120.1,0,1,HAW
+2026,Geelong,5,15,8,0,23,122.3,0,1,GEE
+2026,Adelaide,6,15,8,0,23,117.3,0,1,ADE
+2026,Melbourne,7,15,8,0,23,109.6,0,1,MEL
+2026,Western Bulldogs,8,13,9,1,23,95.4,0,1,WBD
+2026,Collingwood,9,12,9,2,23,102.4,0,1,COL
+2026,Carlton,10,12,10,1,23,101.5,0,1,CAR
+2026,St Kilda,11,10,13,0,23,102.8,0,0,STK
+2026,Greater Western Sydney,12,10,13,0,23,98.9,0,0,GWS
+2026,Gold Coast,13,9,14,0,23,94.5,0,0,GCS
+2026,North Melbourne,14,9,14,0,23,88.8,0,0,NOR
+2026,Port Adelaide,15,7,16,0,23,88.0,0,0,POR
+2026,West Coast,16,4,19,0,23,69.2,0,0,WCE
+2026,Richmond,17,3,20,0,23,62.5,0,0,RIC
+2026,Essendon,18,2,21,0,23,64.6,0,0,ESS
