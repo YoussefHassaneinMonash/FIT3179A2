@@ -25,11 +25,11 @@
       }
     }
   },
-  "spacing": 2,
+  "spacing": 8,
   "bounds": "flush",
   "spec": {
     "width": 560,
-    "height": 30,
+    "height": 36,
     "layer": [
       {
         "transform": [
@@ -82,9 +82,11 @@
             "type": "quantitative",
             "scale": {
               "range": [
-                30,
-                -14
-              ]
+                36,
+                0
+              ],
+              "zero": true,
+              "nice": false
             },
             "axis": null
           }
@@ -121,10 +123,10 @@
                 "type": "quantitative"
               },
               "y": {
-                "value": 2
+                "value": 0
               },
               "y2": {
-                "value": 30
+                "value": 36
               },
               "color": {
                 "field": "key",
