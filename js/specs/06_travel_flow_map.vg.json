@@ -617,7 +617,7 @@
           "encode": {
             "enter": {
               "size": {
-                "value": 45
+                "value": 90
               },
               "fill": {
                 "value": "#fffdf8"
@@ -651,7 +651,7 @@
           "encode": {
             "enter": {
               "size": {
-                "value": 45
+                "value": 90
               },
               "opacity": {
                 "value": 0
