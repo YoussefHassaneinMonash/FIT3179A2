@@ -187,8 +187,10 @@ figcaption {
 /* Everything the reader can click or drag shows a hand cursor */
 a, select, button, input[type="range"], input[type="checkbox"], input[type="radio"],
 .vega-bindings label, .vega-bind label { cursor: pointer; }
-#vis-venue-map svg, #vis-venue-map svg * { cursor: grab; }
-#vis-venue-map svg:active, #vis-venue-map svg:active * { cursor: grabbing; }
+#vis-venue-map svg, #vis-venue-map svg *,
+#vis-flow-map .mark-group.map, #vis-flow-map .mark-group.map * { cursor: grab; }
+#vis-venue-map svg:active, #vis-venue-map svg:active *,
+#vis-flow-map .mark-group.map:active, #vis-flow-map .mark-group.map:active * { cursor: grabbing; }
 
 .callout {
   border-left: 4px solid var(--accent);
@@ -229,4 +231,4 @@ footer li { margin-bottom: 6px; }
 }
 
 #vis-radar { display: flex; flex-direction: column; align-items: center; }
-#vis-radar text, #vis-ridgeline text { paint-order: stroke; }  /* white halo behind small labels drawn over shapes */
+#vis-radar text, #vis-ridgeline text, #vis-flow-map text { paint-order: stroke; }  /* white halo behind small labels drawn over shapes */

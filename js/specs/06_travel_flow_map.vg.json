@@ -1,7 +1,16 @@
 {
-  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Flow map comparing two clubs' travel in a season (lines from home ground to each ground played at; width = games there), beside a bar chart of every club's kilometres travelled that season.",
-  "params": [
+  "$schema": "https://vega.github.io/schema/vega/v5.json",
+  "description": "Zoomable flow map (Vega) comparing two clubs' travel in a season: lines from each club's home ground to every ground it played at (width = games there), beside a bar chart of every club's kilometres travelled that season. Ctrl/Cmd + scroll to zoom the map, drag to pan, double-click to reset.",
+  "width": 880,
+  "height": 500,
+  "padding": {
+    "top": 4,
+    "left": 0,
+    "right": 0,
+    "bottom": 0
+  },
+  "autosize": "none",
+  "signals": [
     {
       "name": "clubA",
       "value": "West Coast",
@@ -90,301 +99,805 @@
         "step": 1,
         "name": "Season "
       }
-    }
-  ],
-  "hconcat": [
+    },
     {
-      "width": 540,
-      "height": 500,
-      "projection": {
-        "type": "conicEqualArea",
-        "parallels": [
-          -18,
-          -36
-        ],
-        "rotate": [
-          -132,
-          0
-        ]
-      },
-      "layer": [
+      "name": "mapW",
+      "value": 520
+    },
+    {
+      "name": "mapH",
+      "update": "height"
+    },
+    {
+      "name": "barsX",
+      "value": 660
+    },
+    {
+      "name": "barsW",
+      "value": 220
+    },
+    {
+      "name": "barsH",
+      "update": "height - 64"
+    },
+    {
+      "name": "baseScale",
+      "update": "0.92 * min(mapW / 0.692, mapH / 0.603)"
+    },
+    {
+      "name": "homeTx",
+      "update": "mapW / 2 - baseScale * 0.0503"
+    },
+    {
+      "name": "homeTy",
+      "update": "mapH / 2 - baseScale * 0.9261"
+    },
+    {
+      "name": "wheel",
+      "value": 1,
+      "on": [
         {
-          "data": {
-            "url": "data/aus_states.topo.json",
-            "format": {
-              "type": "topojson",
-              "feature": "states"
-            }
+          "events": {
+            "type": "wheel",
+            "consume": true,
+            "filter": "event.ctrlKey || event.metaKey"
           },
-          "mark": {
-            "type": "geoshape",
-            "fill": "#ebe7dd",
-            "stroke": "#fffdf8",
-            "strokeWidth": 1.5
-          }
+          "update": "x() <= mapW ? pow(1.0018, -event.deltaY * pow(16, event.deltaMode)) : 1"
+        }
+      ]
+    },
+    {
+      "name": "anchor",
+      "value": [
+        0,
+        0
+      ],
+      "on": [
+        {
+          "events": {
+            "type": "wheel",
+            "filter": "event.ctrlKey || event.metaKey"
+          },
+          "update": "xy()"
+        }
+      ]
+    },
+    {
+      "name": "ratio",
+      "value": 1,
+      "on": [
+        {
+          "events": {
+            "signal": "wheel"
+          },
+          "update": "clamp(zoom * wheel, 1, 60) / zoom"
+        }
+      ]
+    },
+    {
+      "name": "zoom",
+      "value": 1,
+      "on": [
+        {
+          "events": {
+            "signal": "ratio"
+          },
+          "update": "zoom * ratio"
         },
         {
-          "data": {
-            "url": "data/travel_routes.csv"
+          "events": "dblclick",
+          "update": "x() <= mapW ? 1 : zoom"
+        }
+      ]
+    },
+    {
+      "name": "down",
+      "value": null,
+      "on": [
+        {
+          "events": "mousedown",
+          "update": "x() <= mapW ? xy() : null"
+        },
+        {
+          "events": "window:mouseup",
+          "update": "null"
+        }
+      ]
+    },
+    {
+      "name": "startT",
+      "value": [
+        0,
+        0
+      ],
+      "on": [
+        {
+          "events": "mousedown",
+          "update": "[tx, ty]"
+        }
+      ]
+    },
+    {
+      "name": "drag",
+      "value": [
+        0,
+        0
+      ],
+      "on": [
+        {
+          "events": {
+            "source": "window",
+            "type": "mousemove",
+            "consume": true,
+            "between": [
+              {
+                "type": "mousedown"
+              },
+              {
+                "source": "window",
+                "type": "mouseup"
+              }
+            ]
+          },
+          "update": "down ? [x() - down[0], y() - down[1]] : [0, 0]"
+        }
+      ]
+    },
+    {
+      "name": "tx",
+      "init": "homeTx",
+      "on": [
+        {
+          "events": {
+            "signal": "ratio"
+          },
+          "update": "anchor[0] - (anchor[0] - tx) * ratio"
+        },
+        {
+          "events": {
+            "signal": "drag"
+          },
+          "update": "down ? startT[0] + drag[0] : tx"
+        },
+        {
+          "events": "dblclick",
+          "update": "x() <= mapW ? homeTx : tx"
+        }
+      ]
+    },
+    {
+      "name": "ty",
+      "init": "homeTy",
+      "on": [
+        {
+          "events": {
+            "signal": "ratio"
+          },
+          "update": "anchor[1] - (anchor[1] - ty) * ratio"
+        },
+        {
+          "events": {
+            "signal": "drag"
+          },
+          "update": "down ? startT[1] + drag[1] : ty"
+        },
+        {
+          "events": "dblclick",
+          "update": "x() <= mapW ? homeTy : ty"
+        }
+      ]
+    }
+  ],
+  "projections": [
+    {
+      "name": "proj",
+      "type": "conicEqualArea",
+      "parallels": [
+        -18,
+        -36
+      ],
+      "rotate": [
+        -132,
+        0
+      ],
+      "scale": {
+        "signal": "baseScale * zoom"
+      },
+      "translate": [
+        {
+          "signal": "tx"
+        },
+        {
+          "signal": "ty"
+        }
+      ]
+    }
+  ],
+  "data": [
+    {
+      "name": "states",
+      "url": "data/aus_states_detailed.topo.json",
+      "format": {
+        "type": "topojson",
+        "feature": "states"
+      }
+    },
+    {
+      "name": "routes",
+      "url": "data/travel_routes.csv",
+      "format": {
+        "type": "csv",
+        "parse": {
+          "year": "number",
+          "games": "number",
+          "km": "number",
+          "lat": "number",
+          "lon": "number",
+          "home_lat": "number",
+          "home_lon": "number"
+        }
+      },
+      "transform": [
+        {
+          "type": "filter",
+          "expr": "(datum.team === clubA || datum.team === clubB) && datum.year == season && datum.state != 'NZ' && datum.state != 'CHN'"
+        },
+        {
+          "type": "formula",
+          "as": "which",
+          "expr": "datum.team === clubA ? 'Club 1' : 'Club 2'"
+        },
+        {
+          "type": "geopoint",
+          "projection": "proj",
+          "fields": [
+            "lon",
+            "lat"
+          ],
+          "as": [
+            "x",
+            "y"
+          ]
+        },
+        {
+          "type": "geopoint",
+          "projection": "proj",
+          "fields": [
+            "home_lon",
+            "home_lat"
+          ],
+          "as": [
+            "hx",
+            "hy"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "venues",
+      "source": "routes",
+      "transform": [
+        {
+          "type": "aggregate",
+          "groupby": [
+            "venue",
+            "x",
+            "y"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "season_km",
+      "url": "data/travel_season.csv",
+      "format": {
+        "type": "csv",
+        "parse": {
+          "year": "number",
+          "km_travelled": "number"
+        }
+      },
+      "transform": [
+        {
+          "type": "filter",
+          "expr": "datum.year == season"
+        },
+        {
+          "type": "formula",
+          "as": "thousand_km",
+          "expr": "datum.km_travelled / 1000"
+        },
+        {
+          "type": "formula",
+          "as": "name",
+          "expr": "replace(datum.team, 'Greater Western Sydney', 'GWS Giants')"
+        }
+      ]
+    },
+    {
+      "name": "km_labels",
+      "source": "season_km",
+      "transform": [
+        {
+          "type": "filter",
+          "expr": "datum.team === clubA || datum.team === clubB"
+        },
+        {
+          "type": "formula",
+          "as": "which",
+          "expr": "datum.team === clubA ? 'Club 1' : 'Club 2'"
+        },
+        {
+          "type": "formula",
+          "as": "text",
+          "expr": "datum.name + ': ' + format(datum.km_travelled, ',.0f') + ' km'"
+        }
+      ]
+    }
+  ],
+  "scales": [
+    {
+      "name": "club",
+      "type": "ordinal",
+      "domain": [
+        "Club 1",
+        "Club 2"
+      ],
+      "range": [
+        "#c8102e",
+        "#1c1b19"
+      ]
+    },
+    {
+      "name": "lineWidth",
+      "type": "linear",
+      "domain": [
+        1,
+        12
+      ],
+      "range": [
+        1.5,
+        9
+      ],
+      "clamp": true
+    },
+    {
+      "name": "barY",
+      "type": "band",
+      "domain": {
+        "data": "season_km",
+        "field": "name",
+        "sort": {
+          "op": "max",
+          "field": "km_travelled",
+          "order": "descending"
+        }
+      },
+      "range": [
+        0,
+        {
+          "signal": "barsH"
+        }
+      ],
+      "padding": 0.25
+    },
+    {
+      "name": "barX",
+      "type": "linear",
+      "domain": [
+        0,
+        70
+      ],
+      "range": [
+        0,
+        {
+          "signal": "barsW"
+        }
+      ]
+    }
+  ],
+  "marks": [
+    {
+      "type": "group",
+      "name": "map",
+      "encode": {
+        "update": {
+          "x": {
+            "value": 0
+          },
+          "y": {
+            "value": 0
+          },
+          "width": {
+            "signal": "mapW"
+          },
+          "height": {
+            "signal": "mapH"
+          },
+          "clip": {
+            "value": true
+          },
+          "fill": {
+            "value": "#d9e6ec"
+          },
+          "cornerRadius": {
+            "value": 4
+          }
+        }
+      },
+      "legends": [
+        {
+          "strokeWidth": "lineWidth",
+          "title": "Games at ground",
+          "orient": "bottom-left",
+          "values": [
+            1,
+            4,
+            8,
+            12
+          ],
+          "symbolType": "stroke",
+          "symbolStrokeColor": "#55524b",
+          "fillColor": "#fffdf8",
+          "padding": 8,
+          "cornerRadius": 4,
+          "offset": 12
+        }
+      ],
+      "marks": [
+        {
+          "type": "shape",
+          "from": {
+            "data": "states"
+          },
+          "encode": {
+            "enter": {
+              "fill": {
+                "value": "#ebe7dd"
+              },
+              "stroke": {
+                "value": "#fffdf8"
+              },
+              "strokeWidth": {
+                "value": 1.5
+              }
+            }
           },
           "transform": [
             {
-              "filter": "(datum.team === clubA || datum.team === clubB) && datum.year == season && datum.state != 'NZ' && datum.state != 'CHN'"
-            },
-            {
-              "calculate": "datum.team === clubA ? 'Club 1' : 'Club 2'",
-              "as": "which"
-            }
-          ],
-          "layer": [
-            {
-              "mark": {
-                "type": "rule",
-                "opacity": 0.6,
-                "strokeCap": "round"
-              },
-              "encoding": {
-                "longitude": {
-                  "field": "home_lon",
-                  "type": "quantitative"
-                },
-                "latitude": {
-                  "field": "home_lat",
-                  "type": "quantitative"
-                },
-                "longitude2": {
-                  "field": "lon"
-                },
-                "latitude2": {
-                  "field": "lat"
-                },
-                "color": {
-                  "field": "which",
-                  "type": "nominal",
-                  "scale": {
-                    "domain": [
-                      "Club 1",
-                      "Club 2"
-                    ],
-                    "range": [
-                      "#c8102e",
-                      "#1c1b19"
-                    ]
-                  },
-                  "legend": null
-                },
-                "strokeWidth": {
-                  "field": "games",
-                  "type": "quantitative",
-                  "title": "Games at ground",
-                  "scale": {
-                    "domain": [
-                      1,
-                      12
-                    ],
-                    "range": [
-                      1.5,
-                      9
-                    ]
-                  },
-                  "legend": {
-                    "values": [
-                      1,
-                      4,
-                      8,
-                      12
-                    ],
-                    "orient": "bottom-left",
-                    "symbolStrokeColor": "#55524b"
-                  }
-                }
-              }
-            },
-            {
-              "mark": {
-                "type": "circle",
-                "size": 45,
-                "color": "#fffdf8",
-                "stroke": "#1c1b19",
-                "strokeWidth": 1.5
-              },
-              "encoding": {
-                "longitude": {
-                  "field": "lon",
-                  "type": "quantitative"
-                },
-                "latitude": {
-                  "field": "lat",
-                  "type": "quantitative"
-                },
-                "tooltip": [
-                  {
-                    "field": "team",
-                    "title": "Club"
-                  },
-                  {
-                    "field": "venue",
-                    "title": "Ground"
-                  },
-                  {
-                    "field": "games",
-                    "title": "Games there"
-                  },
-                  {
-                    "field": "km",
-                    "title": "Distance from home (km)",
-                    "format": ",.0f"
-                  }
-                ]
-              }
+              "type": "geoshape",
+              "projection": "proj"
             }
           ]
         },
         {
-          "data": {
-            "url": "data/travel_season.csv"
+          "type": "rule",
+          "from": {
+            "data": "routes"
+          },
+          "encode": {
+            "enter": {
+              "strokeCap": {
+                "value": "round"
+              },
+              "opacity": {
+                "value": 0.6
+              }
+            },
+            "update": {
+              "x": {
+                "field": "hx"
+              },
+              "y": {
+                "field": "hy"
+              },
+              "x2": {
+                "field": "x"
+              },
+              "y2": {
+                "field": "y"
+              },
+              "stroke": {
+                "scale": "club",
+                "field": "which"
+              },
+              "strokeWidth": {
+                "scale": "lineWidth",
+                "field": "games"
+              }
+            }
+          }
+        },
+        {
+          "type": "symbol",
+          "name": "grounds",
+          "from": {
+            "data": "routes"
+          },
+          "encode": {
+            "enter": {
+              "size": {
+                "value": 45
+              },
+              "fill": {
+                "value": "#fffdf8"
+              },
+              "stroke": {
+                "value": "#1c1b19"
+              },
+              "strokeWidth": {
+                "value": 1.5
+              }
+            },
+            "update": {
+              "x": {
+                "field": "x"
+              },
+              "y": {
+                "field": "y"
+              },
+              "tooltip": {
+                "signal": "{'Club': datum.team, 'Ground': datum.venue, 'Games there': datum.games, 'Distance from home (km)': format(datum.km, ',.0f')}"
+              }
+            }
+          }
+        },
+        {
+          "type": "symbol",
+          "name": "venueAnchors",
+          "from": {
+            "data": "venues"
+          },
+          "encode": {
+            "enter": {
+              "size": {
+                "value": 45
+              },
+              "opacity": {
+                "value": 0
+              }
+            },
+            "update": {
+              "x": {
+                "field": "x"
+              },
+              "y": {
+                "field": "y"
+              }
+            }
+          }
+        },
+        {
+          "type": "text",
+          "from": {
+            "data": "venueAnchors"
+          },
+          "encode": {
+            "enter": {
+              "font": {
+                "value": "'Source Sans 3', sans-serif"
+              },
+              "fontSize": {
+                "value": 12
+              },
+              "fill": {
+                "value": "#1c1b19"
+              },
+              "stroke": {
+                "value": "#fffdf8"
+              },
+              "strokeWidth": {
+                "value": 3
+              }
+            },
+            "update": {
+              "x": {
+                "field": "x"
+              },
+              "y": {
+                "field": "y"
+              },
+              "text": {
+                "field": "datum.venue"
+              }
+            }
           },
           "transform": [
             {
-              "filter": "(datum.team === clubA || datum.team === clubB) && datum.year == season"
-            },
-            {
-              "calculate": "datum.team === clubA ? 'Club 1' : 'Club 2'",
-              "as": "which"
-            },
-            {
-              "calculate": "replace(datum.team, 'Greater Western Sydney', 'GWS Giants') + ': ' + format(datum.km_travelled, ',.0f') + ' km'",
-              "as": "label"
-            },
-            {
-              "calculate": "datum.which == 'Club 1' ? -11.2 : -13.4",
-              "as": "label_lat"
-            }
-          ],
-          "mark": {
-            "type": "text",
-            "align": "left",
-            "fontSize": 16,
-            "fontWeight": 600
-          },
-          "encoding": {
-            "longitude": {
-              "datum": 112.5
-            },
-            "latitude": {
-              "field": "label_lat",
-              "type": "quantitative"
-            },
-            "text": {
-              "field": "label"
-            },
-            "color": {
-              "field": "which",
-              "type": "nominal",
-              "scale": {
-                "domain": [
-                  "Club 1",
-                  "Club 2"
-                ],
-                "range": [
-                  "#c8102e",
-                  "#1c1b19"
-                ]
+              "type": "label",
+              "size": {
+                "signal": "[mapW, mapH]"
               },
-              "legend": null
+              "avoidMarks": [
+                "grounds"
+              ],
+              "anchor": [
+                "right",
+                "left",
+                "top",
+                "bottom",
+                "top-right",
+                "bottom-right",
+                "top-left",
+                "bottom-left"
+              ],
+              "offset": [
+                4
+              ]
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "from": {
+            "data": "km_labels"
+          },
+          "encode": {
+            "update": {
+              "x": {
+                "value": 14
+              },
+              "y": {
+                "signal": "datum.which == 'Club 1' ? 26 : 48"
+              },
+              "text": {
+                "field": "text"
+              },
+              "fill": {
+                "scale": "club",
+                "field": "which"
+              },
+              "font": {
+                "value": "'Source Sans 3', sans-serif"
+              },
+              "fontSize": {
+                "value": 16
+              },
+              "fontWeight": {
+                "value": 600
+              }
+            }
+          }
+        },
+        {
+          "type": "text",
+          "encode": {
+            "update": {
+              "x": {
+                "signal": "mapW - 10"
+              },
+              "y": {
+                "signal": "mapH - 10"
+              },
+              "align": {
+                "value": "right"
+              },
+              "text": {
+                "signal": "zoom > 1.01 ? 'Zoom ×' + format(zoom, '.1f') + ' · double-click to reset' : 'Hold Ctrl (⌘ on Mac) and scroll to zoom · drag to move'"
+              },
+              "font": {
+                "value": "'Source Sans 3', sans-serif"
+              },
+              "fontSize": {
+                "value": 12
+              },
+              "fill": {
+                "value": "#55524b"
+              }
             }
           }
         }
-      ],
-      "view": {
-        "fill": "#d9e6ec",
-        "stroke": null,
-        "cornerRadius": 4
-      }
+      ]
     },
     {
-      "width": 230,
-      "height": 500,
+      "type": "group",
+      "name": "bars",
+      "encode": {
+        "update": {
+          "x": {
+            "signal": "barsX"
+          },
+          "y": {
+            "value": 22
+          },
+          "width": {
+            "signal": "barsW"
+          },
+          "height": {
+            "signal": "barsH"
+          }
+        }
+      },
       "title": {
         "text": "Every club, same season",
-        "fontSize": 15
+        "anchor": "start",
+        "offset": 6,
+        "frame": "group",
+        "font": "'Barlow Condensed', sans-serif",
+        "fontSize": 15,
+        "fontWeight": 600,
+        "color": "#1c1b19",
+        "dx": -130
       },
-      "data": {
-        "url": "data/travel_season.csv"
-      },
-      "transform": [
+      "axes": [
         {
-          "filter": "datum.year == season"
+          "scale": "barY",
+          "orient": "left",
+          "domain": false,
+          "ticks": false,
+          "labelPadding": 4,
+          "labelFont": "'Source Sans 3', sans-serif",
+          "labelFontSize": 13,
+          "labelColor": "#55524b"
         },
         {
-          "calculate": "datum.km_travelled / 1000",
-          "as": "thousand_km"
+          "scale": "barX",
+          "orient": "bottom",
+          "values": [
+            0,
+            20,
+            40,
+            60
+          ],
+          "grid": true,
+          "gridDash": [
+            2,
+            3
+          ],
+          "gridColor": "#e6e2d8",
+          "domain": false,
+          "tickColor": "#bdb8ab",
+          "title": "Thousand km travelled",
+          "labelFont": "'Source Sans 3', sans-serif",
+          "labelFontSize": 13,
+          "labelColor": "#55524b",
+          "titleFont": "'Source Sans 3', sans-serif",
+          "titleFontSize": 13,
+          "titleFontWeight": 600,
+          "titleColor": "#55524b"
         }
       ],
-      "mark": {
-        "type": "bar",
-        "cornerRadiusEnd": 2,
-        "height": {
-          "band": 0.75
-        }
-      },
-      "encoding": {
-        "y": {
-          "field": "team",
-          "type": "nominal",
-          "title": null,
-          "sort": "-x",
-          "axis": {
-            "domain": false,
-            "ticks": false,
-            "labelPadding": 4,
-            "labelExpr": "datum.label == 'Greater Western Sydney' ? 'GWS Giants' : datum.label"
-          }
-        },
-        "x": {
-          "field": "thousand_km",
-          "type": "quantitative",
-          "title": "Thousand km travelled",
-          "axis": {
-            "values": [
-              0,
-              20,
-              40,
-              60
-            ],
-            "gridDash": [
-              2,
-              3
-            ],
-            "domain": false
-          }
-        },
-        "color": {
-          "condition": [
-            {
-              "test": "datum.team === clubA",
-              "value": "#c8102e"
-            },
-            {
-              "test": "datum.team === clubB",
-              "value": "#1c1b19"
-            }
-          ],
-          "value": "#cfcabe"
-        },
-        "tooltip": [
-          {
-            "field": "team",
-            "title": "Club"
+      "marks": [
+        {
+          "type": "rect",
+          "from": {
+            "data": "season_km"
           },
-          {
-            "field": "km_travelled",
-            "title": "Km travelled",
-            "format": ",.0f"
+          "encode": {
+            "enter": {
+              "cornerRadiusTopRight": {
+                "value": 2
+              },
+              "cornerRadiusBottomRight": {
+                "value": 2
+              }
+            },
+            "update": {
+              "x": {
+                "value": 0
+              },
+              "x2": {
+                "scale": "barX",
+                "field": "thousand_km"
+              },
+              "y": {
+                "scale": "barY",
+                "field": "name"
+              },
+              "height": {
+                "scale": "barY",
+                "band": 1
+              },
+              "fill": {
+                "signal": "datum.team === clubA ? '#c8102e' : (datum.team === clubB ? '#1c1b19' : '#cfcabe')"
+              },
+              "tooltip": {
+                "signal": "{'Club': datum.team, 'Km travelled': format(datum.km_travelled, ',.0f')}"
+              }
+            }
           }
-        ]
-      }
+        }
+      ]
     }
-  ],
-  "spacing": 30
+  ]
 }
