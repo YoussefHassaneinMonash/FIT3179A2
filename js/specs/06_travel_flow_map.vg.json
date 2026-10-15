@@ -286,6 +286,53 @@
           "update": "x() <= mapW ? homeTy : ty"
         }
       ]
+    },
+    {
+      "name": "overMap",
+      "value": false,
+      "on": [
+        {
+          "events": "mousemove",
+          "update": "x() <= mapW && y() <= mapH"
+        },
+        {
+          "events": "mouseout",
+          "update": "false"
+        }
+      ]
+    },
+    {
+      "name": "ctrlHeld",
+      "value": false,
+      "on": [
+        {
+          "events": {
+            "source": "window",
+            "type": "keydown",
+            "filter": "event.key == 'Control' || event.key == 'Meta'"
+          },
+          "update": "true"
+        },
+        {
+          "events": {
+            "source": "window",
+            "type": "keyup"
+          },
+          "update": "false"
+        },
+        {
+          "events": {
+            "source": "window",
+            "type": "blur"
+          },
+          "update": "false"
+        }
+      ]
+    },
+    {
+      "name": "cursor",
+      "description": "Vega's built-in cursor signal: a normal arrow, a closed hand while dragging the map, and a zoom cursor while Ctrl/⌘ is held over the map.",
+      "update": "down ? 'grabbing' : (overMap && ctrlHeld ? 'zoom-in' : 'default')"
     }
   ],
   "projections": [
