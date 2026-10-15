@@ -184,6 +184,9 @@ figcaption {
 .vega-bind-name { font-weight: 600; margin-right: 6px; }
 .vega-bindings select, .vega-bindings input { font: inherit; }
 
+/* Labels drawn on top of marks must not block the hover tooltips of the marks underneath */
+.vis .mark-text { pointer-events: none; }
+
 /* Everything the reader can click or drag shows a hand cursor */
 a, select, button, input[type="range"], input[type="checkbox"], input[type="radio"],
 .vega-bindings label, .vega-bind label { cursor: pointer; }

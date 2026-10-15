@@ -512,7 +512,8 @@
             4
           ]
         }
-      ]
+      ],
+      "interactive": false
     },
     {
       "type": "text",
@@ -543,7 +544,8 @@
             "value": "#c8102e"
           }
         }
-      }
+      },
+      "interactive": false
     },
     {
       "type": "text",
@@ -574,7 +576,8 @@
             "value": "#c8102e"
           }
         }
-      }
+      },
+      "interactive": false
     },
     {
       "type": "text",
@@ -602,7 +605,8 @@
             "value": "#8a867c"
           }
         }
-      }
+      },
+      "interactive": false
     }
   ]
 }

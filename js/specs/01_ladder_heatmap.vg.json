@@ -22,6 +22,10 @@
     {
       "calculate": "datum.rank <= 4 ? '1st–4th' : (datum.rank <= 8 ? '5th–8th' : (datum.rank <= 12 ? '9th–12th' : '13th–18th'))",
       "as": "band"
+    },
+    {
+      "calculate": "datum.premier == 1 ? 'Yes ★' : 'No'",
+      "as": "premier_label"
     }
   ],
   "encoding": {
@@ -112,6 +116,10 @@
           {
             "field": "percentage",
             "title": "Percentage"
+          },
+          {
+            "field": "premier_label",
+            "title": "Premier"
           }
         ]
       }
