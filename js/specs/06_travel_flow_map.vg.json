@@ -41,7 +41,7 @@
     },
     {
       "name": "clubB",
-      "value": "Collingwood",
+      "value": "",
       "bind": {
         "input": "select",
         "name": "Club 2 (black) ",
