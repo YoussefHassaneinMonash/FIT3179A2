@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Line chart: average AFL crowd per game each season, with the COVID-19 seasons annotated.",
+  "description": "Line chart: average AFL crowd per game each season (total crowd ÷ all games played, including games with no crowd), with the COVID-19 seasons annotated.",
   "width": "container",
   "height": 420,
   "layer": [
@@ -12,9 +12,9 @@
         {
           "mark": {
             "type": "line",
-            "color": "#c8102e",
+            "color": "#1c1b19",
             "strokeWidth": 2.5,
-            "interpolate": "monotone"
+            "interpolate": "linear"
           },
           "encoding": {
             "x": {
@@ -22,9 +22,10 @@
               "type": "ordinal",
               "title": null,
               "axis": {
-                "labelAngle": -45,
+                "labelAngle": 0,
                 "domain": false,
-                "ticks": false
+                "ticks": false,
+                "labelExpr": "toNumber(datum.value) % 2 == 0 ? datum.label : ''"
               }
             },
             "y": {
@@ -54,7 +55,7 @@
             "type": "point",
             "filled": true,
             "size": 60,
-            "color": "#c8102e",
+            "color": "#1c1b19",
             "stroke": "#fffdf8",
             "strokeWidth": 1.5,
             "opacity": 1
@@ -90,6 +91,12 @@
             ]
           }
         }
+      ],
+      "transform": [
+        {
+          "calculate": "round(datum.total_crowd / datum.games)",
+          "as": "avg_crowd"
+        }
       ]
     },
     {
@@ -101,10 +108,11 @@
         "align": "left",
         "dx": 10,
         "dy": 2,
-        "fontSize": 12,
-        "fontWeight": 600,
-        "color": "#1c1b19",
-        "lineHeight": 15
+        "fontSize": 13,
+        "fontWeight": 400,
+        "color": "#c8102e",
+        "lineHeight": 15,
+        "fontStyle": "italic"
       },
       "encoding": {
         "x": {
@@ -120,6 +128,10 @@
         }
       },
       "transform": [
+        {
+          "calculate": "round(datum.total_crowd / datum.games)",
+          "as": "avg_crowd"
+        },
         {
           "filter": "datum.year == 2020"
         },
@@ -138,9 +150,10 @@
         "align": "right",
         "dx": 4,
         "dy": 24,
-        "fontSize": 12,
-        "fontWeight": 600,
-        "color": "#1c1b19"
+        "fontSize": 13,
+        "fontWeight": 400,
+        "color": "#c8102e",
+        "fontStyle": "italic"
       },
       "encoding": {
         "x": {
@@ -156,6 +169,10 @@
         }
       },
       "transform": [
+        {
+          "calculate": "round(datum.total_crowd / datum.games)",
+          "as": "avg_crowd"
+        },
         {
           "filter": "datum.year == 2026"
         },

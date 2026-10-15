@@ -1,85 +1,368 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Flow map: lines from a club's home ground to every ground it played at in a season. Line width = number of games there.",
-  "width": "container",
-  "height": 520,
+  "description": "Flow map comparing two clubs' travel in a season (lines from home ground to each ground played at; width = games there), beside a bar chart of every club's kilometres travelled that season.",
   "params": [
     {
-      "name": "club",
+      "name": "clubA",
       "value": "West Coast",
       "bind": {
         "input": "select",
-        "name": "Club ",
+        "name": "Club 1 (red) ",
         "options": [
-          "Adelaide", "Brisbane Lions", "Carlton", "Collingwood", "Essendon", "Fremantle",
-          "Geelong", "Gold Coast", "Greater Western Sydney", "Hawthorn", "Melbourne",
-          "North Melbourne", "Port Adelaide", "Richmond", "St Kilda", "Sydney",
-          "West Coast", "Western Bulldogs"
+          "Adelaide",
+          "Brisbane Lions",
+          "Carlton",
+          "Collingwood",
+          "Essendon",
+          "Fremantle",
+          "Geelong",
+          "Gold Coast",
+          "Greater Western Sydney",
+          "Hawthorn",
+          "Melbourne",
+          "North Melbourne",
+          "Port Adelaide",
+          "Richmond",
+          "St Kilda",
+          "Sydney",
+          "West Coast",
+          "Western Bulldogs"
+        ]
+      }
+    },
+    {
+      "name": "clubB",
+      "value": "Collingwood",
+      "bind": {
+        "input": "select",
+        "name": "Club 2 (black) ",
+        "options": [
+          "Adelaide",
+          "Brisbane Lions",
+          "Carlton",
+          "Collingwood",
+          "Essendon",
+          "Fremantle",
+          "Geelong",
+          "Gold Coast",
+          "Greater Western Sydney",
+          "Hawthorn",
+          "Melbourne",
+          "North Melbourne",
+          "Port Adelaide",
+          "Richmond",
+          "St Kilda",
+          "Sydney",
+          "West Coast",
+          "Western Bulldogs"
         ]
       }
     },
     {
       "name": "season",
       "value": 2026,
-      "bind": {"input": "range", "min": 2012, "max": 2026, "step": 1, "name": "Season "}
+      "bind": {
+        "input": "range",
+        "min": 2012,
+        "max": 2026,
+        "step": 1,
+        "name": "Season "
+      }
     }
   ],
-  "projection": {"type": "conicEqualArea", "parallels": [-18, -36], "rotate": [-132, 0]},
-  "layer": [
+  "hconcat": [
     {
-      "data": {"url": "data/aus_states.topo.json", "format": {"type": "topojson", "feature": "states"}},
-      "mark": {"type": "geoshape", "fill": "#ebe7dd", "stroke": "#fffdf8", "strokeWidth": 1.5}
-    },
-    {
-      "data": {"url": "data/travel_routes.csv"},
-      "transform": [
-        {"filter": "datum.team === club && datum.year == season && datum.state != 'NZ' && datum.state != 'CHN'"},
-        {"lookup": "team", "from": {"data": {"url": "data/teams.csv"}, "key": "team", "fields": ["colour"]}}
-      ],
+      "width": 540,
+      "height": 500,
+      "projection": {
+        "type": "conicEqualArea",
+        "parallels": [
+          -18,
+          -36
+        ],
+        "rotate": [
+          -132,
+          0
+        ]
+      },
       "layer": [
         {
-          "mark": {"type": "rule", "opacity": 0.75, "strokeCap": "round"},
-          "encoding": {
-            "longitude": {"field": "home_lon", "type": "quantitative"},
-            "latitude": {"field": "home_lat", "type": "quantitative"},
-            "longitude2": {"field": "lon"},
-            "latitude2": {"field": "lat"},
-            "color": {"field": "colour", "type": "nominal", "scale": null},
-            "strokeWidth": {
-              "field": "games",
-              "type": "quantitative",
-              "title": "Games at ground",
-              "scale": {"domain": [1, 12], "range": [1.5, 9]},
-              "legend": {"values": [1, 4, 8, 12], "orient": "bottom-left"}
+          "data": {
+            "url": "data/aus_states.topo.json",
+            "format": {
+              "type": "topojson",
+              "feature": "states"
             }
+          },
+          "mark": {
+            "type": "geoshape",
+            "fill": "#ebe7dd",
+            "stroke": "#fffdf8",
+            "strokeWidth": 1.5
           }
         },
         {
-          "mark": {"type": "circle", "size": 60, "color": "#1c1b19", "stroke": "#fffdf8", "strokeWidth": 1},
+          "data": {
+            "url": "data/travel_routes.csv"
+          },
+          "transform": [
+            {
+              "filter": "(datum.team === clubA || datum.team === clubB) && datum.year == season && datum.state != 'NZ' && datum.state != 'CHN'"
+            },
+            {
+              "calculate": "datum.team === clubA ? 'Club 1' : 'Club 2'",
+              "as": "which"
+            }
+          ],
+          "layer": [
+            {
+              "mark": {
+                "type": "rule",
+                "opacity": 0.6,
+                "strokeCap": "round"
+              },
+              "encoding": {
+                "longitude": {
+                  "field": "home_lon",
+                  "type": "quantitative"
+                },
+                "latitude": {
+                  "field": "home_lat",
+                  "type": "quantitative"
+                },
+                "longitude2": {
+                  "field": "lon"
+                },
+                "latitude2": {
+                  "field": "lat"
+                },
+                "color": {
+                  "field": "which",
+                  "type": "nominal",
+                  "scale": {
+                    "domain": [
+                      "Club 1",
+                      "Club 2"
+                    ],
+                    "range": [
+                      "#c8102e",
+                      "#1c1b19"
+                    ]
+                  },
+                  "legend": null
+                },
+                "strokeWidth": {
+                  "field": "games",
+                  "type": "quantitative",
+                  "title": "Games at ground",
+                  "scale": {
+                    "domain": [
+                      1,
+                      12
+                    ],
+                    "range": [
+                      1.5,
+                      9
+                    ]
+                  },
+                  "legend": {
+                    "values": [
+                      1,
+                      4,
+                      8,
+                      12
+                    ],
+                    "orient": "bottom-left",
+                    "symbolStrokeColor": "#55524b"
+                  }
+                }
+              }
+            },
+            {
+              "mark": {
+                "type": "circle",
+                "size": 45,
+                "color": "#fffdf8",
+                "stroke": "#1c1b19",
+                "strokeWidth": 1.5
+              },
+              "encoding": {
+                "longitude": {
+                  "field": "lon",
+                  "type": "quantitative"
+                },
+                "latitude": {
+                  "field": "lat",
+                  "type": "quantitative"
+                },
+                "tooltip": [
+                  {
+                    "field": "team",
+                    "title": "Club"
+                  },
+                  {
+                    "field": "venue",
+                    "title": "Ground"
+                  },
+                  {
+                    "field": "games",
+                    "title": "Games there"
+                  },
+                  {
+                    "field": "km",
+                    "title": "Distance from home (km)",
+                    "format": ",.0f"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "data": {
+            "url": "data/travel_season.csv"
+          },
+          "transform": [
+            {
+              "filter": "(datum.team === clubA || datum.team === clubB) && datum.year == season"
+            },
+            {
+              "calculate": "datum.team === clubA ? 'Club 1' : 'Club 2'",
+              "as": "which"
+            },
+            {
+              "calculate": "replace(datum.team, 'Greater Western Sydney', 'GWS Giants') + ': ' + format(datum.km_travelled, ',.0f') + ' km'",
+              "as": "label"
+            },
+            {
+              "calculate": "datum.which == 'Club 1' ? -11.2 : -13.4",
+              "as": "label_lat"
+            }
+          ],
+          "mark": {
+            "type": "text",
+            "align": "left",
+            "fontSize": 16,
+            "fontWeight": 600
+          },
           "encoding": {
-            "longitude": {"field": "lon", "type": "quantitative"},
-            "latitude": {"field": "lat", "type": "quantitative"},
-            "tooltip": [
-              {"field": "venue", "title": "Ground"},
-              {"field": "games", "title": "Games there"},
-              {"field": "km", "title": "Distance from home (km)", "format": ","}
-            ]
+            "longitude": {
+              "datum": 112.5
+            },
+            "latitude": {
+              "field": "label_lat",
+              "type": "quantitative"
+            },
+            "text": {
+              "field": "label"
+            },
+            "color": {
+              "field": "which",
+              "type": "nominal",
+              "scale": {
+                "domain": [
+                  "Club 1",
+                  "Club 2"
+                ],
+                "range": [
+                  "#c8102e",
+                  "#1c1b19"
+                ]
+              },
+              "legend": null
+            }
           }
         }
-      ]
+      ],
+      "view": {
+        "fill": "#d9e6ec",
+        "stroke": null,
+        "cornerRadius": 4
+      }
     },
     {
-      "data": {"url": "data/travel_season.csv"},
+      "width": 230,
+      "height": 500,
+      "title": {
+        "text": "Every club, same season",
+        "fontSize": 15
+      },
+      "data": {
+        "url": "data/travel_season.csv"
+      },
       "transform": [
-        {"filter": "datum.team === club && datum.year == season"},
-        {"calculate": "club + ', ' + season + ': ' + format(datum.km_travelled, ',') + ' km travelled'", "as": "label"}
+        {
+          "filter": "datum.year == season"
+        },
+        {
+          "calculate": "datum.km_travelled / 1000",
+          "as": "thousand_km"
+        }
       ],
-      "mark": {"type": "text", "align": "left", "fontSize": 16, "fontWeight": 600, "color": "#1c1b19"},
+      "mark": {
+        "type": "bar",
+        "cornerRadiusEnd": 2,
+        "height": {
+          "band": 0.75
+        }
+      },
       "encoding": {
-        "longitude": {"datum": 113.5},
-        "latitude": {"datum": -11.5},
-        "text": {"field": "label"}
+        "y": {
+          "field": "team",
+          "type": "nominal",
+          "title": null,
+          "sort": "-x",
+          "axis": {
+            "domain": false,
+            "ticks": false,
+            "labelPadding": 4,
+            "labelExpr": "datum.label == 'Greater Western Sydney' ? 'GWS Giants' : datum.label"
+          }
+        },
+        "x": {
+          "field": "thousand_km",
+          "type": "quantitative",
+          "title": "Thousand km travelled",
+          "axis": {
+            "values": [
+              0,
+              20,
+              40,
+              60
+            ],
+            "gridDash": [
+              2,
+              3
+            ],
+            "domain": false
+          }
+        },
+        "color": {
+          "condition": [
+            {
+              "test": "datum.team === clubA",
+              "value": "#c8102e"
+            },
+            {
+              "test": "datum.team === clubB",
+              "value": "#1c1b19"
+            }
+          ],
+          "value": "#cfcabe"
+        },
+        "tooltip": [
+          {
+            "field": "team",
+            "title": "Club"
+          },
+          {
+            "field": "km_travelled",
+            "title": "Km travelled",
+            "format": ",.0f"
+          }
+        ]
       }
     }
-  ]
+  ],
+  "spacing": 30
 }

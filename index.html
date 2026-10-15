@@ -12,9 +12,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 
-  <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega@5.33.1"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.23.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.29.0"></script>
 </head>
 <body>
 
@@ -25,7 +25,7 @@
     <h1>15 Seasons, 18 Clubs: What <em>Really</em> Wins?</h1>
     <p class="deck">
       Since Greater Western Sydney joined in 2012, the AFL has had 18 clubs. Every one of them
-      has played every season since. That makes the last 15 years a fair contest. So who has
+      has played every season since. That makes the last 15 years a fair comparison. So who has
       dominated, does playing at home really help, and what do winning teams do differently?
     </p>
     <p class="byline">By Youssef Hassanein · October 2026</p>
@@ -42,17 +42,36 @@
 <main class="wrap">
 
   <!-- ============ GLOSSARY ============ -->
-  <dl class="glossary" aria-label="Footy terms used on this page">
-    <h2>Footy terms in 30 seconds</h2>
-    <div><dt>Ladder</dt><dd>The league table. Teams are ranked by wins (4 points each, 2 for a draw).</dd></div>
-    <div><dt>Percentage</dt><dd>Points scored ÷ points conceded × 100. It's the tie-breaker when teams have equal wins.</dd></div>
-    <div><dt>Finals</dt><dd>The knockout series after the regular season, played by the top 8 (top 10 since 2026).</dd></div>
+  <section class="glossary-block" aria-label="Footy terms used on this page">
+  <h2>Footy terms in 30 seconds</h2>
+  <dl class="glossary">
+    <div><dt>Ladder</dt><dd>The league table. Teams are ranked by premiership points (4 for a win, 2 for a draw), then by percentage.</dd></div>
+    <div><dt>Percentage</dt><dd>Points scored ÷ points conceded × 100. It's the tie-breaker when teams have equal points.</dd></div>
+    <div><dt>Finals</dt><dd>The end-of-season series for the top 8 (top 10 since 2026). The top four get a second chance if they lose their first final.</dd></div>
     <div><dt>Premiership / flag</dt><dd>Winning the Grand Final, the last game of the season.</dd></div>
     <div><dt>Inside 50</dt><dd>Moving the ball into your attacking zone, the 50-metre arc in front of goal.</dd></div>
     <div><dt>Clearance</dt><dd>Winning the ball out of a stoppage (a bounce or throw-in) and sending it forward.</dd></div>
     <div><dt>Contested possession</dt><dd>Winning the ball while under physical pressure from an opponent.</dd></div>
     <div><dt>Margin</dt><dd>How many points the winning team won by.</dd></div>
+    <div><dt>Home-and-away season</dt><dd>The regular season, before finals. Every game has a home team and an away team.</dd></div>
+    <div><dt>Gather Round</dt><dd>Since 2023, all nine games of one round are played in and around Adelaide.</dd></div>
+    <div><dt>Hub season</dt><dd>2020, when COVID-19 moved about half of all games to Queensland hubs, many with no crowd.</dd></div>
+    <div><dt>Three-peat</dt><dd>Winning three premierships in a row.</dd></div>
   </dl>
+  </section>
+
+  <!-- ============ COLOUR KEY ============ -->
+  <section class="colour-key" aria-label="How colour is used on this page">
+    <h2>How to read the colours</h2>
+    <ul>
+      <li><span class="sw" style="background:#c8102e"></span><span><b>Red</b> is what to look at: the chosen club, the top four, a key note.</span></li>
+      <li><span class="sw" style="background:#cfcabe"></span><span><b>Grey</b> is everything else, for context.</span></li>
+      <li><span class="sw" style="background:#e0a100"></span><span><b>Gold</b> means a premiership (★).</span></li>
+      <li><span class="sw" style="background:linear-gradient(90deg,#c6dbef,#08306b)"></span><span><b>Light to dark blue</b> means less to more.</span></li>
+      <li><span class="sw sw-pair"><i style="background:#01665e"></i><i style="background:#8c510a"></i></span><span><b>Teal / brown</b> means won or rose / lost or fell.</span></li>
+      <li><span class="sw sw-pair"><i style="background:#1f5fa8"></i><i style="background:#eb6834"></i></span><span><b>Navy / orange</b> means home or Victorian / away or interstate.</span></li>
+    </ul>
+  </section>
 
   <!-- ============ 1. WHO RULED ============ -->
   <section class="chapter" id="dynasties">
@@ -64,7 +83,7 @@
 
     <figure>
       <h3>Every club's finishing position, every season</h3>
-      <p class="sub">Darker squares are higher ladder finishes. A ★ marks the premier. Clubs are sorted by their average finish.</p>
+      <p class="sub">The darkest squares are top-four finishes; the next shade is 5th–8th, which made the finals in most seasons. A ★ marks the premier. Clubs are sorted by their average finish.</p>
       <div id="vis-ladder-heatmap" class="vis"></div>
       <figcaption>Final home-and-away ladder. Source: Squiggle API. Hover a square for details.</figcaption>
     </figure>
@@ -72,32 +91,36 @@
     <div class="row">
       <div class="text">
         <h3>Geelong: never far from the top</h3>
-        <p>Geelong won only one flag (2022). Yet they have the best average ladder finish of any club
-          (4.3), and they played finals in 13 of the 15 seasons.</p>
-        <p class="callout">Gold Coast, the newest club, has played finals only once.</p>
+        <p>Geelong won only one flag (2022). Yet it has the best average ladder finish of any club
+          (4.3), and it played finals in 13 of the 15 seasons.</p>
+        <p>Dynasties don't last. Richmond won three flags between 2017 and 2020, then finished 18th
+          in 2024. Hawthorn, after its three-peat (2013–15), had slumped to 16th by 2023.</p>
+        <p class="callout">Gold Coast, which joined in 2011, has played finals only once (2025).</p>
         <p>Pick a club from the menu to trace its journey up and down the ladder.</p>
       </div>
       <figure>
         <h3>The ladder rollercoaster</h3>
-        <p class="sub">Final ladder position each season. 1st is at the top.</p>
+        <p class="sub">Final ladder position each season, 1st at the top. The chosen club is in red; the grey lines are the other 17 clubs.</p>
         <div id="vis-bump" class="vis"></div>
         <figcaption>Source: Squiggle API.</figcaption>
       </figure>
     </div>
 
-    <div class="row flip">
+    <div class="row">
+      <div class="text">
+        <h3>Consistency beats a hot streak</h3>
+        <p>Geelong (225 wins) and Sydney (212) top the win tally by a clear margin. Both have been to
+          plenty of Grand Finals but won just one each.</p>
+        <p>Over 15 years, steady seasons add up to more wins than a short golden era. Hawthorn, with
+          three flags, is only third.</p>
+        <p>At the other end, Gold Coast won 110 games in 15 seasons, fewer than half of Geelong's total.</p>
+      </div>
       <figure>
         <h3>Total wins, 2012–2026</h3>
-        <p class="sub">Home-and-away games only. The number of flags each club won is shown at the end of its bar.</p>
+        <p class="sub">Home-and-away games only. Gold bars are clubs that won at least one flag; the number of flags is shown at the end of the bar.</p>
         <div id="vis-wins-bar" class="vis"></div>
         <figcaption>Source: Squiggle API.</figcaption>
       </figure>
-      <div class="text">
-        <h3>Consistency beats a hot streak</h3>
-        <p>Geelong and Sydney top the win tally by a clear margin. Both have also been to plenty of
-          Grand Finals but won just one each. Over 15 years, steady seasons add up to more wins
-          than a short golden era.</p>
-      </div>
     </div>
   </section>
 
@@ -111,7 +134,7 @@
 
     <figure>
       <h3>Where the crowds go</h3>
-      <p class="sub">Each circle is a ground, sized by its average crowd. Drag the slider to change the season. 2020 shows the empty-stadium hub season.</p>
+      <p class="sub">Each circle is a ground, sized by its average crowd. Hold Ctrl (⌘ on Mac) and scroll to zoom in on a city, and drag to move around; more ground names appear as you zoom. Use the slider to change the season. In 2026 the MCG averaged 60,556 fans a game, and Perth Stadium 48,948. Slide to 2020 to see the hub season, when many games had no crowd.</p>
       <div id="vis-venue-map" class="vis"></div>
       <figcaption>Crowds: AFL Tables. Ground locations: Wikipedia. Games in Shanghai (2017–19) and Wellington (2013–15) are not shown.</figcaption>
     </figure>
@@ -119,13 +142,14 @@
     <div class="row">
       <div class="text">
         <h3>Footy-mad states</h3>
-        <p>In 2026, Victorians bought about 67 tickets for every 100 residents. South Australians were
-          close behind at 64, helped by the league's Gather Round in Adelaide.</p>
+        <p>In 2026, games in Victoria drew about 67 fans for every 100 Victorians. The count includes
+          visiting fans, so it measures how much footy a state hosts. South Australia was close behind
+          at 64, helped by Gather Round, when a whole round is played in and around Adelaide.</p>
         <p>In New South Wales and Queensland, the rugby league states, it was fewer than 10.</p>
       </div>
       <figure>
         <h3>AFL tickets per 100 residents, 2026</h3>
-        <p class="sub">Total crowd at games played in each state ÷ state population.</p>
+        <p class="sub">Total crowd at games played in each state ÷ state population. Visiting fans are included.</p>
         <div id="vis-state-map" class="vis"></div>
         <figcaption>Crowds: AFL Tables. Population: ABS, March 2026. Boundaries: ABS via rowanhogan/australian-states.</figcaption>
       </figure>
@@ -133,9 +157,9 @@
 
     <figure>
       <h3>How far does your club travel?</h3>
-      <p class="sub">Lines run from a club's home ground to every ground it played at. Thicker lines mean more trips. Choose a club and a season.</p>
-      <div id="vis-flow-map" class="vis"></div>
-      <figcaption>Straight-line distances between grounds. Sources: AFL Tables, Wikipedia.</figcaption>
+      <p class="sub">Compare two clubs (red and black). Lines run from each club's home ground to every ground it played at that season; thicker lines mean more games there. The bars on the right rank every club's total distance for the same season.</p>
+      <div id="vis-flow-map" class="vis vis-scroll"></div>
+      <figcaption>Round-trip, straight-line distances between grounds. Games in Shanghai and Wellington are counted in the bars but not drawn on the map. Sources: AFL Tables, Wikipedia.</figcaption>
     </figure>
   </section>
 
@@ -146,33 +170,40 @@
       <p>Every club wins more often at home, but the size of that advantage varies a lot.</p>
     </div>
 
-    <div class="row flip">
-      <figure>
-        <h3>Win rate at home vs away, 2012–2026</h3>
-        <p class="sub">Home-and-away games only. Clubs are sorted by the size of the gap.</p>
-        <div id="vis-home-away" class="vis"></div>
-        <figcaption>Source: Squiggle API.</figcaption>
-      </figure>
+    <div class="row">
       <div class="text">
         <h3>The Kardinia Park fortress</h3>
         <p>Geelong won 82% of its home games. Its compact ground suits its own players and is
-          unfamiliar to visitors.</p>
-        <p>Collingwood has almost no home advantage. Most of its "away" games are also at the MCG,
-          in front of its own fans.</p>
+          unfamiliar to visitors. Away from home, it wins 56%, still among the best.</p>
+        <p>Gold Coast has the biggest gap of all: it wins 47% at home but only 21% away.</p>
+        <p class="callout">Collingwood has no home advantage at all: 58% at home, 58% away.</p>
+        <p>That's because many of Collingwood's “away” games are played close to home. More than half
+          are in Melbourne, and 42% are at the MCG itself, in front of its own fans.</p>
       </div>
+      <figure>
+        <h3>Win rate at home vs away, 2012–2026</h3>
+        <p class="sub">Blue is the win rate at home, orange is away. The number is the gap in percentage points. Clubs are sorted by the size of the gap.</p>
+        <div id="vis-home-away" class="vis"></div>
+        <figcaption>Home-and-away games only. Source: Squiggle API.</figcaption>
+      </figure>
     </div>
 
     <div class="row">
       <div class="text">
-        <h3>Distance is a hidden opponent</h3>
-        <p>A typical West Australian club travels about 59,000 km a season. That's more than three
-          times the 18,000 km of a typical Victorian club. Each dot is one club in one season.</p>
+        <h3>Does travel decide away games?</h3>
+        <p>The two West Australian clubs travel about 60,000 km a season, more than three times as far
+          as Collingwood (16,000 km).</p>
+        <p>If distance were the main reason teams lose away, the dots would slope down to the right.
+          They barely do. Fremantle travels the furthest of any club but has a better away record than
+          the league average.</p>
+        <p class="callout">Sydney wins 63% of its away games, the best record, while travelling a middling 26,000 km.</p>
+        <p>The quality of the team matters far more than the kilometres.</p>
       </div>
       <figure>
-        <h3>Kilometres travelled vs away win rate</h3>
-        <p class="sub">Round-trip distance from the home ground to each game, per season.</p>
+        <h3>Does travelling further mean losing more away?</h3>
+        <p class="sub">Each dot is one club: its average kilometres travelled per season, against the share of all its away games it won, 2012–2026 (the same win rates as the chart above).</p>
         <div id="vis-travel-scatter" class="vis"></div>
-        <figcaption>Sources: AFL Tables, Squiggle API, Wikipedia.</figcaption>
+        <figcaption>Round-trip, straight-line distances. Sources: AFL Tables, Squiggle API, Wikipedia.</figcaption>
       </figure>
     </div>
   </section>
@@ -185,26 +216,38 @@
         stats to see which ones go with success.</p>
     </div>
 
-    <figure>
-      <h3>The shape of a top-four team</h3>
-      <p class="sub">Each line is one club's season averages, scaled so the league's lowest value is at the bottom of each axis and the highest is at the top. Top-four clubs are highlighted.</p>
-      <div id="vis-parallel" class="vis"></div>
-      <figcaption>Per-game averages, including finals. Source: AFL Tables.</figcaption>
-    </figure>
+    <div class="row">
+      <div class="text">
+        <h3>Scoring separates the best from the rest</h3>
+        <p>Averaged over all 15 seasons, top-four clubs kicked 12% more goals than the league average
+          and took 10% more marks inside 50. Bottom-four clubs kicked 17% fewer.</p>
+        <p>The gaps in the “hard work” stats, like clearances, contested possessions and tackles, are much smaller, usually
+          under 5% either way.</p>
+        <p class="callout">In 2026 the top four made almost exactly the league-average number of tackles, but kicked 17% more goals.</p>
+        <p>Drag the slider to see whether the pattern holds every season.</p>
+      </div>
+      <figure>
+        <h3>What top-four teams do more of</h3>
+        <p class="sub">How far the top-four and bottom-four clubs sat above or below the league average for six key stats in one season. Bars to the right are above average.</p>
+        <div id="vis-gap-bars" class="vis"></div>
+        <figcaption>Per-game averages, including finals. Top four and bottom four by final home-and-away ladder. Sources: AFL Tables, Squiggle API.</figcaption>
+      </figure>
+    </div>
 
     <div class="row">
       <div class="text">
         <h3>The 2026 premiers' fingerprint</h3>
-        <p>Brisbane's 2026 averages compared with the league average. The further a point sits
-          from the centre, the more Brisbane was above average.</p>
-        <p class="callout">The premiers kicked 25% more goals than an average team, yet made 15% fewer tackles.</p>
-        <p>Their strength was turning possession into scores, not stopping the opposition.</p>
+        <p>The radar shows one club's season compared with the league average, shown as the grey
+          dashed shape. Where the red shape pokes outside the grey, the club was above average.</p>
+        <p class="callout">Brisbane, the 2026 premiers, kicked 25% more goals than an average team, yet made 15% fewer tackles.</p>
+        <p>Their strength was turning possession into scores, not stopping the opposition. Pick other
+          clubs and seasons to compare their fingerprints.</p>
       </div>
       <figure>
-        <h3>Brisbane Lions vs the league, 2026</h3>
-        <p class="sub">The dashed ring is the league average (100). Each spoke is one stat.</p>
-        <div id="vis-radar" class="vis"></div>
-        <figcaption>Source: AFL Tables.</figcaption>
+        <h3>One club vs the league</h3>
+        <p class="sub">Each spoke is one stat. 100 = league average; 125 means 25% above average. The centre is 50, not zero, so the differences are easier to see. Starts on the Brisbane Lions in 2026.</p>
+        <div id="vis-radar" class="vis vis-scroll"></div>
+        <figcaption>Per-game averages, including finals. Source: AFL Tables.</figcaption>
       </figure>
     </div>
   </section>
@@ -216,24 +259,35 @@
       <p>Some match-ups are reliably one-sided. Meanwhile, games overall are getting tighter.</p>
     </div>
 
-    <figure>
-      <h3>Head to head: who beats whom?</h3>
-      <p class="sub">Read across a row: the row club's win rate against each opponent, 2012–2026. Blue = the row club usually wins, red = it usually loses.</p>
-      <div id="vis-h2h" class="vis"></div>
-      <figcaption>All games including finals. Source: Squiggle API.</figcaption>
-    </figure>
+    <div class="row">
+      <div class="text">
+        <h3>The most one-sided match-ups</h3>
+        <p>Geelong beat Essendon in 16 of their 18 games. Sydney beat North Melbourne 19 times in 22.</p>
+        <p>The top rows are mostly teal, because the strongest clubs beat almost everyone. The colour
+          gets browner as you move down to the weaker clubs.</p>
+      </div>
+      <figure>
+        <h3>Head to head: who beats whom?</h3>
+        <p class="sub">Read across a row: the row club's win rate against each opponent, 2012–2026. Teal means the row club usually wins, brown means it usually loses, grey is roughly even. Numbers mark the most one-sided match-ups.</p>
+        <div id="vis-h2h" class="vis"></div>
+        <figcaption>All games including finals. Clubs are sorted by overall win rate, best at the top and left. Opponents: GEE Geelong, SYD Sydney, HAW Hawthorn, COL Collingwood, FRE Fremantle, POR Port Adelaide, ADE Adelaide, WBD Western Bulldogs, BRI Brisbane Lions, RIC Richmond, GWS Greater Western Sydney, MEL Melbourne, WCE West Coast, STK St Kilda, ESS Essendon, CAR Carlton, NOR North Melbourne, GCS Gold Coast. Source: Squiggle API.</figcaption>
+      </figure>
+    </div>
 
     <div class="row">
       <div class="text">
         <h3>Closer contests</h3>
         <p>In 2012 the typical (median) game was won by 34 points. By 2026 it was 25.</p>
-        <p>Each ridge shows how common each winning margin was that season. Taller peaks further
-          to the left mean more close games.</p>
+        <p>Close games are more common too. In 2012, 21% of games were decided by two goals (12 points)
+          or less. In 2026 it was 28%.</p>
+        <p>Each ridge shows how common each winning margin was in one season. A tall peak near the
+          left means lots of close games. A long tail to the right means lots of thrashings. The red
+          marks show the median margin moving left over time.</p>
       </div>
       <figure>
         <h3>How big were the wins?</h3>
-        <p class="sub">The spread of winning margins, season by season.</p>
-        <div id="vis-ridgeline" class="vis"></div>
+        <p class="sub">The spread of winning margins, season by season. The red mark is that season's median winning margin.</p>
+        <div id="vis-ridgeline" class="vis vis-scroll"></div>
         <figcaption>All games including finals. Source: Squiggle API.</figcaption>
       </figure>
     </div>
@@ -242,21 +296,35 @@
   <!-- ============ 6. 2026 ============ -->
   <section class="chapter" id="now">
     <div class="chapter-head">
-      <div><span class="section-num">Chapter 06</span><h2>2026: a three-peat, and who's rising</h2></div>
+      <div><span class="section-num">Chapter 06</span><h2>2026: a three&#8209;peat, and who's rising</h2></div>
       <p>Brisbane beat Fremantle by seven points to win a third straight flag, matching Hawthorn's
         2013–15 run. Behind them, the ladder had a major shake-up.</p>
     </div>
 
     <div class="row halves">
+      <div class="text">
+        <h3>A shake-up on the ladder</h3>
+        <p>Sydney climbed eight places in a year and Melbourne climbed seven. Greater Western Sydney
+          went the other way, falling seven places.</p>
+      </div>
+      <div class="text">
+        <h3>Record crowds</h3>
+        <p>In 2020, crowds were banned or capped all season, and 29 games had no crowd at all. Counting
+          every game, the average fell to 6,377. By 2026 it had climbed to 39,126, the highest of the
+          15 seasons.</p>
+      </div>
+    </div>
+
+    <div class="row halves">
       <figure>
         <h3>Risers and fallers: 2025 → 2026</h3>
-        <p class="sub">Ladder position in each season. Clubs that moved four or more places are coloured.</p>
+        <p class="sub">Ladder position in each season.</p>
         <div id="vis-slope" class="vis"></div>
         <figcaption>Source: Squiggle API.</figcaption>
       </figure>
       <figure>
         <h3>The crowds came back</h3>
-        <p class="sub">Average crowd per game, each season.</p>
+        <p class="sub">Total crowd ÷ all games, including those with no crowd.</p>
         <div id="vis-attendance" class="vis"></div>
         <figcaption>Source: AFL Tables.</figcaption>
       </figure>
@@ -282,7 +350,7 @@
       <h2>About</h2>
       <p>Created by Youssef Hassanein for FIT3179 Data Visualisation, Monash University, October 2026.</p>
       <p>Charts built with <a href="https://vega.github.io/vega-lite/">Vega-Lite</a> and <a href="https://vega.github.io/vega/">Vega</a>.</p>
-      <p><!-- TODO: AI acknowledgement (to be written by the author) --></p>
+      <p><strong>AI acknowledgement:</strong> I used Claude (Anthropic) to help with research and code. I verified and edited all of its output.</p>
     </div>
   </div>
 </footer>

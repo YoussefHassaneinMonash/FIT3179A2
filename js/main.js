@@ -3,19 +3,19 @@
 
 const theme = {
   background: null,
-  font: "Source Sans 3, sans-serif",
+  font: "'Source Sans 3', sans-serif",
   view: { stroke: null },
-  title: { font: "Barlow Condensed, sans-serif", fontSize: 18, fontWeight: 600, color: "#1c1b19", anchor: "start" },
+  title: { font: "'Barlow Condensed', sans-serif", fontSize: 18, fontWeight: 600, color: "#1c1b19", anchor: "start" },
   axis: {
-    labelFont: "Source Sans 3, sans-serif", labelFontSize: 12, labelColor: "#55524b",
-    titleFont: "Source Sans 3, sans-serif", titleFontSize: 12, titleFontWeight: 600, titleColor: "#55524b",
+    labelFont: "'Source Sans 3', sans-serif", labelFontSize: 13, labelColor: "#55524b",
+    titleFont: "'Source Sans 3', sans-serif", titleFontSize: 13, titleFontWeight: 600, titleColor: "#55524b",
     domainColor: "#bdb8ab", tickColor: "#bdb8ab", gridColor: "#e6e2d8"
   },
   legend: {
-    labelFont: "Source Sans 3, sans-serif", labelFontSize: 12, labelColor: "#55524b",
-    titleFont: "Source Sans 3, sans-serif", titleFontSize: 12, titleFontWeight: 600, titleColor: "#55524b"
+    labelFont: "'Source Sans 3', sans-serif", labelFontSize: 13, labelColor: "#55524b",
+    titleFont: "'Source Sans 3', sans-serif", titleFontSize: 13, titleFontWeight: 600, titleColor: "#55524b"
   },
-  text: { font: "Source Sans 3, sans-serif", fontSize: 12, color: "#1c1b19" }
+  text: { font: "'Source Sans 3', sans-serif", fontSize: 13, color: "#1c1b19" }
 };
 
 const charts = [
@@ -27,7 +27,7 @@ const charts = [
   ["#vis-flow-map", "js/specs/06_travel_flow_map.vg.json"],
   ["#vis-home-away", "js/specs/07_home_away_dumbbell.vg.json"],
   ["#vis-travel-scatter", "js/specs/08_travel_scatter.vg.json"],
-  ["#vis-parallel", "js/specs/09_parallel_coordinates.vg.json"],
+  ["#vis-gap-bars", "js/specs/09_top_bottom_bars.vg.json"],
   ["#vis-radar", "js/specs/10_radar.vg.json"],
   ["#vis-h2h", "js/specs/11_head_to_head_matrix.vg.json"],
   ["#vis-ridgeline", "js/specs/12_margin_ridgeline.vg.json"],
@@ -35,8 +35,12 @@ const charts = [
   ["#vis-attendance", "js/specs/14_attendance_line.vg.json"]
 ];
 
-for (const [el, spec] of charts) {
-  if (!document.querySelector(el)) continue;
-  vegaEmbed(el, spec, { actions: false, renderer: "svg", config: theme })
-    .catch(err => console.error(`Chart ${spec} failed:`, err));
-}
+// Wait for the web fonts first: Vega measures label widths when it draws, and measuring
+// with the fallback font clips long labels once the real font arrives.
+document.fonts.ready.then(() => {
+  for (const [el, spec] of charts) {
+    if (!document.querySelector(el)) continue;
+    vegaEmbed(el, spec, { actions: false, renderer: "svg", config: theme })
+      .catch(err => console.error(`Chart ${spec} failed:`, err));
+  }
+});

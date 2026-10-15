@@ -1,45 +1,191 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Ridgeline plot: the distribution (smoothed) of winning margins in each season 2012-2026.",
-  "data": {"url": "data/margins.csv"},
-  "transform": [
-    {"density": "margin", "groupby": ["year"], "extent": [0, 150], "steps": 120, "bandwidth": 6}
-  ],
+  "description": "Ridgeline plot: the smoothed distribution of winning margins in each season 2012-2026, with each season's median margin marked.",
+  "data": {
+    "url": "data/margins.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "margin": "number",
+        "year": "number"
+      }
+    }
+  },
   "facet": {
     "row": {
       "field": "year",
       "type": "ordinal",
       "title": null,
-      "header": {"labelAngle": 0, "labelAlign": "right", "labelPadding": 6, "labelFontSize": 12, "labelColor": "#55524b"}
-    }
-  },
-  "spacing": 0,
-  "bounds": "flush",
-  "spec": {
-    "width": 560,
-    "height": 22,
-    "mark": {"type": "area", "interpolate": "monotone", "fillOpacity": 0.85, "stroke": "#fffdf8", "strokeWidth": 1},
-    "encoding": {
-      "x": {
-        "field": "value",
-        "type": "quantitative",
-        "title": "Winning margin (points)",
-        "scale": {"domain": [0, 150]},
-        "axis": {"grid": false, "values": [0, 25, 50, 75, 100, 125, 150]}
-      },
-      "y": {
-        "field": "density",
-        "type": "quantitative",
-        "scale": {"range": [22, -24]},
-        "axis": null
-      },
-      "fill": {
-        "field": "year",
-        "type": "ordinal",
-        "legend": null,
-        "scale": {"scheme": "blues"}
+      "header": {
+        "labelAngle": 0,
+        "labelAlign": "right",
+        "labelPadding": 8,
+        "labelFontSize": 13,
+        "labelColor": "#55524b"
       }
     }
   },
-  "config": {"view": {"stroke": null}}
+  "spacing": 2,
+  "bounds": "flush",
+  "spec": {
+    "width": 560,
+    "height": 30,
+    "layer": [
+      {
+        "transform": [
+          {
+            "density": "margin",
+            "groupby": [
+              "year"
+            ],
+            "extent": [
+              0,
+              125
+            ],
+            "steps": 120,
+            "bandwidth": 6
+          }
+        ],
+        "mark": {
+          "type": "area",
+          "interpolate": "monotone",
+          "fill": "#bdb8ab",
+          "fillOpacity": 0.85,
+          "stroke": "#55524b",
+          "strokeWidth": 1
+        },
+        "encoding": {
+          "x": {
+            "field": "value",
+            "type": "quantitative",
+            "title": "Winning margin (points)",
+            "scale": {
+              "domain": [
+                0,
+                125
+              ]
+            },
+            "axis": {
+              "grid": false,
+              "values": [
+                0,
+                25,
+                50,
+                75,
+                100,
+                125
+              ]
+            }
+          },
+          "y": {
+            "field": "density",
+            "type": "quantitative",
+            "scale": {
+              "range": [
+                30,
+                -14
+              ]
+            },
+            "axis": null
+          }
+        }
+      },
+      {
+        "transform": [
+          {
+            "aggregate": [
+              {
+                "op": "median",
+                "field": "margin",
+                "as": "median"
+              }
+            ],
+            "groupby": [
+              "year"
+            ]
+          },
+          {
+            "calculate": "'Median winning margin'",
+            "as": "key"
+          }
+        ],
+        "layer": [
+          {
+            "mark": {
+              "type": "rule",
+              "strokeWidth": 2.5
+            },
+            "encoding": {
+              "x": {
+                "field": "median",
+                "type": "quantitative"
+              },
+              "y": {
+                "value": 2
+              },
+              "y2": {
+                "value": 30
+              },
+              "color": {
+                "field": "key",
+                "type": "nominal",
+                "title": null,
+                "scale": {
+                  "range": [
+                    "#c8102e"
+                  ]
+                },
+                "legend": {
+                  "orient": "top",
+                  "labelFontSize": 13,
+                  "symbolType": "stroke",
+                  "symbolStrokeWidth": 3
+                }
+              },
+              "tooltip": [
+                {
+                  "field": "year",
+                  "title": "Season"
+                },
+                {
+                  "field": "median",
+                  "title": "Median winning margin (points)"
+                }
+              ]
+            }
+          },
+          {
+            "mark": {
+              "type": "text",
+              "align": "left",
+              "dx": 5,
+              "fontSize": 13,
+              "fontWeight": 600,
+              "color": "#c8102e",
+              "stroke": "#fffdf8",
+              "strokeWidth": 3
+            },
+            "encoding": {
+              "x": {
+                "field": "median",
+                "type": "quantitative"
+              },
+              "y": {
+                "value": 12
+              },
+              "text": {
+                "field": "median",
+                "format": ".1~f"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "config": {
+    "view": {
+      "stroke": null
+    }
+  }
 }

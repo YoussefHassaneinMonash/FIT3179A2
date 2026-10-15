@@ -144,6 +144,13 @@ def main():
     ts["interstate_club"] = ts["state"] != "VIC"
     ts.to_csv(OUT / "travel_season.csv", index=False)
 
+    # travel_club.csv: one row per club for the travel scatter. The away win % is pooled over
+    # all 15 seasons, the same definition as the home/away dumbbell (home_away.csv).
+    tc = ts.groupby("team").agg(avg_km=("km_travelled", "mean"), interstate_club=("interstate_club", "max")).reset_index()
+    tc["avg_km"] = tc["avg_km"].round(0)
+    tc = tc.merge(ha[ha["side"] == "away"][["team", "win_pct"]].rename(columns={"win_pct": "away_win_pct"}), on="team")
+    tc.to_csv(OUT / "travel_club.csv", index=False)
+
     # venue_season.csv: crowds per ground per season (proportional symbol map)
     vs = matches.groupby(["year", "venue"]).agg(games=("attendance", "size"), total_crowd=("attendance", "sum"),
                                                 avg_crowd=("attendance", "mean")).reset_index()

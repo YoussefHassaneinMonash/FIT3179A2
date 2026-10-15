@@ -1,56 +1,181 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "description": "Heatmap of every club's final ladder position for each season 2012-2026. Stars mark premiers.",
-  "data": {"url": "data/ladder.csv"},
+  "data": {
+    "url": "data/ladder.csv"
+  },
   "width": "container",
   "height": 450,
   "transform": [
-    {"joinaggregate": [{"op": "mean", "field": "rank", "as": "avg_rank"}], "groupby": ["team"]}
+    {
+      "joinaggregate": [
+        {
+          "op": "mean",
+          "field": "rank",
+          "as": "avg_rank"
+        }
+      ],
+      "groupby": [
+        "team"
+      ]
+    },
+    {
+      "calculate": "datum.rank <= 4 ? '1st–4th' : (datum.rank <= 8 ? '5th–8th' : (datum.rank <= 12 ? '9th–12th' : '13th–18th'))",
+      "as": "band"
+    }
   ],
   "encoding": {
     "x": {
       "field": "year",
       "type": "ordinal",
       "title": null,
-      "axis": {"orient": "top", "labelAngle": 0, "domain": false, "ticks": false}
+      "axis": {
+        "orient": "top",
+        "labelAngle": 0,
+        "domain": false,
+        "ticks": false
+      }
     },
     "y": {
       "field": "team",
       "type": "nominal",
       "title": null,
-      "sort": {"field": "avg_rank", "op": "max", "order": "ascending"},
-      "axis": {"domain": false, "ticks": false, "labelPadding": 8, "labelExpr": "datum.label == 'Greater Western Sydney' ? 'GWS Giants' : datum.label"}
+      "sort": {
+        "field": "avg_rank",
+        "op": "max",
+        "order": "ascending"
+      },
+      "axis": {
+        "domain": false,
+        "ticks": false,
+        "labelPadding": 8,
+        "labelExpr": "datum.label == 'Greater Western Sydney' ? 'GWS Giants' : datum.label"
+      }
     }
   },
   "layer": [
     {
-      "mark": {"type": "rect", "stroke": "#fffdf8", "strokeWidth": 2, "cornerRadius": 2},
+      "mark": {
+        "type": "rect",
+        "stroke": "#fffdf8",
+        "strokeWidth": 2,
+        "cornerRadius": 2
+      },
       "encoding": {
         "color": {
-          "field": "rank",
-          "type": "quantitative",
-          "title": "Ladder position (1 = top)",
-          "scale": {"scheme": "blues", "reverse": true, "domain": [1, 18]},
-          "legend": {"orient": "bottom", "direction": "horizontal", "gradientLength": 220, "values": [1, 6, 12, 18]}
+          "field": "band",
+          "type": "ordinal",
+          "title": "Ladder finish",
+          "scale": {
+            "domain": [
+              "1st–4th",
+              "5th–8th",
+              "9th–12th",
+              "13th–18th"
+            ],
+            "range": [
+              "#08519c",
+              "#4292c6",
+              "#9ecae1",
+              "#deebf7"
+            ]
+          },
+          "legend": {
+            "orient": "bottom",
+            "direction": "horizontal",
+            "symbolType": "square",
+            "symbolSize": 180,
+            "labelFontSize": 13
+          }
         },
         "tooltip": [
-          {"field": "team", "title": "Club"},
-          {"field": "year", "title": "Season"},
-          {"field": "rank", "title": "Ladder position"},
-          {"field": "wins", "title": "Wins"},
-          {"field": "losses", "title": "Losses"},
-          {"field": "percentage", "title": "Percentage"}
+          {
+            "field": "team",
+            "title": "Club"
+          },
+          {
+            "field": "year",
+            "title": "Season"
+          },
+          {
+            "field": "rank",
+            "title": "Ladder position"
+          },
+          {
+            "field": "wins",
+            "title": "Wins"
+          },
+          {
+            "field": "losses",
+            "title": "Losses"
+          },
+          {
+            "field": "percentage",
+            "title": "Percentage"
+          }
         ]
       }
     },
     {
-      "transform": [{"filter": "datum.premier == 1"}],
-      "mark": {"type": "text", "text": "★", "fontSize": 15, "color": "#f5c518", "baseline": "middle"},
+      "transform": [
+        {
+          "filter": "datum.premier == 1"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "text": "★",
+        "fontSize": 15,
+        "color": "#e0a100",
+        "baseline": "middle"
+      },
       "encoding": {
         "tooltip": [
-          {"field": "team", "title": "Premier"},
-          {"field": "year", "title": "Season"}
+          {
+            "field": "team",
+            "title": "Premier"
+          },
+          {
+            "field": "year",
+            "title": "Season"
+          }
         ]
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.team == 'Gold Coast' && datum.year == 2025"
+        }
+      ],
+      "mark": {
+        "type": "rect",
+        "fill": null,
+        "stroke": "#c8102e",
+        "strokeWidth": 2.5,
+        "cornerRadius": 2
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.team == 'Gold Coast' && datum.year == 2025"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "text": "↑ Gold Coast's only finals, 2025",
+        "align": "right",
+        "baseline": "top",
+        "dx": 30,
+        "fontSize": 13,
+        "fontStyle": "italic",
+        "color": "#c8102e"
+      },
+      "encoding": {
+        "y": {
+          "value": 458
+        }
       }
     }
   ]

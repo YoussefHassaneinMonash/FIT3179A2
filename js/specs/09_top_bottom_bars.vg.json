@@ -1,0 +1,277 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Diverging grouped bars: how far the top-four and bottom-four clubs sat above or below the league average on six stats, for a chosen season.",
+  "data": {
+    "url": "data/team_profiles.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "year": "number",
+        "rank": "number",
+        "inside_50s": "number",
+        "clearances": "number",
+        "contested_possessions": "number",
+        "tackles": "number",
+        "marks_inside_50": "number",
+        "goals": "number"
+      }
+    }
+  },
+  "width": "container",
+  "height": 380,
+  "params": [
+    {
+      "name": "season",
+      "value": 2026,
+      "bind": {
+        "input": "range",
+        "min": 2012,
+        "max": 2026,
+        "step": 1,
+        "name": "Season "
+      }
+    }
+  ],
+  "transform": [
+    {
+      "filter": "datum.year == season"
+    },
+    {
+      "fold": [
+        "inside_50s",
+        "clearances",
+        "contested_possessions",
+        "tackles",
+        "marks_inside_50",
+        "goals"
+      ],
+      "as": [
+        "stat",
+        "value"
+      ]
+    },
+    {
+      "joinaggregate": [
+        {
+          "op": "mean",
+          "field": "value",
+          "as": "league_avg"
+        }
+      ],
+      "groupby": [
+        "stat"
+      ]
+    },
+    {
+      "calculate": "datum.rank <= 4 ? 'Top 4 clubs' : (datum.rank >= 15 ? 'Bottom 4 clubs' : null)",
+      "as": "group"
+    },
+    {
+      "filter": "datum.group != null"
+    },
+    {
+      "aggregate": [
+        {
+          "op": "mean",
+          "field": "value",
+          "as": "group_avg"
+        },
+        {
+          "op": "max",
+          "field": "league_avg",
+          "as": "league_avg"
+        }
+      ],
+      "groupby": [
+        "stat",
+        "group"
+      ]
+    },
+    {
+      "calculate": "100 * (datum.group_avg / datum.league_avg - 1)",
+      "as": "pct"
+    },
+    {
+      "calculate": "abs(datum.pct) < 0.5 ? '0%' : (datum.pct > 0 ? '+' : '−') + format(abs(datum.pct), '.0f') + '%'",
+      "as": "pct_label"
+    },
+    {
+      "calculate": "{'inside_50s': 'Inside 50s', 'clearances': 'Clearances', 'contested_possessions': 'Contested possessions', 'tackles': 'Tackles', 'marks_inside_50': 'Marks inside 50', 'goals': 'Goals'}[datum.stat]",
+      "as": "stat_label"
+    }
+  ],
+  "encoding": {
+    "y": {
+      "field": "stat_label",
+      "type": "nominal",
+      "title": null,
+      "sort": [
+        "Goals",
+        "Marks inside 50",
+        "Inside 50s",
+        "Clearances",
+        "Contested possessions",
+        "Tackles"
+      ],
+      "axis": {
+        "domain": false,
+        "ticks": false,
+        "labelPadding": 10,
+        "labelFontSize": 14,
+        "labelColor": "#1c1b19"
+      }
+    },
+    "yOffset": {
+      "field": "group",
+      "sort": [
+        "Top 4 clubs",
+        "Bottom 4 clubs"
+      ]
+    },
+    "x": {
+      "field": "pct",
+      "type": "quantitative",
+      "title": "% above or below the league average (per game)",
+      "scale": {
+        "domain": [
+          -32,
+          22
+        ]
+      },
+      "axis": {
+        "values": [
+          -30,
+          -20,
+          -10,
+          0,
+          10,
+          20
+        ],
+        "labelExpr": "(datum.value > 0 ? '+' : '') + datum.value + '%'",
+        "gridDash": [
+          2,
+          3
+        ],
+        "domain": false
+      }
+    }
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "bar",
+        "cornerRadius": 2,
+        "height": {
+          "band": 0.85
+        }
+      },
+      "encoding": {
+        "color": {
+          "field": "group",
+          "type": "nominal",
+          "title": null,
+          "scale": {
+            "domain": [
+              "Top 4 clubs",
+              "Bottom 4 clubs"
+            ],
+            "range": [
+              "#c8102e",
+              "#a9a497"
+            ]
+          },
+          "legend": {
+            "orient": "top",
+            "direction": "horizontal",
+            "labelFontSize": 13
+          }
+        },
+        "tooltip": [
+          {
+            "field": "group",
+            "title": "Group"
+          },
+          {
+            "field": "stat_label",
+            "title": "Stat"
+          },
+          {
+            "field": "group_avg",
+            "title": "Group average per game",
+            "format": ".1f"
+          },
+          {
+            "field": "league_avg",
+            "title": "League average per game",
+            "format": ".1f"
+          },
+          {
+            "field": "pct_label",
+            "title": "Difference"
+          }
+        ]
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.pct >= 0"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 5,
+        "fontSize": 12,
+        "fontWeight": 600,
+        "color": "#55524b"
+      },
+      "encoding": {
+        "text": {
+          "field": "pct_label"
+        }
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.pct < 0"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "dx": -5,
+        "fontSize": 12,
+        "fontWeight": 600,
+        "color": "#55524b"
+      },
+      "encoding": {
+        "text": {
+          "field": "pct_label"
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "rule",
+        "color": "#1c1b19",
+        "strokeWidth": 1.5
+      },
+      "encoding": {
+        "x": {
+          "datum": 0
+        },
+        "y": {
+          "value": 0
+        },
+        "y2": {
+          "value": 380
+        },
+        "yOffset": {
+          "value": 0
+        }
+      }
+    }
+  ]
+}

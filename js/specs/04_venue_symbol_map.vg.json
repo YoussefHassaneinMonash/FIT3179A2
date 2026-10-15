@@ -1,71 +1,607 @@
 {
-  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Proportional symbol map: AFL grounds sized by average crowd, for a chosen season.",
-  "width": "container",
+  "$schema": "https://vega.github.io/schema/vega/v5.json",
+  "description": "Zoomable proportional symbol map (Vega): AFL grounds sized by average crowd in a chosen season. Scroll to zoom, drag to pan, double-click to reset. Labels are placed automatically and hidden where they would overlap.",
   "height": 520,
-  "params": [
+  "padding": 0,
+  "autosize": "none",
+  "signals": [
+    {
+      "name": "width",
+      "init": "containerSize()[0] || 900",
+      "on": [
+        {
+          "events": "window:resize",
+          "update": "containerSize()[0] || 900"
+        }
+      ]
+    },
     {
       "name": "season",
       "value": 2026,
-      "bind": {"input": "range", "min": 2012, "max": 2026, "step": 1, "name": "Season "}
+      "bind": {
+        "input": "range",
+        "min": 2012,
+        "max": 2026,
+        "step": 1,
+        "name": "Season "
+      }
+    },
+    {
+      "name": "baseScale",
+      "update": "0.92 * min(width / 0.692, height / 0.603)"
+    },
+    {
+      "name": "homeTx",
+      "update": "width / 2 - baseScale * 0.0503"
+    },
+    {
+      "name": "homeTy",
+      "update": "height / 2 - baseScale * 0.9261"
+    },
+    {
+      "name": "wheel",
+      "value": 1,
+      "on": [
+        {
+          "events": {
+            "type": "wheel",
+            "consume": true,
+            "filter": "event.ctrlKey || event.metaKey"
+          },
+          "update": "pow(1.0018, -event.deltaY * pow(16, event.deltaMode))"
+        }
+      ]
+    },
+    {
+      "name": "anchor",
+      "value": [
+        0,
+        0
+      ],
+      "on": [
+        {
+          "events": {
+            "type": "wheel",
+            "filter": "event.ctrlKey || event.metaKey"
+          },
+          "update": "xy()"
+        }
+      ]
+    },
+    {
+      "name": "ratio",
+      "value": 1,
+      "on": [
+        {
+          "events": {
+            "signal": "wheel"
+          },
+          "update": "clamp(zoom * wheel, 1, 60) / zoom"
+        }
+      ]
+    },
+    {
+      "name": "zoom",
+      "value": 1,
+      "on": [
+        {
+          "events": {
+            "signal": "ratio"
+          },
+          "update": "zoom * ratio"
+        },
+        {
+          "events": "dblclick",
+          "update": "1"
+        },
+        {
+          "events": "window:resize",
+          "update": "1"
+        }
+      ]
+    },
+    {
+      "name": "down",
+      "value": null,
+      "on": [
+        {
+          "events": "mousedown",
+          "update": "xy()"
+        },
+        {
+          "events": "window:mouseup",
+          "update": "null"
+        }
+      ]
+    },
+    {
+      "name": "startT",
+      "value": [
+        0,
+        0
+      ],
+      "on": [
+        {
+          "events": "mousedown",
+          "update": "[tx, ty]"
+        }
+      ]
+    },
+    {
+      "name": "drag",
+      "value": [
+        0,
+        0
+      ],
+      "on": [
+        {
+          "events": {
+            "source": "window",
+            "type": "mousemove",
+            "consume": true,
+            "between": [
+              {
+                "type": "mousedown"
+              },
+              {
+                "source": "window",
+                "type": "mouseup"
+              }
+            ]
+          },
+          "update": "down ? [x() - down[0], y() - down[1]] : [0, 0]"
+        }
+      ]
+    },
+    {
+      "name": "tx",
+      "init": "homeTx",
+      "on": [
+        {
+          "events": {
+            "signal": "ratio"
+          },
+          "update": "anchor[0] - (anchor[0] - tx) * ratio"
+        },
+        {
+          "events": {
+            "signal": "drag"
+          },
+          "update": "startT[0] + drag[0]"
+        },
+        {
+          "events": "dblclick",
+          "update": "homeTx"
+        },
+        {
+          "events": "window:resize",
+          "update": "homeTx"
+        }
+      ]
+    },
+    {
+      "name": "ty",
+      "init": "homeTy",
+      "on": [
+        {
+          "events": {
+            "signal": "ratio"
+          },
+          "update": "anchor[1] - (anchor[1] - ty) * ratio"
+        },
+        {
+          "events": {
+            "signal": "drag"
+          },
+          "update": "startT[1] + drag[1]"
+        },
+        {
+          "events": "dblclick",
+          "update": "homeTy"
+        },
+        {
+          "events": "window:resize",
+          "update": "homeTy"
+        }
+      ]
     }
   ],
-  "projection": {"type": "conicEqualArea", "parallels": [-18, -36], "rotate": [-132, 0]},
-  "layer": [
+  "projections": [
     {
-      "data": {"url": "data/aus_states.topo.json", "format": {"type": "topojson", "feature": "states"}},
-      "mark": {"type": "geoshape", "fill": "#ebe7dd", "stroke": "#fffdf8", "strokeWidth": 1.5}
-    },
-    {
-      "data": {"url": "data/venue_season.csv"},
-      "transform": [
-        {"filter": "datum.year == season && datum.state != 'NZ' && datum.state != 'CHN'"},
-        {"calculate": "isValid(datum.avg_crowd) ? datum.avg_crowd : 0", "as": "crowd_for_size"}
+      "name": "proj",
+      "type": "conicEqualArea",
+      "parallels": [
+        -18,
+        -36
       ],
-      "mark": {"type": "circle", "color": "#c8102e", "opacity": 0.7, "stroke": "#fffdf8", "strokeWidth": 1.2},
-      "encoding": {
-        "longitude": {"field": "lon", "type": "quantitative"},
-        "latitude": {"field": "lat", "type": "quantitative"},
-        "size": {
-          "field": "crowd_for_size",
-          "type": "quantitative",
-          "title": "Average crowd",
-          "scale": {"domain": [0, 80000], "range": [15, 2600]},
-          "legend": {"values": [10000, 40000, 70000], "format": ",.0f", "orient": "bottom-left", "symbolFillColor": "#c8102e", "symbolOpacity": 0.7, "symbolStrokeWidth": 0}
+      "rotate": [
+        -132,
+        0
+      ],
+      "scale": {
+        "signal": "baseScale * zoom"
+      },
+      "translate": [
+        {
+          "signal": "tx"
         },
-        "order": {"field": "crowd_for_size", "sort": "descending"},
-        "tooltip": [
-          {"field": "venue_full", "title": "Ground"},
-          {"field": "city", "title": "City"},
-          {"field": "year", "title": "Season"},
-          {"field": "games", "title": "Games"},
-          {"field": "avg_crowd", "title": "Average crowd", "format": ","},
-          {"field": "total_crowd", "title": "Total crowd", "format": ","}
-        ]
+        {
+          "signal": "ty"
+        }
+      ]
+    }
+  ],
+  "data": [
+    {
+      "name": "states",
+      "url": "data/aus_states_detailed.topo.json",
+      "format": {
+        "type": "topojson",
+        "feature": "states"
       }
     },
     {
-      "data": {"url": "data/venue_season.csv", "format": {"type": "csv", "parse": {"total_crowd": "number", "year": "number"}}},
+      "name": "grounds",
+      "url": "data/venue_season.csv",
+      "format": {
+        "type": "csv",
+        "parse": {
+          "year": "number",
+          "lat": "number",
+          "lon": "number",
+          "games": "number",
+          "avg_crowd": "number",
+          "total_crowd": "number"
+        }
+      },
       "transform": [
-        {"filter": "datum.year == season && datum.state != 'NZ' && datum.state != 'CHN'"},
-        {"window": [{"op": "row_number", "as": "state_rank"}], "groupby": ["state"], "sort": [{"field": "total_crowd", "order": "descending"}]},
-        {"filter": "datum.state_rank == 1 && datum.total_crowd > 0"}
+        {
+          "type": "filter",
+          "expr": "datum.year == season && datum.state != 'NZ' && datum.state != 'CHN'"
+        },
+        {
+          "type": "formula",
+          "as": "crowd",
+          "expr": "isValid(datum.avg_crowd) ? datum.avg_crowd : 0"
+        },
+        {
+          "type": "geopoint",
+          "projection": "proj",
+          "fields": [
+            "lon",
+            "lat"
+          ]
+        },
+        {
+          "type": "collect",
+          "sort": {
+            "field": "crowd",
+            "order": "descending"
+          }
+        }
+      ]
+    },
+    {
+      "name": "note",
+      "values": [
+        {
+          "text": "2020: COVID-19 hub season. Most games were in Queensland, many with no crowd."
+        }
       ],
-      "mark": {"type": "text", "align": "left", "dx": 10, "dy": -8, "fontSize": 12, "fontWeight": 600, "color": "#1c1b19"},
-      "encoding": {
-        "longitude": {"field": "lon", "type": "quantitative"},
-        "latitude": {"field": "lat", "type": "quantitative"},
-        "text": {"field": "venue"}
+      "transform": [
+        {
+          "type": "filter",
+          "expr": "season == 2020"
+        }
+      ]
+    },
+    {
+      "name": "biggest",
+      "source": "grounds",
+      "transform": [
+        {
+          "type": "filter",
+          "expr": "datum.crowd > 0 && datum.games >= 5"
+        },
+        {
+          "type": "window",
+          "sort": {
+            "field": "crowd",
+            "order": "descending"
+          },
+          "ops": [
+            "row_number"
+          ],
+          "as": [
+            "r"
+          ]
+        },
+        {
+          "type": "filter",
+          "expr": "datum.r == 1"
+        },
+        {
+          "type": "formula",
+          "as": "text",
+          "expr": "datum.year + ': ' + datum.venue_full + ' had the biggest average crowd, ' + format(datum.crowd, ',.0f') + ' a game'"
+        }
+      ]
+    }
+  ],
+  "scales": [
+    {
+      "name": "size",
+      "type": "linear",
+      "domain": [
+        0,
+        80000
+      ],
+      "range": [
+        8,
+        1300
+      ],
+      "zero": true
+    }
+  ],
+  "legends": [
+    {
+      "size": "size",
+      "title": "Average crowd",
+      "orient": "bottom-left",
+      "values": [
+        10000,
+        40000,
+        70000
+      ],
+      "format": ",.0f",
+      "symbolType": "circle",
+      "symbolFillColor": "#c8102e",
+      "symbolOpacity": 0.75,
+      "symbolStrokeWidth": 0,
+      "fillColor": "#fffdf8",
+      "padding": 8,
+      "cornerRadius": 4,
+      "offset": 12
+    }
+  ],
+  "marks": [
+    {
+      "type": "rect",
+      "name": "ocean",
+      "description": "Ocean: a pale blue backdrop behind the land.",
+      "encode": {
+        "enter": {
+          "fill": {
+            "value": "#d9e6ec"
+          },
+          "cornerRadius": {
+            "value": 4
+          }
+        },
+        "update": {
+          "x": {
+            "value": 0
+          },
+          "y": {
+            "value": 0
+          },
+          "x2": {
+            "signal": "width"
+          },
+          "y2": {
+            "signal": "height"
+          }
+        }
       }
     },
     {
-      "data": {"values": [{"lon": 113.5, "lat": -40.5, "note": "2020: COVID-19 hub season. Most games were in Queensland, many with no crowd."}]},
-      "transform": [{"filter": "season == 2020"}],
-      "mark": {"type": "text", "align": "left", "fontSize": 13, "fontStyle": "italic", "color": "#c8102e"},
-      "encoding": {
-        "longitude": {"field": "lon", "type": "quantitative"},
-        "latitude": {"field": "lat", "type": "quantitative"},
-        "text": {"field": "note"}
+      "type": "shape",
+      "from": {
+        "data": "states"
+      },
+      "encode": {
+        "enter": {
+          "fill": {
+            "value": "#ebe7dd"
+          },
+          "stroke": {
+            "value": "#fffdf8"
+          },
+          "strokeWidth": {
+            "value": 1.5
+          }
+        }
+      },
+      "transform": [
+        {
+          "type": "geoshape",
+          "projection": "proj"
+        }
+      ]
+    },
+    {
+      "type": "symbol",
+      "name": "circles",
+      "from": {
+        "data": "grounds"
+      },
+      "encode": {
+        "enter": {
+          "fill": {
+            "value": "#c8102e"
+          },
+          "fillOpacity": {
+            "value": 0.75
+          },
+          "stroke": {
+            "value": "#fffdf8"
+          },
+          "strokeWidth": {
+            "value": 1.2
+          }
+        },
+        "update": {
+          "x": {
+            "field": "x"
+          },
+          "y": {
+            "field": "y"
+          },
+          "size": {
+            "scale": "size",
+            "field": "crowd"
+          },
+          "tooltip": {
+            "signal": "{'Ground': datum.venue_full, 'City': datum.city, 'Season': datum.year, 'Games': datum.games, 'Average crowd': isValid(datum.avg_crowd) ? format(datum.avg_crowd, ',.0f') : 'no crowd', 'Total crowd': format(datum.total_crowd, ',.0f')}"
+          }
+        }
+      }
+    },
+    {
+      "type": "text",
+      "from": {
+        "data": "circles"
+      },
+      "encode": {
+        "enter": {
+          "font": {
+            "value": "'Source Sans 3', sans-serif"
+          },
+          "fontSize": {
+            "value": 12
+          },
+          "fill": {
+            "value": "#1c1b19"
+          }
+        },
+        "update": {
+          "x": {
+            "field": "x"
+          },
+          "y": {
+            "field": "y"
+          },
+          "text": {
+            "field": "datum.venue"
+          },
+          "fontWeight": {
+            "signal": "datum.datum.crowd >= 30000 ? 600 : 400"
+          }
+        }
+      },
+      "transform": [
+        {
+          "type": "label",
+          "size": {
+            "signal": "[width, height]"
+          },
+          "avoidMarks": [
+            "circles"
+          ],
+          "anchor": [
+            "right",
+            "left",
+            "top",
+            "bottom",
+            "top-right",
+            "bottom-right",
+            "top-left",
+            "bottom-left"
+          ],
+          "offset": [
+            4
+          ]
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "from": {
+        "data": "biggest"
+      },
+      "encode": {
+        "update": {
+          "x": {
+            "value": 16
+          },
+          "y": {
+            "value": 22
+          },
+          "text": {
+            "field": "text"
+          },
+          "font": {
+            "value": "'Source Sans 3', sans-serif"
+          },
+          "fontSize": {
+            "value": 13
+          },
+          "fontStyle": {
+            "value": "italic"
+          },
+          "fill": {
+            "value": "#c8102e"
+          }
+        }
+      }
+    },
+    {
+      "type": "text",
+      "from": {
+        "data": "note"
+      },
+      "encode": {
+        "update": {
+          "x": {
+            "value": 16
+          },
+          "y": {
+            "value": 42
+          },
+          "text": {
+            "field": "text"
+          },
+          "font": {
+            "value": "'Source Sans 3', sans-serif"
+          },
+          "fontSize": {
+            "value": 13
+          },
+          "fontStyle": {
+            "value": "italic"
+          },
+          "fill": {
+            "value": "#c8102e"
+          }
+        }
+      }
+    },
+    {
+      "type": "text",
+      "encode": {
+        "update": {
+          "x": {
+            "signal": "width - 12"
+          },
+          "y": {
+            "signal": "height - 12"
+          },
+          "align": {
+            "value": "right"
+          },
+          "text": {
+            "signal": "zoom > 1.01 ? 'Zoom ×' + format(zoom, '.1f') + ' · double-click to reset' : 'Hold Ctrl (⌘ on Mac) and scroll to zoom · drag to move'"
+          },
+          "font": {
+            "value": "'Source Sans 3', sans-serif"
+          },
+          "fontSize": {
+            "value": 12
+          },
+          "fill": {
+            "value": "#8a867c"
+          }
+        }
       }
     }
   ]

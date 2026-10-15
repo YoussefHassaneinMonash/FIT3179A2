@@ -1,38 +1,470 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Scatterplot: kilometres travelled per season vs away win %, one dot per club per season.",
-  "data": {"url": "data/travel_season.csv"},
+  "description": "Scatterplot: each club's average kilometres travelled per season vs its away win % (all away games 2012-2026 pooled, same as the dumbbell), with the league average marked.",
+  "data": {
+    "url": "data/travel_club.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "avg_km": "number",
+        "away_win_pct": "number",
+        "interstate_club": "number"
+      }
+    }
+  },
   "width": "container",
-  "height": 360,
+  "height": 400,
   "transform": [
-    {"calculate": "datum.interstate_club == 1 ? 'Interstate club' : 'Victorian club'", "as": "club_type"}
+    {
+      "calculate": "datum.avg_km",
+      "as": "km"
+    },
+    {
+      "calculate": "datum.away_win_pct",
+      "as": "away"
+    },
+    {
+      "calculate": "datum.interstate_club == 1 ? 'Interstate club' : 'Victorian club'",
+      "as": "club_type"
+    },
+    {
+      "calculate": "replace(datum.team, 'Greater Western Sydney', 'GWS Giants')",
+      "as": "name"
+    },
+    {
+      "joinaggregate": [
+        {
+          "op": "mean",
+          "field": "away",
+          "as": "league_away"
+        }
+      ]
+    }
   ],
-  "mark": {"type": "circle", "size": 55, "opacity": 0.75, "stroke": "#fffdf8", "strokeWidth": 1},
-  "encoding": {
-    "x": {
-      "field": "km_travelled",
-      "type": "quantitative",
-      "title": "Kilometres travelled in the season",
-      "axis": {"format": ",.0f", "gridDash": [2, 3], "domain": false}
+  "layer": [
+    {
+      "transform": [
+        {
+          "aggregate": [
+            {
+              "op": "max",
+              "field": "league_away",
+              "as": "league_away"
+            }
+          ]
+        }
+      ],
+      "mark": {
+        "type": "rule",
+        "color": "#55524b",
+        "strokeDash": [
+          5,
+          4
+        ],
+        "strokeWidth": 1.5
+      },
+      "encoding": {
+        "y": {
+          "field": "league_away",
+          "type": "quantitative",
+          "title": "Away games won (%)",
+          "scale": {
+            "domain": [
+              15,
+              70
+            ]
+          },
+          "axis": {
+            "gridDash": [
+              2,
+              3
+            ],
+            "domain": false
+          }
+        }
+      }
     },
-    "y": {
-      "field": "away_win_pct",
-      "type": "quantitative",
-      "title": "Away games won (%)",
-      "axis": {"gridDash": [2, 3], "domain": false}
+    {
+      "transform": [
+        {
+          "aggregate": [
+            {
+              "op": "max",
+              "field": "league_away",
+              "as": "league_away"
+            }
+          ]
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "dy": 12,
+        "fontSize": 12,
+        "fontStyle": "italic",
+        "color": "#55524b",
+        "dx": -2
+      },
+      "encoding": {
+        "x": {
+          "datum": 70000,
+          "scale": {
+            "domain": [
+              10000,
+              70000
+            ]
+          },
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "league_away",
+          "type": "quantitative"
+        },
+        "text": {
+          "value": "League average"
+        }
+      }
     },
-    "color": {
-      "field": "club_type",
-      "type": "nominal",
-      "title": null,
-      "scale": {"domain": ["Victorian club", "Interstate club"], "range": ["#2a78d6", "#eb6834"]},
-      "legend": {"orient": "top", "direction": "horizontal"}
+    {
+      "mark": {
+        "type": "circle",
+        "size": 130,
+        "opacity": 0.9,
+        "stroke": "#fffdf8",
+        "strokeWidth": 1.5
+      },
+      "encoding": {
+        "color": {
+          "field": "club_type",
+          "type": "nominal",
+          "title": null,
+          "scale": {
+            "domain": [
+              "Victorian club",
+              "Interstate club"
+            ],
+            "range": [
+              "#1f5fa8",
+              "#eb6834"
+            ]
+          },
+          "legend": {
+            "orient": "top",
+            "direction": "horizontal",
+            "labelFontSize": 13
+          }
+        },
+        "tooltip": [
+          {
+            "field": "team",
+            "title": "Club"
+          },
+          {
+            "field": "km",
+            "title": "Average km per season",
+            "format": ",.0f"
+          },
+          {
+            "field": "away",
+            "title": "Away win %",
+            "format": ".1f"
+          }
+        ],
+        "x": {
+          "field": "km",
+          "type": "quantitative",
+          "title": "Average kilometres travelled per season",
+          "scale": {
+            "domain": [
+              10000,
+              70000
+            ]
+          },
+          "axis": {
+            "format": ",.0f",
+            "gridDash": [
+              2,
+              3
+            ],
+            "domain": false,
+            "values": [
+              10000,
+              20000,
+              30000,
+              40000,
+              50000,
+              60000,
+              70000
+            ]
+          }
+        },
+        "y": {
+          "field": "away",
+          "type": "quantitative",
+          "title": "Away games won (%)",
+          "scale": {
+            "domain": [
+              15,
+              70
+            ]
+          },
+          "axis": {
+            "gridDash": [
+              2,
+              3
+            ],
+            "domain": false
+          }
+        }
+      }
     },
-    "tooltip": [
-      {"field": "team", "title": "Club"},
-      {"field": "year", "title": "Season"},
-      {"field": "km_travelled", "title": "Km travelled", "format": ","},
-      {"field": "away_win_pct", "title": "Away win %"}
-    ]
-  }
+    {
+      "transform": [
+        {
+          "filter": "indexof(['Geelong', 'North Melbourne', 'Adelaide', 'Port Adelaide', 'Sydney', 'Greater Western Sydney', 'Gold Coast', 'West Coast', 'Fremantle'], datum.team) >= 0"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 9,
+        "fontSize": 12,
+        "color": "#1c1b19",
+        "dy": -8
+      },
+      "encoding": {
+        "text": {
+          "field": "name"
+        },
+        "x": {
+          "field": "km",
+          "type": "quantitative",
+          "title": "Average kilometres travelled per season",
+          "scale": {
+            "domain": [
+              10000,
+              70000
+            ]
+          },
+          "axis": {
+            "format": ",.0f",
+            "gridDash": [
+              2,
+              3
+            ],
+            "domain": false,
+            "values": [
+              10000,
+              20000,
+              30000,
+              40000,
+              50000,
+              60000,
+              70000
+            ]
+          }
+        },
+        "y": {
+          "field": "away",
+          "type": "quantitative",
+          "title": "Away games won (%)",
+          "scale": {
+            "domain": [
+              15,
+              70
+            ]
+          },
+          "axis": {
+            "gridDash": [
+              2,
+              3
+            ],
+            "domain": false
+          }
+        }
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.team == 'Brisbane Lions'"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 9,
+        "fontSize": 12,
+        "color": "#1c1b19",
+        "dy": 14
+      },
+      "encoding": {
+        "text": {
+          "field": "name"
+        },
+        "x": {
+          "field": "km",
+          "type": "quantitative",
+          "title": "Average kilometres travelled per season",
+          "scale": {
+            "domain": [
+              10000,
+              70000
+            ]
+          },
+          "axis": {
+            "format": ",.0f",
+            "gridDash": [
+              2,
+              3
+            ],
+            "domain": false,
+            "values": [
+              10000,
+              20000,
+              30000,
+              40000,
+              50000,
+              60000,
+              70000
+            ]
+          }
+        },
+        "y": {
+          "field": "away",
+          "type": "quantitative",
+          "title": "Away games won (%)",
+          "scale": {
+            "domain": [
+              15,
+              70
+            ]
+          },
+          "axis": {
+            "gridDash": [
+              2,
+              3
+            ],
+            "domain": false
+          }
+        }
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.team == 'Collingwood'"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "dx": 0,
+        "fontSize": 12,
+        "color": "#1c1b19",
+        "dy": -13
+      },
+      "encoding": {
+        "text": {
+          "field": "name"
+        },
+        "x": {
+          "field": "km",
+          "type": "quantitative",
+          "title": "Average kilometres travelled per season",
+          "scale": {
+            "domain": [
+              10000,
+              70000
+            ]
+          },
+          "axis": {
+            "format": ",.0f",
+            "gridDash": [
+              2,
+              3
+            ],
+            "domain": false,
+            "values": [
+              10000,
+              20000,
+              30000,
+              40000,
+              50000,
+              60000,
+              70000
+            ]
+          }
+        },
+        "y": {
+          "field": "away",
+          "type": "quantitative",
+          "title": "Away games won (%)",
+          "scale": {
+            "domain": [
+              15,
+              70
+            ]
+          },
+          "axis": {
+            "gridDash": [
+              2,
+              3
+            ],
+            "domain": false
+          }
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "x": 62000,
+            "y": 54,
+            "text": [
+              "Fremantle travels the furthest,",
+              "yet wins more away games",
+              "than most clubs"
+            ]
+          },
+          {
+            "x": 41500,
+            "y": 17.5,
+            "text": [
+              "Gold Coast: the worst away record"
+            ]
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "baseline": "top",
+        "fontSize": 13,
+        "fontStyle": "italic",
+        "color": "#c8102e",
+        "lineHeight": 16
+      },
+      "encoding": {
+        "x": {
+          "field": "x",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              10000,
+              70000
+            ]
+          }
+        },
+        "y": {
+          "field": "y",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "text"
+        }
+      }
+    }
+  ]
 }
